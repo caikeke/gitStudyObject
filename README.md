@@ -1,6 +1,3 @@
-步骤：
-1
-2
-3
-4
-5
+步骤
+git clone  https://github.com/xxx/xxx.git
+git checkout -b  local-branch-name
