@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>网格布局</title>
+    <style>
+        .HolyGrail {
+            display: flex;
+            background-color: blue;
+        }
+
+        header,
+        footer {
+            height: 120px;
+            background-color: bisque;
+            text-align: center;
+        }
+
+        footer{
+           position: absolute;
+           width: 100%;
+           bottom: 0;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+        }
+
+        .HolyGrail-content {
+            flex: 1;
+            background-color: blueviolet;
+        }
+
+        .HolyGrail-nav,
+        .HolyGrail-ads {
+            /* 两个边栏的宽度设为12em */
+            flex: 0 0 12rem;
+            background-color:burlywood;
+            height: 980px;
+        }
+
+  
+    </style>
+</head>
+
+<body class="HolyGail">
+    <header>...头</header>
+    <div class="HolyGrail-body">
+        <nav class="HolyGrail-nav">...nav</nav>
+        <main class="HolyGrail-content">...content</main>
+        <aside class="HolyGrail-ads">...ads</aside>
+    </div>
+    <footer>...底部</footer>
+</body>
+
+</html>

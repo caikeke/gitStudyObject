@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式测试</title>
+    <style>
+        .div_name{
+            background: #c1272d;
+        }
+    </style>
+</head>
+<body>
+<div class="div_name">344324</div>
+</body>
+<script type="text/javascript">
+    let  string="23213aaa";
+    let p1 = /[0-9]/;
+    let b1 = p1.test(string);//true,说明有数字
+    console.log(b1);
+    let p2 = /[a-z]/;
+    let b2 = p2.test(string);//true,说明有英文字母
+    console.log(b2);
+    let p3 = /[0-9a-z]/;
+    let b3 = p3.test(string);//true,说明有英文字母或数字
+    console.log(b3);
+    let p4 = /[A-Za-z\u4e00-\u9fa5]/;
+    let b4 = p4.test(string);//true,说明有英文字母或汉字
+    console.log(b4);
+</script>
+</html>

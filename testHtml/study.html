@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //创建闭包（立刻执行，只调用一次）
+        ; (function (global, factory, plug) {
+            global[plug] = factory.call(global);
+        })(this, function (param) {
+            //this===global
+            let __c__ = function (param) {
+
+            }
+            return __c__;
+        }, 'NetEaseDialog');
+    </script>
+    <script>
+        /**V8引擎Runtime内存结构
+        1.栈内存包含在堆内存中
+        2.定义的变量（let,var申明的变量，如let obj）在栈内存中
+        3.常量池放基础类型的值(如：'123'、12344、true、false)
+        4.方法调用，放在函数（方法）缓存区,方法执行结束,就会释放内存。
+        5.方法申明在函数（方法）定义区
+        6.堆内存存放new对象生成实例,(new Person(),开辟新的空间);null也在堆内存中。
+        **/
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.log('assign' in Object);
+        console.log(Reflect.has(Object, 'assign'));
+        const myObj = {
+            foo: 'bar',
+            header: 'title'
+        };
+
+        // 旧写法
+        // delete myObj.foo;
+
+        // 新写法
+        Reflect.deleteProperty(myObj, 'foo');
+        console.log(myObj);
+
+        function Greeting(name) {
+            this.name = name;
+        }
+
+        // new 的写法
+        const instance = new Greeting('张三');
+        console.log(instance.name);
+
+        // Reflect.construct 的写法
+        const instanceR = Reflect.construct(Greeting, ['李四']);
+        console.log(instanceR.name);
+    </script>
+</body>
+
+</html>

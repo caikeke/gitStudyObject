@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div>实现对象深度克隆（deepClone)</div>
+</body>
+<script type="text/javascript">
+    console.log("----------------------------JSON对象做一次中转，实现深度克隆-----")
+    let deepCloneJSON = function (obj) {
+        let _tmp, result;
+        _tmp = JSON.stringify(obj);
+        result = JSON.parse(_tmp);
+        return result;
+    }
+    let obj1 = {
+        family: {
+            brother: "wangzhipeng",
+            father: "wanglicai",
+            mother: "sunaiyun"
+        },
+        name: "gino",
+        sex: "male",
+        age: "27"
+    };
+    let obj2 = deepCloneJSON(obj1);
+    obj1.family.brother = "close";
+    console.log("obj1= " + JSON.stringify(obj1));
+    console.log("obj2= " + JSON.stringify(obj2));
+    console.log(
+        "----------------------------确定参数类型为object （这里仅指object literal、Array literal）后，复制源对象的键/值到目标对象，否则直接返回源对象。----"
+        )
+    let deepCloneD = function fnDeepClone(obj) {
+        let result = typeof obj.splice === 'function' ? [] : {},
+            key;
+        if (obj && typeof obj === 'object') {
+            for (key in obj) {
+                if (obj[key] && typeof obj[key] === 'object') {
+                    result[key] = fnDeepClone(obj[key]); //如果对象的属性值为object的时候，递归调用deepClone，即再把某个值对象复制一份到新的对象的对应值中
+                } else {
+                    result[key] = obj[key]; //如果对象的属性值不为object的时候，直接复制参数对象的每一个键/值到新对象对应的键/值中
+                }
+            }
+            return result;
+        }
+        return obj;
+    }
+
+    //test array
+    let arry1 = ["a", "b", "c", "d"];
+    let arry2 = deepCloneD(arry1);
+    arry1.pop();
+    console.log("arry1= " + arry1);
+    console.log("arry2= " + arry2);
+    //test object
+    let obj11 = {
+        name: "gino",
+        sex: "male",
+        age: 27,
+        favorite: "pingPang",
+        family: {
+            brother: "zhiPend",
+            mother: "SunAiYun",
+            father: "WangLiCai"
+        }
+    };
+    let obj22 = deepCloneD(obj11);
+    obj1.family.brother = "close";
+    console.log("obj11=" + JSON.stringify(obj11));
+    console.log("obj22=" + JSON.stringify(obj22));
+    console.log("----------------------------利用数组的Array.prototype.forEach和其他一些ECMAScript 5中的Object.*函数。----")
+    let deepClone = function (o) {
+        let copy = Object.create(Object.getPrototypeOf(o));
+        let propNames = Object.getOwnPropertyNames(o);
+
+        propNames.forEach(function (name) {
+            let desc = Object.getOwnPropertyDescriptor(o, name);
+            Object.defineProperty(copy, name, desc);
+        });
+
+        return copy;
+    }
+
+    let obj111 = {
+        family: {
+            brother: "wangzhipeng",
+            father: "wanglicai",
+            mother: "sunaiyun"
+        },
+        name: "gino",
+        sex: "male",
+        age: "27"
+    };
+    let obj222 = deepClone(obj111);
+    obj1.sex = "close";
+    console.log(obj111);
+    console.log(obj222);
+</script>
+
+</html>

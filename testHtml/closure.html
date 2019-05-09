@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // function createCounter(initial) {
+        //     let index = initial || 0;
+        //     let inc = {
+        //         inc: function () {
+        //             index += 1;
+        //             return index;
+        //         }
+        //     };
+
+        //     return inc;
+        // }
+
+        // let c1 = createCounter();
+        // console.log(c1.inc());
+        // console.log(c1.inc());
+        // console.log(c1.inc());
+        // console.log(c1.inc());
+        // let c2 = createCounter(11);
+        // console.log(c2.inc());
+        // console.log(c2.inc());
+        // console.log(c2.inc());
+        // console.log(c2.inc());
+
+        // 定义数字0:
+        var zero = function (f) {
+            return function (x) {
+                return x;
+            }
+        };
+
+        // 定义数字1:
+        var one = function (f) {
+            return function (x) {
+                return f(x);
+            }
+        };
+
+        // 定义加法:
+        function add(n, m) {
+            return function (f) {
+                return function (x) {
+                    return m(f)(n(f)(x));
+                }
+            }
+        }
+
+        var two = add(one, one);
+        var three = add(one, two);
+        console.log(two);
+        console.log(three);
+        
+    </script>
+</body>
+
+</html>

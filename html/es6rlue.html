@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let items = ['11', '22', '33', '44'];
+        // // let itemsCopy = [...items];
+        // //let itemsCopy =Object.assign([],items);
+        // let _obj = JSON.stringify(items);
+        // let itemsCopy = JSON.parse(_obj);
+        // console.log('items--->' + items);
+        // console.log('itemsCopy--->' + itemsCopy);
+        // itemsCopy[0] = 'aaa';
+        // console.log('B_items--->' + items);
+        // console.log('B_itemsCopy--->' + itemsCopy);
+
+        // console.log('====================================');
+        // console.log(typeof items);
+        // console.log(typeof NUll);
+        // console.log('====================================');
+    </script>
+
+    <script>
+        // function deepCopy(obj) {
+        //     let result = Array.isArray(obj) ? [] : {};
+        //     for (let key in obj) {
+        //         if (obj.hasOwnProperty(key)) {
+        //             if (typeof obj[key] === 'object') {
+        //                 result[key] = deepCopy(obj[key]);   //递归复制
+        //             } else {
+        //                 result[key] = obj[key];
+        //             }
+        //         }
+        //     }
+        //     return result;
+        // }
+
+        // let items = ['11', '22', '33', '44'];
+        // let itemsCopy = deepCopy(items);
+        // itemsCopy[0] = 'aaa';
+        // console.log('items--->' + items);
+        // console.log('itemsCopy--->' + itemsCopy);
+    </script>
+
+    <script>
+        // let items = ['11', '22', '33', '44'];
+        // let _obj = JSON.stringify(items);
+        // let itemsCopy = JSON.parse(_obj);
+        // itemsCopy[0] = 'aaa';
+        // console.log('items--->' + items);
+        // console.log('itemsCopy--->' + itemsCopy);
+    </script>
+
+    <script>
+        // let items = ['11', '22', '33', '44'];
+        // let itemsCopy = Object.assign([], items);
+        // itemsCopy[0] = 'aaa';
+        // console.log('items--->' + items);
+        // console.log('itemsCopy--->' + itemsCopy);
+    </script>
+
+    <script>
+        // let items = ['11', '22', '33', ['44','55']];
+        // let itemsCopy = Object.assign([], items);
+        // itemsCopy[0] = 'aaa';
+        // itemsCopy[3][0] = 'bbb';
+        // console.log(items);
+        // console.log(itemsCopy);
+    </script>
+
+    <script>
+
+    //   //父类
+    //   function Person(name) {
+    //         this.name = name;
+    //         this.showAge=function(age){
+    //             console.log('今年我'+age+'岁了');               
+    //         }
+    //     };
+    //     Person.prototype.color = "yellow";
+    //     let Asia1 = new Person('张三');
+    //     console.log(Asia1.color);//yellow
+    //     console.log(Asia1.name);//张三
+    //     Asia1.showAge(27);//今年我27岁了
+    //      //子类
+    //      function mPer (){
+    //     };
+    //      mPer.prototype = new Person('李四');//让新实例的原型等于父类的实例
+    //      mPer.prototype.constructor=mPer;
+    //      console.log(mPer.prototype.constructor);
+
+    //      let myPer = new mPer();
+    //      console.log(myPer.name);
+    //      Asia1.showAge(18);//今年我18岁了
+    //      console.log(myPer instanceof Person);//true
+    </script>
+
+    <script>
+        //父类
+        // function Person(name) {
+        //     this.name = name;
+        //     this.showAge=function(age){
+        //         console.log('今年我'+age+'岁了');               
+        //     }
+        // };
+        //Person.prototype.color = "yellow";
+        // function mPer (name){
+        //     Person.call(this,name);
+        //  };
+        // let mPerson = new mPer('张三');
+        // console.log(mPerson.name);
+        // console.log(mPerson.color);
+        // mPerson.showAge(20);
+    </script>
+
+    <script>
+        //父类
+        // function Person(name) {
+        //     this.name = name;
+        //     this.showAge = function (age) {
+        //         console.log('今年我' + age + '岁了');
+        //     }
+        // };
+        // Person.prototype.color = "yellow";
+        // function mPer(name) {
+        //     Person.call(this, name);
+        // };
+        // mPer.prototype = new Person();
+        // let mPerson = new mPer('张三');
+        // console.log(mPerson.name);
+        // console.log(mPerson.color);
+        // mPerson.showAge(20);
+        // console.log("============================");
+        // let mPersonC = new mPer('李四');
+        // console.log(mPersonC.name);
+        // console.log(mPersonC.color);
+        // mPersonC.showAge(30);
+    </script>
+
+    <script>
+        // //父类
+        // function Person(name) {
+        //     this.name = name;
+        //     this.showAge = function (age) {
+        //         console.log('今年我' + age + '岁了');
+        //     }
+        // };
+        // Person.prototype.color = "yellow";
+        // //封装一个容器，输出对象和承载继承的原型
+        // function content(obj) {
+        //     function tempFunc() { };
+        //     tempFunc.prototype = obj;
+        //     return new tempFunc();
+        // }
+
+        // let sup = new Person('张三');
+        // let child = new content(sup);
+        // console.log(child.name);
+        // console.log(child.color);
+        // child.showAge(12);
+        // console.log(child instanceof Person); // true
+    </script>
+
+    <script>
+        //父类
+    //     function Person(name) {
+    //         this.mName = '默认名字';
+    //         this.showAge = function (age) {
+    //             console.log('今年我' + age + '岁了');
+    //         }
+    //     };
+    //     Person.prototype.color = "yellow";
+
+    //     function deepCopy(p, c) {
+    //         var c = c || {};
+    //         let mp = new p();
+    //         for (var i in mp) {
+    //             if (typeof mp[i] === 'object') {
+    //                 c[i] = (mp[i].constructor === Array) ? [] : {};
+    //                 deepCopy(mp[i], c[i]);
+    //             } else {
+    //                 c[i] = mp[i];     
+    //             }
+    //         }
+    //         return c;
+    //     }
+
+    //     function mPer() {
+
+    //     };
+    //     let mPerson= new deepCopy(Person,mPer);
+    //     console.log(mPerson.color);  
+    //     console.log(mPerson.mName);           
+    //    mPerson.showAge(12);
+    </script>
+
+    <script>
+        //  //父类
+        // function Person() {
+
+        // };
+        // Person.prototype.color = "yellow";
+        //    function mPer() {
+
+        // };
+
+        // mPer.prototype = Person.prototype;　
+        // mPer.prototype.constructor=mPer;
+        // let myPer = new mPer();
+        // console.log( myPer.color);
+    </script>
+
+    <script>
+
+        // function Person(name) {
+        //     this.name = name;
+        //     this.showAge = function (age) {
+        //         console.log('今年我' + age + '岁了');
+        //     }
+        // };
+        // Person.prototype.color = "yellow";
+        // //封装一个容器，输出对象和承载继承的原型
+        // function content(obj) {
+        //     function tempFunc() { };
+        //     tempFunc.prototype = obj;
+        //     return new tempFunc();
+        // }
+
+        // let sup = new Person('张三');
+        // let child = content(sup);
+        // console.log(child.name);
+        // console.log(child.color);
+        // child.showAge(12);
+
+    </script>
+</body>
+
+<script>
+
+    // 定义一个Person类（父类）
+    function Person(name) {
+        // 属性
+        this.name = name || 'Person';
+        // 实例方法
+        this.sleep = function () {
+            console.log(this.name + '正在偷懒~~~！');
+        }
+    }
+    // 原型方法
+    Person.prototype.work = function (job) {
+        console.log(this.name + '的工作是：' + job);
+    };
+
+    /**将父类的实例作为子类的原型**/
+    // function Chinese(address) {
+    //     this.address = address || "earth";
+    // }
+    // //要在改变原型对象之后
+    // Chinese.prototype.skin = '黄色';
+    // Chinese.prototype = new Person();
+    // //　Test Code
+    // var chinese = new Chinese('亚洲中国');
+    // console.log(chinese.skin);//undefined
+    // console.log(chinese.name);
+    // console.log(chinese.address);
+    // chinese.work('IT');
+    // chinese.sleep();
+    // console.log(chinese instanceof Person); //true 
+    // console.log(chinese instanceof Chinese); //true
+    // let beijing = new Chinese('北京');
+    // console.log(beijing.name);//Person
+    // Chinese.prototype.name = '北京人';
+    // console.log(beijing.name);//Person
+    // console.log(chinese.name);
+    /**使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）**/
+    // function Chinese(address,name) {
+    //     Person.call(this,name);
+    //     this.address = address || "earth";
+    // }
+    // //Test Code
+    // let chinese = new Chinese('亚洲中国','北京');
+    // console.log(chinese.name);//北京
+    // console.log(chinese.address);//亚洲中国
+    // chinese.sleep();//北京正在偷懒~~~！
+    // console.log(chinese instanceof Person); //false 
+    // console.log(chinese instanceof Chinese); //true
+    // let shanghai = new Chinese('亚洲中国','上海');
+    // console.log(shanghai.name);//上海
+    // console.log(shanghai.address);//亚洲中国
+    // shanghai.sleep();//上海正在偷懒~~~！
+    // console.log(shanghai instanceof Person); //false 
+    // console.log(shanghai instanceof Chinese); //true
+    // chinese.work('IT');//Uncaught TypeError: chinese.work is not a function
+    /**为父类实例添加新特性，作为子类实例返回**/
+    // function Chinese(address,name) {
+    //     this.address = address || "earth";
+    //     var instance = new Person();
+    //     instance.name = name || '北京人';
+    //     return instance;
+    // }
+
+    // // Test Code
+    // var chinese = new Chinese('亚洲中国','上海人');
+    // console.log(chinese.name);//上海人
+    // chinese.sleep();//上海人正在偷懒~~~！
+    // chinese.work('IT');//上海人的工作是：IT
+    // console.log(chinese instanceof Person); // true
+    // console.log(chinese instanceof Chinese); // false
+    // console.log('-------------');
+    // var chinese = new Chinese('亚洲中国-1','上海--人');
+    // console.log(chinese.name);//上海人
+    // chinese.sleep();//上海人正在偷懒~~~！
+    // chinese.work('I--T');//上海人的工作是：IT
+    // console.log(chinese instanceof Person); // true
+    // console.log(chinese instanceof Chinese); // false
+
+    /**拷贝继承**/
+    // function deepCopy(p, c) {
+    //     var c = c || {};
+    //     let mp = new p();
+    //     for (var i in mp) {
+    //         if (typeof mp[i] === 'object') {
+    //             c[i] = (mp[i].constructor === Array) ? [] : {};
+    //             deepCopy(mp[i], c[i]);
+    //         } else {
+    //             c[i] = mp[i];
+    //         }
+    //     }
+    //     return c;
+    // }
+
+    // function Chinese(address) {
+    //     this.address = address || "earth";
+    // }
+    // let chinese= new deepCopy(Person,Chinese);
+    //  console.log(chinese.name);//上海人
+    // chinese.sleep();//上海人正在偷懒~~~！
+    // chinese.work('IT');//上海人的工作是：IT
+    // console.log(chinese instanceof Person); // true
+    // console.log(chinese instanceof Chinese); // false
+
+    /**通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用**/
+
+    // function Chinese(address,name) {
+    //     Person.call(this,name);//第一次调用父类构造器
+    //     this.address = address || "earth";
+    // }
+    // Chinese.prototype = new Person();//第二次调用父类构造器
+    // Chinese.prototype.constructor=Chinese;
+    // let chinese = new Chinese('亚洲中国','上海人');
+    // console.log(chinese.name);//上海人
+    // console.log(chinese.address);//亚洲中国
+    // chinese.sleep();//上海人正在偷懒~~~！
+    // chinese.work('IT');//上海人的工作是：IT
+    // console.log(chinese instanceof Person); // true
+    // console.log(chinese instanceof Chinese); // true
+
+
+    /**寄生组合继承**/
+    function Chinese(address, name) {
+        Person.call(this, name);//第一次调用父类构造器
+        this.address = address || "earth";
+    }
+
+    (function () {
+        // 创建一个没有实例方法的类
+        var Super = function () { };
+        Super.prototype = Person.prototype;
+        //将实例作为子类的原型
+        Chinese.prototype = new Super();
+    })();
+
+    Chinese.prototype.constructor = Chinese;
+    let chinese = new Chinese('亚洲中国', '北京人');
+    console.log(chinese.name);//北京人
+    console.log(chinese.address);//亚洲中国
+    chinese.sleep();//北京人正在偷懒~~~！
+    chinese.work('IT');//北京人的工作是：IT
+    console.log(chinese instanceof Person); // true
+    console.log(chinese instanceof Chinese); // true
+    console.log(chinese.__proto__); 
+</script>
+
+</html>

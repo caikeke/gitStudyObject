@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // class Point {
+
+        //     constructor(x, y) {
+        //         this.x = x;
+        //         this.y = y;
+        //     };
+
+        //     toString() {
+        //         return '(' + this.x + ', ' + this.y + ')';
+        //     };
+
+        //     show(){
+        //         return `12313`;
+        //     }
+        // }
+
+        // console.log(Point.prototype);
+        // console.log(Reflect.getOwnPropertyDescriptor(Point.prototype,'show'));
+    </script>
+
+    <script>
+        // (function add(a, b) {
+        //     console.log(a + b);
+        // })(1, 2);
+    </script>
+
+    <script>
+        // class Rectangle {
+        //     constructor(length, width) {
+        //         console.log(new.target === Rectangle);
+        //         this.length = length;
+        //         this.width = width;
+        //     }
+        // }
+
+        // var obj = new Rectangle(3, 4); // 输出 true
+    </script>
+
+    <script>
+    //     class Point {
+    //         constructor(x, y) {
+    //             this.x = x;
+    //             this.y = y;
+    //         }
+    //     }
+
+    //     class ColorPoint extends Point {
+    //         constructor(x, y, color) {
+    //             //this.color = color; // ReferenceError
+    //             super(x, y);
+    //             this.color = color; // 正确
+    //         }
+    //     }
+
+    //     let myColorPoint = new ColorPoint(1,2,'2222');
+    //    console.log(myColorPoint.color);
+    </script>
+
+    <script>
+        // class A {
+
+        //     constructor() {
+        //         this.param = 2;
+        //     }
+        //     p() {
+        //         return 2;
+        //     }
+        // }
+        // A.prototype.age=123;
+        // class B extends A {
+        //     constructor() {
+        //         super();
+        //         console.log(super.p()); // 2
+        //         console.log(super.age); // 2
+        //     }
+        // }
+
+        // let b = new B();
+    </script>
+    <script>
+        class Aa {
+            constructor() {
+                this.x = 1;
+                this.y = 23;
+            }
+            static print() {
+                console.log(this.x);
+            }
+
+            s() {
+                console.log(this.x);
+            }
+        }
+
+        class B extends Aa {
+            constructor() {
+                super();
+                //console.log(super.valueOf()); 
+                this.x = 2;
+            }
+            static m() {
+                super.print();
+            }
+            show() {
+                super.s();
+            }
+        }
+
+        B.x = 3;
+        B.m(); // 3
+        let mB = new B();
+        mB.show();
+        console.log(B.prototype);
+        console.log(B.prototype.__proto__);
+        console.log(B.__proto__);
+        console.log(Aa.prototype);
+    </script>
+
+    <script>
+    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .demo {
+            width: 100px;
+            height: 0;
+            border-left-width: 200px;
+
+            border-style: solid;
+            border-color: yellow greenyellow;
+
+        }
+
+        .common-dev {
+            width: 100px;
+            height: 0;
+            margin-top: 20px;
+            border: 10px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+
+    </div>
+
+    <div class="common-dev"></div>
+</body>
+<script>
+    var obj = {
+        toString: function () {
+            console.log('toString')
+            return Object.prototype.toString.call(this)
+        },
+        valueOf: function () {
+            console.log('valueOf')
+            return Object.prototype.valueOf.call(this)
+        }
+    }
+    alert(obj);
+    alert(+obj);
+    alert(obj == {});
+    alert(obj === {})
+    alert(obj == 'test')
+    alert(obj === 'test')
+
+</script>
+
+</html>

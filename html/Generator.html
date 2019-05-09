@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function* helloWorldGenerator() {
+        //     console.log("11111");        
+        //     yield 'hello';
+        //     console.log("22222");        
+        //     yield 'world';
+        //     console.log("33333");        
+        //     return 'ending';
+        //     console.log("444444");        
+        // }
+
+        // var hw = helloWorldGenerator();
+        // console.log(hw.next());
+        // console.log(hw.next());
+        // console.log(hw.next());
+        // console.log(hw.next());
+    </script>
+    <script>
+        // function* f() {
+        //     console.log('执行了！')
+        // }
+
+        // var generator = f();
+
+        // setTimeout(function () {
+        //     generator.next()
+        // }, 2000);
+    </script>
+
+    <script>
+        //         var arr = [1, [[2, 3], 4], [5, 6]];
+
+        //         var flat = function* (a) {
+        //         var length = a.length;
+        //         for (var i = 0; i < length; i++) {
+        //             var item = a[i];
+        //             if (typeof item !== 'number') {
+        //             yield* flat(item);
+        //             } else {
+        //             yield item;
+        //             }
+        //         }
+        // };
+
+        //         for (var f of flat(arr)) {
+        //             console.log(f);
+        //         }
+    </script>
+
+    <script>
+        // var myIterable = {};
+        // myIterable[Symbol.iterator] = function* () {
+        //     yield 1;
+        //     yield 2;
+        //     yield 3;
+        // };
+
+        // console.log([...myIterable]); // [1, 2, 3]    
+    </script>
+
+    <script>
+        // function* f() {
+        //     for (var i = 0; true; i++) {
+        //         var reset = yield i;
+        //         console.log(reset);
+        //         if (reset) {
+        //             i = -1;
+        //         }
+        //     }
+        // }
+
+        // var g = f();
+        // console.log(g.next());
+        // console.log(g.next());
+        // console.log(g.next(true));
+        // console.log(g.next(2));
+    </script>
+
+    <script>
+        // function wrapper(generatorFunction) {
+        //     return function (...args) {
+        //         let generatorObject = generatorFunction(...args);
+        //         generatorObject.next();
+        //         return generatorObject;
+        //     };
+        // }
+
+        // const wrapped = wrapper(function* (...args) {
+        //     console.log('yield');
+        //     console.log(...args);
+        //     console.log(`First input: ${yield}`);
+        //     return 'DONE';
+        // });
+
+        // console.log(wrapped('aaa','bbb').next('hello!'));
+    </script>
+
+    <script>
+        // function* foo() {
+        //     yield 1;
+        //     yield 2;
+        //     yield 3;
+        //     yield 4;
+        //     yield 5;
+        //     return 6;
+        // }
+
+        // for (let v of foo()) {
+        //     console.log(v);
+        // }
+    </script>
+
+    <script>
+        // function* fibonacci() {
+        //     let [prev, curr] = [0, 1];
+        //     for (;;) {
+        //         yield curr;
+        //         [prev, curr] = [curr, prev + curr];
+        //     }
+        // }
+
+        // for (let n of fibonacci()) {
+        //     if (n > 1000) break;
+        //     console.log(n);
+        // }
+    </script>
+
+    <script>
+        // let jane = {
+        //     first: 'Jane',
+        //     last: 'Doe'
+        // };
+
+        // for (let [key, value] of jane.e) {
+        //     console.log(`${key}: ${value}`);
+        // }
+    </script>
+
+    <script>
+        //     function* genFuncWithReturn() {
+        //         yield 'a';
+        //         yield 'b';
+        //         return 'The result';
+        //     }
+
+        //     function* logReturned(genObj) {
+        //         let result = yield* genObj;
+        //         console.log(result);
+        //     }
+
+        //   console.log([...logReturned(genFuncWithReturn())]);
+    </script>
+
+    <script>
+        // var clock = function* () {
+        //     while (true) {
+        //         console.log('Tick!');
+        //         yield;
+        //         console.log('Tock!');
+        //         yield;
+        //     }
+        // };
+
+        // let newC =clock();
+        // newC.next();newC.next();newC.next();
+        //   console.log(++[[]][+[]]);
+        // let boj =[[]];
+        // console.log(boj);
+    </script>
+
+    <script>
+        // function* objectEntries() {
+        //     let propKeys = Object.keys(this);
+        //     for (let propKey of propKeys) {
+        //         yield [propKey, this[propKey]];
+        //     }
+        // }
+        // let jane = {
+        //     first: 'Jane',
+        //     last: 'Doe'
+        // };
+        // jane[Symbol.iterator] = objectEntries;
+        // console.log(...jane);
+        // for (let [key, value] of jane) {
+        //     console.log(`${key}: ${value}`);
+        // }
+    </script>
+
+    <script>
+        // var g = function* () {
+        //     try {
+        //         yield;
+        //     } catch (e) {
+        //         console.log(e);
+        //     }
+        // };
+
+        // var i = g();
+        // i.next();
+        // i.throw(new Error('出错了！'));
+    </script>
+
+    <script>
+    
+        function* g() {
+
+        }
+
+        g.prototype.hello = function () {
+            return 'hi!';
+        };
+
+        let obj = g();
+
+        console.log( obj instanceof g); // true
+        console.log(obj.hello()); // 'hi!'
+    </script>
+</body>
+
+</html>

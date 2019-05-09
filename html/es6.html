@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECMaScript 6</title>
+</head>
+<body>
+<script>
+    // {
+    //     let a = 110;
+    //     var b = 120;
+    //
+    //     function test() {
+    //         {
+    //             let ab = 130;
+    //             var ba = 220;
+    //         }
+    //         console.log(a);
+    //         console.log(b);
+    //         console.log(ab);
+    //     }
+    //
+    //     test();
+    // }
+    // console.log(a);
+    // console.log(b);
+
+    // var a = [];
+    // for (let i = 0; i < 10; i++) {
+    //     a[i] = function () {
+    //         console.log(i);
+    //     };
+    // }
+    // a[6](); // 10
+    //
+    // console.log(typeof  x);
+    // let x=0.01;
+    //
+    // function func(arg) {
+    //     {
+    //         let arg=222;
+    //         console.log(arg);
+    //     }
+    //     console.log(arg);
+    // }
+    // func(123) // 不报错
+
+    // function f() {
+    //     console.log('I am outside!');
+    // }
+    //
+    // (function () {
+    //     if (false) {
+    //         // 重复声明一次函数f
+    //         function f() {
+    //             console.log('I am inside!');
+    //         }
+    //     }
+    //
+    //     f();
+    // }());
+
+    // if (true) {
+    //     console.log(MAX); // ReferenceError
+    //     const MAX = 5;
+    // }
+    // let [foo, [[bar], baz]] = [1, [[2], 3]];
+    // console.log(foo);
+    // let [head, ...tail] = [1, 2, 3, 4];
+    // console.log(tail);
+    // for (let codePoint of 'hello') {
+    //     console.log(codePoint)
+    // }
+    // let s = 'Hello world!';
+    // console.log(s.startsWith('Hello',0)); // true
+    // console.log(s.startsWith('Hello',4)); // false
+    // console.log(s.endsWith('!',12)); // true
+    // console.log(s.endsWith('!',0)); // false
+    // console.log(s.includes('o',7)); // true
+    // console.log(s.indexOf('wo'));//6
+    //
+    // console.log('hello'.repeat(2)); // "hellohello"
+    // console.log('x'.padStart(5, 'ab')); // 'ababx'
+    // console.log('x'.padStart(4, 'ab')); // 'abax'
+    // console.log('x'.padEnd(5, 'ab')); // 'xabab'
+    // console.log('x'.padEnd(4, 'ab')); // 'xaba'
+    // console.log('x'.padStart(4)); // '   x'
+    // console.log('x'.padEnd(4)); // 'x   '
+    //
+    // function fn() {
+    //     return "Hello World";
+    // }
+    // console.log(`foo ${fn()} bar`);//foo Hello World bar
+    // console.log`aaaaa`;
+    // console.log('aaaaa');
+    // let a = 5;
+    // let b = 10;
+    // function tag(stringArr,...value2){
+    //    console.log(stringArr);
+    //     console.log(value2);
+    // }
+    // tag`Hello ${ a + b } world ${ a * b } !${b-a}`;
+    //
+    // console.log(String.raw`Hi\n${2+3}!`);
+
+    // console.log(Number.isFinite(1)); // true
+    // console.log(Number.isFinite(0.1)); // true
+    // console.log(Number.isFinite(NaN)); // false
+    // console.log(Number.isFinite(Infinity)); // false
+    // console.log(Number.isFinite(-Infinity)); // false
+    // console.log(Number.isFinite('hello')); // false
+    // console.log(Number.isFinite('1')); // false
+    // console.log(Number.isFinite(true)); // false
+    //
+    // console.log(Number.isNaN(NaN)); // true
+    // console.log(Number.isNaN(15)); // false
+    // console.log(Number.isNaN('15')); // false
+    // console.log(Number.isNaN(true)); // false
+    // console.log(Number.isNaN(9/NaN)); // true
+    // console.log(Number.isNaN('true' / 0)); // true
+    // console.log(Number.isNaN('true' / 'true')); // true
+    //
+    // console.log(Number.isInteger(1)); // true
+    // console.log(Number.isInteger(1.1)); // false
+
+    // // 写法一
+    // function m1({x = 0, y = 0} = {}) {
+    //     return [x, y];
+    // }
+    //
+    // // 写法二
+    // function m2({x, y} = { x: 0, y: 0 }) {
+    //     return [x, y];
+    // }
+    //
+    // // 函数没有参数的情况
+    // console.log(m1()); // [0, 0]
+    // console.log(m2()); // [0, 0]
+
+    // function Timer() {
+    //     this.s1 = 0;
+    //     this.s2 = 0;
+    //     // 箭头函数
+    //     setInterval(() => this.s1++, 1000);
+    //     // 普通函数
+    //     setInterval(function () {
+    //         this.s2++;
+    //     }, 1000);
+    // }
+    //
+    // var timer = new Timer();
+    // setTimeout(() => console.log('s1: ', timer.s1), 3100);
+    // setTimeout(() => console.log('s2: ', timer.s2), 3100);
+    //
+    // function foo() {
+    //     return () => {
+    //         return () => {
+    //             return () => {
+    //                 console.log('id:', this.id);
+    //             };
+    //         };
+    //     };
+    // }
+    //
+    // var f = foo.call({id: 1});
+    // console.log(f);
+    // var t1 = f.call({id: 2}); // id: 1
+    // console.log(t1);
+    // var t2 = f().call({id: 3})(); // id: 1
+    // var t3 = f()().call({id: 4}); // id: 1
+
+    // const cat = {
+    //     lives: 9,
+    //     jumps: ()=> {
+    //         console.log(this);
+    //         let fa= ()=>{
+    //             console.log(this);
+    //         };
+    //         fa();
+    //     }
+    // }
+    // cat.jumps();
+
+    //
+    // function currying(fn, n) {
+    //     return function (m) {
+    //         return fn.call(this, m, n);
+    //     };
+    // }
+    //
+    // function tailFactorial(n, total) {
+    //     if (n === 1) return total;
+    //     return tailFactorial(n - 1, n * total);
+    // }
+    //
+    // const factorial = currying(tailFactorial, 1);
+    //
+    // console.log(factorial(5));  // 120
+    //
+    // console.log(...[1, 2, 3]);
+
+    //   const arr1 = ['a', 'b'];
+    //   const arr2 = ['c'];
+    //   const arr3 = ['d', 'e'];
+    //
+    //   // ES5 的合并数组
+    // let newArr1=  arr1.concat(arr2, arr3);
+    // console.log(newArr1);
+    //   // [ 'a', 'b', 'c', 'd', 'e' ]
+    //
+    //   // ES6 的合并数组
+    //  let newArr= [...arr1, ...arr2, ...arr3];
+    //   console.log(newArr);
+    //   arr1[0]='qqq';
+    //   console.log(newArr1);
+    //   console.log(newArr);
+    //   // [ 'a', 'b', 'c', 'd', 'e' ]
+    //
+    //   const a1 = [{ foo: 1 }];
+    //   const a2 = [{ bar: 2 }];
+    //   const a3 = a1.concat(a2);
+    //   const a4 = [...a1, ...a2];
+    //   console.log(a3);console.log(a4);
+    //   a2[0].bar=3;
+    //   console.log(a3);console.log(a4);
+
+    //  const go = function*(){
+    //      yield 1;
+    //      yield 2;
+    //      yield 3;
+    //  };
+    //
+    // console.log([...go()]) ; // [1, 2, 3]
+    //   console.log([1, 4, -5, 10].find((n) => n < 0));
+    //
+    // let arr=  [1, 5, 10, 15].find(function(value, index, arr) {
+    //       return value > 9;
+    //   }) ;// 10
+    //   console.log(arr);
+    // let productList = undefined;
+    // productList.map((value) => {
+    //         console.log(value);
+    //     }
+    // );
+
+    // let a={
+    //     x:11,
+    //     y:22,
+    //     z:33
+    // };
+    //  let aWithOverrides = Object.assign({}, a, { x: 1, y: 2 });
+    //  console.log(aWithOverrides);
+    //
+    //  let x=4;
+    //  const obj = {
+    //      ...(x > 1 ? {a: 1} : {}),
+    //      b: 2,
+    //  };
+    //
+    //  console.log(obj);
+
+    // console.log(Object.is(1, 1));
+    // console.log(Object.is("1", 1));
+    // console.log(Object.is(0, -0));
+    // console.log(Object.is(NaN, NaN));
+    // console.log(0!== 0);
+    // console.log(-0!== 0);
+    // console.log( 1 / 0 === 1 / -0);
+
+    // let newArr =Object.assign(2,{a:33});
+    // console.log(newArr);
+    // let obj = {a: 1};
+    // let newS= Object.assign({}, '3','4');
+    //  console.log(newS);
+    // // console.log(Object.assign(obj, undefined) === obj );// true
+    // // console.log(Object.assign(obj, null) === obj); // true
+    // const v1 = 'abc';
+    // const v2 = true;
+    // const v3 = 10;
+    // const obj = Object.assign({}, v1, v2, v3);
+    // console.log(obj); // { "0": "a", "1": "b", "2": "c" }
+    // console.log(Object.assign({ a: 'b' }, { [Symbol('c')]: 'd' }));
+
+    // const obj = {
+    //     foo: 123,
+    //     get bar() { return 'abc' }
+    // };
+    //
+    // console.log(Object.getOwnPropertyDescriptors(obj));
+
+  //   const source = {
+  //       set foo(value) {
+  //           console.log(value);
+  //       }
+  //   };
+  //
+  //   const target1 = {};
+  // let newR=  Object.assign(target1, source);
+  //   console.log(newR);
+  //   console.log(newR===target1);
+  //   console.log(target1);
+
+    // const obj = { foo: 'bar', baz: 42 };
+    // const map = new Map(Object.entries(obj));
+    // console.log(map.get('foo')); // Map { foo: "bar", baz: 42 }
+    // let params =Object.fromEntries(new URLSearchParams('foo=bar&baz=qux'));
+    // console.log(params);
+
+    // let s = Symbol();
+    // console.log(typeof s);// "symbol"
+
+   //  const mySymbol = Symbol();
+   //  const a = {};
+   //  a.mySymbol = 'Hello!';
+   // console.log(a[mySymbol]); // undefined
+   //  console.log(a['mySymbol']); // "Hello!"
+
+    // let s1 = Symbol('foo');
+    // let s2 = Symbol('foo');
+    // console.log(s1 === s2); // false
+    // let s11 = Symbol.for('foo');
+    // let s21 = Symbol.for('foo');
+    // console.log(s11 === s21)
+
+    // const obj = Object.create({}, {p: {value: 42,enumerable: true}});
+    // console.log(Object.values(obj));
+    // console.log(Object.entries(obj));
+
+    // const obj = {
+    //     toString() {
+    //         return 'abc';
+    //     }
+    // };
+    // const sym = Symbol(obj);
+    // console.log(sym);  // Symbol(abc)
+    eval("x=10;y=20;document.write(x*y)");
+    document.write("--");
+    document.write(eval("2+2"))
+</script>
+</body>
+</html>

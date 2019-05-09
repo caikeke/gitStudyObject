@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str1 = "!@#$8880088%^&*()";
+    let regx = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z!@#$%^&*()_+]{8,16}$/;
+    console.log(regx.test(str1));//false
+    let regx1 = /^(?![0-9]+$)/;
+    let str2 = "0123123";
+    let str3 = "0123aaa";
+    console.log(regx1.test(str2));//false
+    console.log(regx1.test(str3));//true
+</script>
+</body>
+</html>

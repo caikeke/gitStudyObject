@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MutationObserver</title>
+    <style>
+        .class-btn{
+            width: 120px;
+            height: 48px;
+            border:none;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<input id="input_id" placeholder="请输入内容" />
+<button class="class-btn" id="btn-id">点击我</button>
+<script type="text/javascript">
+    function hello(param) {
+        console.log('Hello world-->'+param);
+
+    }
+
+    let button = document.getElementById('btn-id');
+    button.addEventListener('click', ()=>{
+        hello("参数");
+    }, false);
+
+    let event = new Event('click');
+   let canceled = !button.dispatchEvent(event);
+    event.preventDefault();
+    if (canceled) {
+        console.log('事件取消');
+    } else {
+        console.log('事件未取消');
+
+    }
+    // button.addEventListener('click', {
+    //     handleEvent: function (event) {
+    //         console.log('Hello world');
+    //     }
+    // }, {once: true});
+
+
+    // let observer = new MutationObserver(function (mutations, observer) {
+    //     mutations.forEach(function (mutation) {
+    //         console.log(mutation);
+    //     });
+    //     console.log("change");
+    // });
+    //
+    // let input = document.querySelector('#input_id');
+    //
+    // let options = {
+    //     attributes: true,
+    //     characterData: true,
+    //     childList: true,
+    //     subtree: true,
+    //     attributeOldValue: true,
+    //     characterDataOldValue: true
+    // };
+    //
+    // observer.observe(document.body, options);
+    //
+    // function onblurFunc() {
+    //     console.log("input")
+    // }
+
+    // function Func() {
+    // }
+    // let myFunc = new Func();
+    // console.log(Func);
+    // console.log(Func.prototype.constructor);//true
+    // console.log(myFunc.constructor === Func.prototype.constructor);//true
+    // console.log(Func.prototype.constructor === Func);//true
+</script>
+</body>
+</html>

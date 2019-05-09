@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div>typeof使用</div>
+</body>
+<script type="text/javascript">
+    //     let a = Number.NaN;
+    //     console.log(isNaN(a));
+    //     // Numbers
+    //     console.log("-------------------------------Numbers--------------------------------");
+    //     console.log(typeof 37 === 'number');
+    //     console.log(typeof 3.14 === 'number');
+    //     console.log(typeof Math.LN2 === 'number');
+    //     console.log(typeof Infinity === 'number');
+    //     console.log(typeof Number.NaN === 'number'); // 尽管NaN是"Not-A-Number"的缩写
+    //     console.log(typeof Number(1) === 'number'); // 但不要使用这种形式!
+    //
+    //     // Strings
+    //     console.log("-------------------------------Strings--------------------------------");
+    //     console.log(typeof "" === 'string');
+    //     console.log(typeof "bla" === 'string');
+    //     console.log(typeof (typeof 1) === 'string'); // typeof总是返回一个字符串
+    //     console.log(typeof String("abc") === 'string'); // 但不要使用这种形式!
+    //
+    //     // Booleans
+    //     console.log("-------------------------------Booleans--------------------------------");
+    //     console.log(typeof true === 'boolean');
+    //     console.log(typeof false === 'boolean');
+    //     console.log(typeof Boolean(true) === 'boolean'); // 但不要使用这种形式!
+    //
+    //     // Symbols
+    //     console.log("-------------------------------Symbols--------------------------------");
+    //     console.log(typeof Symbol() === 'symbol');
+    //     console.log(typeof Symbol('foo') === 'symbol');
+    //     console.log(typeof Symbol.iterator === 'symbol');
+    //
+    //     // Undefined
+    //     console.log("-------------------------------Undefined--------------------------------");
+    //     console.log(typeof undefined === 'undefined');
+    //     console.log(typeof declaredButUndefinedVariable === 'undefined');
+    //     console.log(typeof undeclaredVariable === 'undefined');
+    //
+    //     // Objects
+    //     console.log("-------------------------------Objects--------------------------------");
+    //     console.log(typeof {a: 1} === 'object');
+    //
+    //     // 使用Array.isArray 或者 Object.prototype.toString.call
+    //     // 区分数组,普通对象
+    //     console.log(typeof [1, 2, 4] === 'object');
+    //
+    //     console.log(typeof new Date() === 'object');
+    //
+    //     // 下面的容易令人迷惑，不要使用！
+    //     console.log(typeof new Boolean(true) === 'object');
+    //     console.log(typeof new Number(1) === 'object');
+    //     console.log(typeof new String("abc") === 'object');
+    //
+    //     // 函数
+    //     console.log(typeof function () {
+    //     } === 'function');
+    //     console.log(typeof Math.sin === 'function');
+    //
+    //     //NaN
+    //     console.log(typeof 1 / 0 === 'NaN');
+    //     //JSON
+    //     let data = {
+    //         name: "张三",
+    //         age: "19",
+    //         address: "上海"
+    //     }
+    //     if (typeof data.address != 'undefined') {
+    //         console.log("JSON--" + data.address);
+    //     } else {
+    //         console.log("JSON no city");
+    //     }
+    //
+    //     console.log("----------null, undefined 和布尔值---------------")
+    //     console.log(typeof null);
+    //     if (!undefined) {
+    //         console.log('undefined is false');
+    //     }
+    //     if (!null) {
+    //         console.log('null is false');
+    //     }
+    //     console.log(undefined == null);// true
+    //     console.log(Number(null)); // 0
+    //     console.log(Number(undefined)); // NaN
+    //     console.log(5 + null);// 5
+    //     console.log(5 + undefined)// NaN
+    //     let i;
+    //     console.log(i) // undefined
+    //     function f(x) {
+    //         return x;
+    //     }
+    //
+    //     console.log(f());
+    //
+    //     let json = {
+    //         name: "张三",
+    //         age: "19",
+    //         address: "上海"
+    //     };
+    //     console.log(json.city);
+    //
+    //     function f() {
+    //     }
+    //
+    //     console.log(f()); // undefined
+    //     if ('') {
+    //         console.log('true');
+    //     }
+    //     let result = 1 / 3;
+    //     console.log(result);
+    //     console.log((0.3 / 0.1) / 9);
+    //     console.log(0.3 - 0.2);
+    //     console.log(0.2 + 0.1);
+    //     console.log(Infinity);
+    //     let num1 = parseInt('   81');
+    //     console.log(num1 + 10);
+    //     console.log(isNaN(Number('Hello')));
+    //
+    //     function b64Encode(str) {
+    //         return btoa(encodeURIComponent(str));
+    //     }
+    //     function b64Decode(str) {
+    //         return decodeURIComponent(atob(str));
+    //     }
+    // ///
+    //     let strChinaBase64 = b64Encode('你好'); // "JUU0JUJEJUEwJUU1JUE1JUJE"
+    //     console.log(b64Decode(strChinaBase64)); // "你好"
+    //     let string = 'Hello World!';
+    //     let strBase64 = btoa(string) // "SGVsbG8gV29ybGQh"
+    //     console.log(atob(strBase64)); // "Hello World!"
+    //     let o1 = {};
+    //     let o2 = o1;
+    //     o1 = 1;
+    //     o2 // {}
+    //     console.log(o1+JSON.stringify(o2));
+    //     let x = 1;
+    //     let y = x;
+    //
+    //     x = 2;
+    //     console.log(y); // 1
+    //     console.log(eval('123+312'));
+    //
+    //     let obj = {
+    //         key1: 1,
+    //         key2: 2,
+    //         key3: 3,
+    //         key4: 4
+    //     };
+    //     console.log(Object.keys(obj));
+    //     console.log(delete obj.key1);
+    //     console.log(delete obj.key1);
+    //     console.log(Object.keys(obj));
+    //     console.log('key4' in obj);
+    //     console.log('toString' in obj);
+    //     if ('toString' in obj) {
+    //         console.log(obj.hasOwnProperty('toString')) // false
+    //     }
+    //
+    //     let objN = {a: 1, b: 2, c: 3};
+    //
+    //     for (let item in objN) {
+    //         console.log('键名：', item);
+    //         console.log('键值：', objN[item]);
+    //     }
+    //
+    //     let objS = {
+    //         p1: 1,
+    //         p2: 2,
+    //     };
+    //     with (objS) {
+    //         p1 = 4;
+    //         p2 = 5;
+    //     }
+    //     console.log(JSON.stringify(objS));
+    //     let print = function(s) {
+    //         console.log(s);
+    //     };
+    //     print(123321);
+    // f();
+    // function f() {
+    //     console.log("我是方法")
+    // }
+
+    // function test() {
+    //     console.log("我是方法")
+    // }
+    // console.log(test.toString()); // myFunc
+
+    // var multiline = function (fn) {
+    //     var arr = fn.toString().split('\n');
+    //     return arr.slice(1, arr.length - 1).join('\n');
+    // };
+    //
+    // function f() {/*
+    //     这
+    //     是
+    //     一个多行注释
+    //     */}
+    //
+    // console.log(multiline(f));
+    // function foo(x) {
+    //     console.log(tmp);
+    //     if (x > 100) {
+    //         let tmp = x - 100;
+    //     }
+    // }
+    // foo(231);
+    // let a=new Intl.Collator('ZH');
+    // console.log(a.compare("10000001","11"));
+
+    // let f = function (one) {
+    //     console.log("one:"+one);
+    //     console.log(arguments[0]);
+    //     console.log(arguments[1]);
+    //     console.log(arguments[2]);
+    // }
+    // f(1, 2, 3);
+
+    //  let f = function(a, b) {
+    //      console.log(arguments);
+    //      let args = Array.prototype.slice.call(arguments);
+    //      console.log(args);
+    //      arguments[0] = 3;
+    //      arguments[1] = 2;
+    //      return a + b;
+    //  }
+    //
+    // console.log(f(1, 1)); // 5
+    //  function funSaveData() {
+    //      let param = 999;
+    //      function getParam () {
+    //          console.log(param); // 999
+    //      }
+    //      return getParam;
+    //  }
+    //  let getParam = funSaveData();
+    //  getParam ();
+
+    // function createAdd(param) {
+    //     let num =param;
+    //     return function () {
+    //         return num++;
+    //     };
+    // }
+    // let inc = createAdd(5);
+    // console.log(inc()); // 5
+    // console.log(inc()); // 6
+    // console.log(inc()); // 7
+
+    // function Person(name) {
+    //     let _age;
+    //
+    //     function setAge(n) {
+    //         _age = n;
+    //     }
+    //
+    //     function getAge() {
+    //         return _age;
+    //     }
+    //
+    //     return {
+    //         name: name,
+    //         getAge: getAge,
+    //         setAge: setAge
+    //     };
+    // }
+    //
+    // let p1 = Person('张三');
+    // p1.setAge(25);
+    // console.log(p1.getAge()); // 25
+    //  let array=[ 'a', 'b', 'c' ];
+    // console.log(array.values());
+    // console.log(typeof array);
+    // console.log(2 in array);
+    // let a = [1, 2, 3];
+    // a.foo = true;
+    // console.log(JSON.stringify(a.keys()));
+    // for (let key in a) {
+    //     console.log(key);
+    // }
+    // console.log(+true);//1
+    // console.log(+[]);//0
+    // console.log(+{});//NaN
+    // console.log([1] == 1);
+    //console.log(-4 >>> 1);
+    // let x = 3;
+    // void (x = 5) //undefined
+    // console.log(x); // 5
+    // console.log(Number([1,2,3]));
+    // console.log(String(123)) // "123"
+    // console.log(String('abc')) // "abc"
+    // console.log(String(true)) // "true"
+    // console.log(String(undefined)) // "undefined"
+    // console.log(String(null)) // "null"
+    // let obj = {x: 1};
+    // console.log(Number(obj));// NaN
+    //
+    // // 等同于
+    // if (typeof obj.valueOf() === 'object') {
+    //     console.log("111:"+Number(obj.toString()));
+    // } else {
+    //     console.log("222:"+Number(obj.valueOf()));
+    // }
+
+    // console.log(String({a: 1})) // "[object Object]"
+    // console.log(String([1, 2, 3])); // "1,2,3
+    // let fruits = [{a:1}, "Orange", {b:2}, "Mango"];
+    // let v=fruits.valueOf();
+    // console.log(v)
+    // let err = new Error('出错了');
+    // console.log(err.message); // "出错了"
+    // if (err.name) {
+    //     console.log(err.name + ': ' + err.message);
+    // }
+    // let x=-12;
+    // if (x <= 0) {
+    //     //throw new Error('x 必须为正数');
+    //     throw 'Error！';
+    // }
+    // let count = 0;
+    // function countUp() {
+    //     try {
+    //         return count;
+    //     } finally {
+    //         count++;
+    //     }
+    // }
+    //
+    // countUp()// 0
+    // console.log(count);// 1
+
+    // function f() {
+    //     try {
+    //         console.log(0);
+    //         throw 'bug';
+    //     } catch(e) {
+    //         console.log(1);
+    //         return true; // 这句原本会延迟到 finally 代码块结束再执行
+    //         console.log(2); // 不会运行
+    //     } finally {
+    //         console.log(3);
+    //         return false; // 这句会覆盖掉前面那句 return
+    //         console.log(4); // 不会运行
+    //     }
+    //
+    //     console.log(5); // 不会运行
+    // }
+    //
+    // let result = f();
+    // // 0
+    // // 1
+    // // 3
+    // console.log(result);
+    // // false
+
+    // function f() {
+    //     try {
+    //         throw '出错了！';
+    //     } catch(e) {
+    //         console.log('捕捉到内部错误');
+    //         throw e; // 这句原本会等到finally结束再执行
+    //     } finally {
+    //         return false; // 直接返回
+    //     }
+    // }
+    //
+    // try {
+    //     f();
+    // } catch(e) {
+    //     // 此处不会执行
+    //     console.log('caught outer "bogus"');
+    // }
+    // //  捕捉到内部错误
+
+    // try {
+    //     try {
+    //         console.log('Hello world!'); // 报错
+    //     }
+    //     finally {
+    //         console.log('Finally');
+    //     }
+    //     console.log('Will I run?');
+    // } catch(error) {
+    //     console.error(error.message);
+    // }
+    // // Finally
+    // // console is not defined
+    //
+    // console.log("123", "456");
+    // console.time('Timer');
+    // setTimeout(() => {
+    //     console.timeEnd('Timer');
+    // }, 2000);
+    //
+    // console.group('一级分组');
+    // console.log('一级分组的内容');
+    // console.groupEnd(); // 一级分组结束
+    //
+    // console.group('二级分组');
+    // console.log('二级分组的内容');
+    // console.groupEnd(); // 二级分组结束
+    //
+    // Object.prototype.print =function (o) {
+    //     console.log(o);
+    // }
+    // let mObj = new Object();
+    // mObj.print("112233");
+    // let newObj = Object("32131");
+    // console.log(newObj);
+    // let newObj1 = new Object({a:1,b:2});
+    // console.log(newObj1);
+
+    // let obj = {
+    //     p1: 123,
+    //     p2: 456
+    // };
+    // console.log(Object.keys(obj));
+
+    // let mObj = new Object({a:1,b:2});
+    // mObj.valueOf = function () {
+    //     return 4;
+    // };
+    // mObj.toString = function () {
+    //     return 'hello';
+    // };
+    // console.log(1 + mObj);
+    // console.log("abc" + mObj);
+
+    // console.log(Object.prototype.toString.call(2)); // "[object Number]"
+    // console.log(Object.prototype.toString.call('')); // "[object String]"
+    // console.log(Object.prototype.toString.call(true)); // "[object Boolean]"
+    // console.log(Object.prototype.toString.call(undefined)); // "[object Undefined]"
+    // console.log(Object.prototype.toString.call(null)); // "[object Null]"
+    // console.log(Object.prototype.toString.call(Math)); // "[object Math]"
+    // console.log(Object.prototype.toString.call({})); // "[object Object]"
+    // console.log(Object.prototype.toString.call([])); // "[object Array]"
+
+    // let date = new Date();
+    // console.log(date.toString()); // "Tue Jan 01 2018 12:01:33 GMT+0800 (CST)"
+    // console.log(date.toLocaleString()); // "1/01/2018, 12:01:33 PM"
+    // let myObj = ["321","444",{key1:32123}];
+    // console.log(Object.keys(myObj));
+    // console.log(Object.getOwnPropertyNames(myObj));
+    // let arr = [1, 2, 3];
+    //  let arr = [{a:1}, {b:2}, {c:3}];
+    //  console.log(arr.valueOf()); // [1, 2, 3]
+    //  let arr = ['a', 'b', 'c'];
+    //  arr.unshift('x'); // 4
+    //  arr.unshift('n', '11');// 6
+    //  console.log(arr); // ['x', 'a', 'b', 'c']
+    //  console.log(arr.join(" ,"));
+    //  let newString = Array.prototype.join.call('hello', '-');
+    //  console.log(newString);
+    //  let a = ['a', 'b', 'c', 'd', 'e', 'f'];
+    //  console.log(a.slice());
+    //  a.splice(4, 0,23,[312321,31231,321321,321321]); // ["e", "f"]
+    // console.log(a); // ["a", "b", "c", "d"]
+
+    // let numbers = [1, 2, 3];
+    //
+    // let newNum = numbers.map(function (n) {
+    //     return n + 1;
+    // });
+    // // [2, 3, 4]
+    // console.log(newNum);
+    // console.log(numbers);
+
+    // let arr = [1, 2, 3];
+    // console.log(typeof arr); // "object"
+    // console.log(Array.isArray(arr)); // true
+    // let arr = ['f', 'b', 'c','a'];
+    // arr.sort();
+    // console.log(arr);//["a", "b", "c", "f"]
+    // let numbers = [1, 2, 3];
+    // let param =2;
+    // let newNumbers = numbers.map(function(elem, index, arr) {
+    //     return elem * param;
+    // },);
+    // console.log(newNumbers);//[2, 3, 4]
+
+    // let out = [];
+    // [1, 2, 3].forEach(function(elem) {
+    //     out.push(elem * elem);
+    // });
+    // console.log(out); // [1, 4, 9]
+
+    //let arr = [7, 2, 5, 1, 3, 6, 14];
+    // let newArr = arr.filter(function (elem, index, arr) {
+    //     return (elem > (1 + index));
+    // });
+    // console.log(newArr);//[7, 5, 14]
+    // let arr = [7, 2, 5, 1, 3, 6, 14];
+    // let newArr= arr.every(function (elem, index, array) {
+    //     return elem > 0;
+    // });
+    // console.log(newArr);//true
+    //
+    // let arr = [];
+    // function isEven(x) {
+    //     return x % 2 === 0
+    // }
+    // let newArr = arr.some(isEven) // false
+    // console.log(newArr);
+    // let newArrS = arr.every(isEven) // true
+    // console.log(newArrS);
+
+    // let arr=[1,2,3,4];
+    // let result=arr.reduce(function (a, b) {
+    //     return a + b;
+    // }, 10);
+    // console.log(result);//20
+    // let arr =['a','b','c','a','b','c','a'];
+    // console.log(arr.indexOf('a'));//0
+    // console.log(arr.indexOf('d'));//2
+    // console.log(arr.lastIndexOf('a'));//6
+    // console.log(arr.lastIndexOf('d'));//-1
+    // localStorage.setItem("3213","3122133");
+
+    // String.prototype.double = function () {
+    //     return this.valueOf() + this.valueOf();
+    // };
+    // let str= "abc";
+    // console.log(str.double());
+    // Number.prototype.double = function () {
+    //     return this.valueOf() + this.valueOf();
+    // };
+    //
+    // console.log((123).double());
+    // console.log((321321).toFixed(3))
+    //
+    // function getRandomInt(min, max) {
+    //     return Math.floor(Math.random() * (max - min+1)) + min;
+    // }
+    // let mRandom=getRandomInt(1, 5);
+    // console.log(mRandom);
+
+    // function randomStr(length) {
+    //     let ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    //     ALPHABET += 'abcdefghijklmnopqrstuvwxyz';
+    //     ALPHABET += '0123456789-_';
+    //     let str = '';
+    //     for (let i = 0; i < length; i++) {
+    //         let rand = Math.floor(Math.random() * ALPHABET.length);
+    //         str += ALPHABET.substring(rand, rand + 1);
+    //     }
+    //     return str;
+    // }
+    // console.log(randomStr(6));
+    // let date = new Date();
+    // console.log(date.getTime("en-US"));
+    // console.log(/[abc]/.test('apple'));
+    // let s = 'Please yes\tmake my day!';
+    //
+    // console.log(s.match(/yes.*day/)); // null
+    // console.log(s.match(/yes[^]*day/)); // [ 'yes\nmake my day']
+    //  console.log(/^[a-zA-Z0-9]{1,6}$/.test("321"));
+    // console.log(JSON.stringify('foo') );
+    // console.log(JSON.stringify('foo') === "foo");
+    // console.log(JSON.stringify('foo') === "\"foo\"");
+    // let arr = [undefined, function () {}];
+    // console.log(JSON.stringify(arr));// "[null,null]"
+    //
+    // let o = {a: {b: 1}};
+    // function f(key, value) {
+    //     console.log("["+ key +"]:" + value);
+    //     return value;
+    // }
+    //
+    // JSON.stringify(o, f);
+
+    // console.log(JSON.stringify({ p1:1, p2:2 }, null, '|-'));
+    // let MyFunc = function (){
+    //     if (!(this instanceof MyFunc)) {
+    //         return new MyFunc();
+    //     }
+    //     this.price = 1000;
+    //     return 'param';
+    // };
+    //
+    // let v = MyFunc();
+    // console.log(v);
+    // function testNew(){
+    //     return 'message';
+    // }
+    // let mMsg = new testNew();
+    // console.log(mMsg);
+    // console.log(typeof mMsg);
+    // function f() {
+    //     console.log(new.target === f);
+    //     if (!new.target) {
+    //         throw new Error('请使用 new 命令调用！');
+    //     }else {
+    //         //......
+    //     }
+    // }
+    // new f(); // true
+    // f(); // false
+
+    // function Greeting(){
+    //     console.log('Hi! I\'m ' + this.name + ', '+this.age +' year\'s old!');
+    // }
+    // let person = {
+    //     name: 'ABC',
+    //     age: 18,
+    //     greeting: Greeting
+    // };
+    // let mPerson = {
+    //     name: '一二三',
+    //     age:27,
+    //     greeting: Greeting
+    // };
+    // console.log(person.greeting());//Hi! I'm ABC, 18 year's old!
+    // console.log(mPerson.greeting());//Hi! I'm 一二三, 27 year's old!
+
+    // let person = {
+    //     name: '张三',
+    //     age: 18,
+    //     greeting: function () {
+    //         return '姓名：' + this.name + ',年龄:' + this.age;
+    //     }
+    // };
+    // var name = '李四';
+    // let age = 27;
+    // let mGreeting = person.greeting;
+    // console.log(mGreeting()); // 姓名：李四,年龄:undefined
+
+    // var getName = function () {
+    //     console.log(this.name);
+    // };
+    // var name = 'zhangsan';
+    // var obj = {
+    //     name:'lisi',
+    //     getName: getName
+    // };
+    // // 单独执行
+    // getName ()//zhangsan
+    // // obj 环境执行
+    // obj.getName()//lisi
+    // var obj ={
+    //     foo: function () {
+    //         console.log(this);
+    //     }
+    // };
+    // let add;
+    // (add=obj.foo)();
+
+    // var obj ={
+    //     foo: function () {
+    //         console.log(this);
+    //     }
+    // };
+    // obj.foo() // obj
+    // let newObj  = obj.foo;
+    // newObj  ();//window
+
+    //  let a = {
+    //      b: {
+    //          aP: 'Hello',
+    //          bF: function() {
+    //              console.log(this);
+    //          }
+    //      }
+    //  };
+    // let hello=a.b;
+    // console.log(hello);//{aP: "Hello", bF: ƒ}
+    // hello.bF();//{aP: "Hello", bF: ƒ}
+    //  let obj = {
+    //      f1: function () {
+    //          console.log(this);
+    //          let _that = this;
+    //          let f2 = function () {
+    //              console.log(_that);
+    //          }();
+    //      }
+    //  }
+    //  obj.f1();
+    //  //{f1: ƒ}
+    //  //{f1: ƒ}
+
+    // let obj = {
+    //     v: 'hello',
+    //     p: [ 'a1', 'a2' ],
+    //     f: function f() {
+    //         this.p.forEach(function(item) {
+    //             console.log(this.v + ' ' + item);
+    //         });
+    //     }
+    // };
+    // obj.f();
+
+    // 'use strict';
+    // let fn = x => x * x;
+
+
+    // mParam ="我是变量";
+    // let mletName = "我是let变量";
+    // var mVarName = "我是var变量";
+    // console.log(mParam);
+    // console.log(this.mParam);
+    // console.log(this.mletName);
+    // console.log(this.mVarName);
+
+    // var len = 10;
+    // let Person = {
+    //     len: 5,
+    //     say: function() {
+    //         console.log(this.len);
+    //        let newFunc= function fn() {
+    //             console.log(this.len);
+    //         };
+    //        newFunc();
+    //     }
+    // }
+    // Person.say();
+
+    // var length = 10;
+    // function fn() {
+    //     console.info(this.length)
+    // }
+    // fn();  // 10
+    // let Person = {
+    //     len: 5,
+    //     say: function() {
+    //         fn();  // 10
+    //         arguments[0]();  // 1
+    //     }
+    // }
+    // Person.say(fn);
+
+    // var length = 10;
+    // function fn() {
+    //     console.info(this);
+    //
+    // }
+    //
+    // function fnNew() {
+    //     console.info(this)
+    // }
+    //
+    // let Person = {
+    //     say: function() {
+    //         function myFunc() {
+    //           console.log(this)
+    //       };
+    //         myFunc();
+    //     }
+    // };
+    // Person.say();
+
+
+    // function temp() {
+    //     console.log(this);
+    // };
+    //
+    // var o = {
+    //     f1: function () {
+    //         temp();  // 10
+    //         arguments[0]();  // 1
+    //     }
+    // }
+    // o.f1(temp);
+
+    // function a(){
+    //     var user = "追梦子";
+    //     console.log(this.user); //undefined
+    //     console.log(this); //Window
+    // }
+    //a();
+
+    // var myParam="window\'param";
+    // let obj ={
+    //     myParam:"obj\'param",
+    //     func:function () {
+    //         console.log(this.myParam);
+    //     }
+    // };
+    // obj.func();//obj'param
+    // let newFunc = obj.func;
+    // newFunc();//undefined
+
+    // var param="window";
+    // let obj = {
+    //     param:"obj"
+    // };
+    // let f = function () {
+    //     console.log(this.param);
+    // };
+    // f()//Window
+    // f.call();
+    // f.call(null);
+    // f.call(undefined);
+    // f.call(window);
+    // f.call(obj); // {}
+
+    // function add(a, b) {
+    //     console.log(a + b);
+    // }
+    //
+    // add.call(this, 1, 2) // 3
+
+    // let obj = {};
+    // console.log(obj.hasOwnProperty('toString')); // false
+    // // 覆盖掉继承的 hasOwnProperty 方法
+    // obj.hasOwnProperty = function () {
+    //     return true;
+    // };
+    // console.log(obj.hasOwnProperty('toString')); // true
+    // console.log(Object.prototype.hasOwnProperty.call(obj, 'toString')); // false
+    //
+    //  let newArr1 = Array.prototype.slice.apply({0: 1, length: 1});
+    //  console.log(JSON.stringify(newArr1));// [1]
+    //  let newArr2 = Array.prototype.slice.apply({0: 1});
+    //  console.log(JSON.stringify(newArr2));// []
+    //  let newArr3 = Array.prototype.slice.apply({0: 1, length: 2});
+    //  console.log(JSON.stringify(newArr3));// [1, null]
+    //  let newArr4 = Array.prototype.slice.apply({length: 1});
+    //  console.log(JSON.stringify(newArr4));// [null]
+    //  console.log(JSON.stringify(Array.prototype.slice.apply({0: 1, length: 12}))); // []
+
+    // let counter = {
+    //     count: 0,
+    //     add: function () {
+    //         this.count++;
+    //     }
+    // };
+    //
+    // let obj = {
+    //     count: 100
+    // };
+    // let func = counter.add.bind(obj);
+    // func();
+    // console.log(counter.count);//0
+    // console.log(obj.count);//101
+
+    // let add = function (x, y) {
+    //     return x * this.m + y * this.n;
+    // };
+    // let obj = {
+    //     m: 2,
+    //     n: 3
+    // };
+    // let newAdd = add.bind(obj, 1, 5);
+    // console.log(newAdd()); // 25
+    //
+    // var number=5;
+    // let obj ={
+    //     number:1,
+    // };
+    //
+    // function add(x, y) {
+    //     return x + y+this.number;
+    // }
+    // let result = add.bind(obj, 5);
+    // console.log(result(10)); // 16
+    // let result2 = add.bind(null, 5);
+    // console.log(result2(10)); // 20
+    // let result3 = add.bind(obj);
+    // console.log(result3(10,10)); // 20
+
+    // let counter = {
+    //     count: 0,
+    //     add: function () {
+    //         console.log(this);
+    //         this.count++;
+    //     }
+    // };
+    // function callIt(callback) {
+    //     callback();
+    // }
+    // callIt(counter.add);
+    // console.log(counter.count); // 0
+    // callIt(counter.add.bind(counter));
+    // console.log(counter.count); // 1
+
+    // function f() {
+    //     console.log(this.v);
+    // }
+    // let obj = {v: 123};
+    // // f.call(obj);
+    // let myCall = Function.prototype.call.bind(Function.prototype.bind);
+    // myCall(f, obj)() // 123
+    // var o = new Object();
+    // o.f = function () {
+    //     console.log(this === o);
+    // }
+    // var f = function (){
+    //     o.f();
+    //     //o.f.apply(o);
+    //     // 或者 o.f.call(o);
+    // };
+    // f();
+
+    // function f() {}
+    // console.log(typeof f.prototype); // "object"
+
+    // function Person(name) {
+    //     this.name = name;
+    // }
+    // Person.prototype.color = 'yellow';
+    // let Asia1 = new Person('张三');
+    // let Asia2 = new Person('王二');
+    // console.log(Asia1.color); // 'yellow'
+    // console.log(Asia2.color); // 'yellow'
+    // Asia1.color="white";
+    // console.log(Asia1.color); // 'white'
+    // console.log(Asia2.color); // 'yellow'
+    // Person.prototype.walk = function () {
+    //     console.log(this.name +' is '+this.color + ' and now is walking');
+    // };
+    // Asia1.walk();
+    // Asia2.walk();
+    // console.log(JSON.stringify(Asia1.prototype));
+    // Object.prototype.age=123;
+    // console.log(Asia1.age);
+
+    // function Func() {
+    // }
+    //
+    // let myFunc = new Func();
+    // let newFunc = new myFunc.constructor();
+    //console.log(newFunc.constructor==Func);
+    // console.log(myFunc.constructor === Func);//true
+    // console.log(myFunc.constructor === Func.prototype.constructor);//true
+    // console.log(myFunc.hasOwnProperty('constructor'));//false
+    // console.log(myFunc.constructor === Array);//false
+    // console.log(Func.prototype.constructor === Func);//true
+    // Func.prototype = {
+    //     newProtype: function () {
+    //
+    //     }
+    // }
+    // console.log(Func.prototype.constructor === Func);//false
+    // console.log(Func.prototype.constructor === Object);//true
+    // Func.prototype = {
+    //     constructor:Func,
+    //     newProtype: function () {
+    //
+    //     }
+    // }
+    //最好的写法
+    // Func.prototype.newProtype= function(){};
+    // console.log(Func.prototype.constructor === Func);//true
+    // console.log(Func.prototype.constructor === Object);//false
+    // console.log(myFunc.constructor.name);
+
+    // function Func() {
+    // }
+    //
+    // let mFunc = new Func();
+    // console.log(mFunc.__proto__);
+    // console.log(mFunc instanceof Object); // true
+    // console.log(Func.prototype.isPrototypeOf(mFunc));//true
+
+    // let obj = Object.create(null);
+    // console.log(typeof obj); // "object"
+    // console.log(obj instanceof Object); // false
+
+    // function Func1() {
+    //     this.hello = 'hello';
+    // }
+    // function Func2() {
+    //     this.world = 'world';
+    // }
+    // function S() {
+    //     Func1.call(this);
+    //     Func2.call(this);
+    // }
+    // // 继承 Func1
+    // S.prototype = Object.create(Func1.prototype);
+    // // 继承链上加入 Func1
+    // Object.assign(S.prototype, Func2.prototype);
+    //
+    // // 指定构造函数
+    // S.prototype.constructor = S;
+    // let s = new S();
+    // console.log(s.hello); // 'hello'
+    // console.log(s.world); // 'world'
+
+    // let Func = function () {};
+    // let mFunc = new Func();
+    // console.log(Object.getPrototypeOf(mFunc) === Func.prototype); // true
+    //
+    // // 空对象的原型是 Object.prototype
+    // console.log( Object.getPrototypeOf({}) === Object.prototype); // true
+    //
+    // // Object.prototype 的原型是 null
+    // console.log( Object.getPrototypeOf(Object.prototype) === null); // true
+    //
+    // // 函数的原型是 Function.prototype
+    // function f() {}
+    // console.log(Object.getPrototypeOf(f) === Function.prototype); // true
+
+    // let a = {};
+    // let b = {x: 1};
+    // Object.setPrototypeOf(a, b);
+    // console.log(Object.getPrototypeOf(a) === b); // true
+    // console.log(a.x); // 1
+
+    // let F = function () {
+    //     this.foo = 'bar';
+    // };
+    //
+    // let f = new F();
+    // // 等同于
+    // let f = Object.setPrototypeOf({}, F.prototype);
+    // F.call(f);
+
+    // 原型对象
+    // let A = {
+    //     print: function () {
+    //         console.log('hello');
+    //     }
+    // };
+    // // 实例对象
+    // let B = Object.create(A);
+    // console.log(Object.getPrototypeOf(B) === A); // true
+    // B.print(); // hello
+    // console.log(B.print === A.print); // true;
+
+    // Object.create();
+    // // TypeError: Object prototype may only be an Object or null
+    // Object.create(123);
+    // // TypeError: Object prototype may only be an Object or null
+
+    // let obj1 = { p: 1 };
+    // let obj2 = Object.create(obj1);
+    // obj1.p = 2;
+    // console.log(obj2.p) // 2
+
+    // let obj = Object.create({}, {
+    //     p1: {
+    //         value: 123,
+    //         enumerable: true,
+    //         configurable: true,
+    //         writable: true,
+    //     },
+    //     p2: {
+    //         value: 'abc',
+    //         enumerable: true,
+    //         configurable: true,
+    //         writable: true,
+    //     }
+    // });
+
+    // 等同于
+    // let obj = Object.create({});
+    // obj.p1 = 123;
+    // obj.p2 = 'abc';
+    // console.log(obj.p1);//123
+    // console.log(obj.p2);//bac
+
+    // function A() {}
+    // let a = new A();
+    // let b = Object.create(a);
+    // console.log(b.constructor === A); // true
+    // console.log(b instanceof A); // true
+
+    // let o1 = {};
+    // let o2 = Object.create(o1);
+    // let o3 = Object.create(o2);
+    // console.log(o2.isPrototypeOf(o3)); // true
+    // console.log(o1.isPrototypeOf(o3)); // true
+    //
+    // console.log(Object.prototype.isPrototypeOf({})); // true
+    // console.log(Object.prototype.isPrototypeOf([])); // true
+    // console.log(Object.prototype.isPrototypeOf(/xyz/)); // true
+    // console.log(Object.prototype.isPrototypeOf(Object.create(null))); // false
+    //
+    // let obj = {};
+    // let p = {};
+    // obj.__proto__ = p;
+    // console.log(Object.getPrototypeOf(obj) === p); // true
+
+    // let A = {
+    //     name: '张三'
+    // };
+    // let B = {
+    //     name: '李四'
+    // };
+    // let proto = {
+    //     print: function () {
+    //         console.log(this.name);
+    //     }
+    // };
+    // A.__proto__ = proto;
+    // B.__proto__ = proto;
+    // A.print(); // 张三
+    // B.print(); // 李四
+    // console.log(A.print === B.print);// true
+    // console.log(A.print === proto.print); // true
+    // console.log(B.print === proto.print); // true
+
+    // let FuncBase=  function Func(){
+    //      // console.log(this);
+    //   }
+    //   let mFunc = new FuncBase();
+    //   // console.log(mFunc.constructor);
+    //   // console.log(Func.prototype.constructor);
+    //   // console.log(mFunc.__proto__);
+    //  // console.log(Func.prototype);
+    //   console.log(Object.getPrototypeOf(FuncBase));
+    //   console.log(Object.getPrototypeOf(mFunc));
+    //  // console.log(Func.prototype.__proto__);
+
+    // let newFunc = function (func) {
+    //     //1.新建一个空对象，并将 构造函数的原型对象赋给这个空对象
+    //     let obj = Object.create(func.prototype);
+    //     //2.执行构造函数，相应参数被传入，并将this的上下文指向新创建的对象obj
+    //     let ret = func.call(obj, 'ABC');
+    //     //3.如果构造函数返回了对象，就舍弃之前创建的对象obj，newObj = ret
+    //     if (typeof ret === 'object') {
+    //         return ret;
+    //     } else { //4.反之，newObj = obj
+    //         return obj;
+    //     }
+    // }
+    // let foo = function (name) {
+    //     return this.name = name || 'Hello World!';
+    // }
+    // let newObj = newFunc(foo);
+    // console.log(newObj.name);//ABC
+
+    // let obj = {};
+    // let p = {
+    //     name :"123",
+    //     getName:function () {
+    //         return this.name
+    //     }
+    // };
+    // obj.__proto__ = p;
+    // console.log(Object.getPrototypeOf(obj)===p); // true
+
+    // let A = {
+    //     name: '张三'
+    // };
+    // let B = {
+    //     name: '李四'
+    // };
+    // let proto = {
+    //     print: function () {
+    //         console.log(this.name);
+    //     }
+    // };
+    // A.__proto__ = proto;
+    // B.__proto__ = A;
+    // A.print(); // 张三
+    // B.print(); // 李四
+    // console.log(A.print === B.print);// true
+    // console.log(A.print === proto.print); // true
+    // console.log(B.print === proto.print); // true
+    // console.log(A.__proto__);
+    // console.log(A.constructor.prototype);
+    //
+    // function MObject(){
+    //     return "Object";
+    // }
+    // let obj = new MObject();
+    // let obj2 = {
+    //     name: "123",
+    //     getName: function () {
+    //         return this.name
+    //     }
+    // };
+    //  console.log(obj2.constructor);
+    // console.log(obj.__proto__ === Object.prototype);// true
+    // console.log(obj.__proto__ === obj.constructor.prototype);// true
+    // console.log(obj2.__proto__ === Object.prototype);// true
+    // console.log(obj2.__proto__ === obj2.constructor.prototype);// true
+
+    // let obj = {};
+    // console.log(obj.constructor);   //ƒ Object() { [native code] }
+    // console.log(obj.constructor == Object);    //true
+    //
+    // function Fun() {
+    //
+    // }
+    // let fun = new Fun();    //实例化
+    // console.log(fun.constructor);    //ƒ Fun(){}    【打印出来的引用是Fun函数，说明fun的引用是Fun函数】
+    // console.log(Fun.constructor);    //ƒ Function() { [native code] }      【打印出来的引用是Funcion函数，说明Fun的引用是Function函数】
+    // console.log(fun.constructor == Fun);   //true    【再次证明fun的constructor属性引用了fun对象的构造函数】
+    // console.log(fun.constructor == Fun.constructor);    //false
+
+    // let P = function () {};
+    // let p = new P();
+    //
+    // let C = function () {};
+    // C.prototype = p;
+    // C.prototype.constructor = C;
+    // let c = new C();
+    // console.log(c.constructor.prototype === p); // false
+
+    //
+    // function Func() {
+    // };
+    // let P = new Func();
+    // let fun = {};
+    // console.log(fun.prototype);
+    // console.log(P.prototype);
+    // console.log(Func.prototype);
+    //
+    // // console.log(fun.constructor);
+    // // console.log(P.constructor);
+    // // console.log(Func.constructor);
+    // //
+    // // console.log(fun.constructor.prototype ==Object.prototype);
+    // // console.log(P.constructor.prototype ==Func.prototype);
+    // // console.log(Func.constructor.prototype ==Function.prototype);
+    // P.__proto__=fun;
+    // P.constructor.prototype=P;
+    // console.log(P.__proto__);
+    // console.log(P.constructor.prototype==P);
+
+
+    // let P = function () {
+    // };
+    // let p = new P();
+    //
+    // let C = function () {
+    // };
+    // C.prototype = p;
+    // C.prototype.constructor = C;
+    // let c = new C();
+    // console.log(C.prototype); // false
+    // console.log(c.constructor.prototype); // false
+
+
+    // function Person(){
+    //
+    // }
+    // let persionA = new Person();
+    // console.log(Person.prototype.constructor);
+    // console.log(persionA.constructor);
+    //
+    // console.log(Person.prototype);
+    // console.log(persionA.constructor.prototype);
+    // console.log(persionA.__proto__);
+    //
+    // console.log(Object.getOwnPropertyNames(Array));
+    // console.log(Object.keys(Array));
+    // console.log(Array.hasOwnProperty('length')); // true
+    // console.log(Array.hasOwnProperty('toString')); // false
+    // console.log('length' in Array); // true
+    // console.log('toString' in Array); // true
+
+    // let o1 = {age1: 18};
+    // let o2 = Object.create(o1, {
+    //     age2: {
+    //         value: 27,
+    //         enumerable: true
+    //     }
+    // });
+    // for (let age in o2) {
+    //     console.info(age);
+    // }
+    // function inheritedPropertyNames(obj) {
+    //     let props={};
+    //
+    //     while(obj) {
+    //         console.log( Object.getOwnPropertyNames(obj));
+    //         Object.getOwnPropertyNames(obj).forEach(function(p) {
+    //             props[p] = true;
+    //         });
+    //         obj = Object.getPrototypeOf(obj);
+    //         console.log(obj);
+    //     }
+    //     return Object.getOwnPropertyNames(props);
+    // }
+    // let  obj={
+    //     mName:"3123",
+    //     age:123,
+    //     address:"fjskfjsdkl"
+    // };
+    // console.log(inheritedPropertyNames(obj));
+    // function callBack(data, resultCallBack) {
+    //     let index = 0;
+    //     while (index < 1000000000) {
+    //         index++;
+    //     }
+    //     console.log('回调处理:--' + data);
+    //     //异步操作
+    //     setTimeout(function () {
+    //         resultCallBack("返回数据" +data);
+    //     },2000);
+    //
+    // }
+    //
+    // function getData(data) {
+    //     console.log('返回数据：---' + data);
+    // }
+    //
+    // callBack("请求数据", getData);
+    // console.log('主线程');
+    // callBack("请求数据---2", getData);
+
+    /**串行执行**/
+    // let items = [ 1, 2, 3, 4, 5, 6 ];
+    // let results = [];
+    //
+    // function async(arg, callback) {
+    //     console.log('参数为 ' + arg +' , 1秒后返回结果');
+    //     setTimeout(function () { callback(arg * 2); }, 1000);
+    // }
+    //
+    // function final(value) {
+    //     console.log('完成: ', value);
+    // }
+    //
+    // function series(item) {
+    //     if(item) {
+    //         async( item, function(result) {
+    //             results.push(result);
+    //             return series(items.shift());
+    //         });
+    //     } else {
+    //         return final(results);
+    //     }
+    // }
+    //
+    // series(items.shift());
+
+    /**并行执行**/
+    // let items = [ 1, 2, 3, 4, 5, 6 ];
+    // let results = [];
+    //
+    // function async(arg, callback) {
+    //     console.log('参数为 ' + arg +' , 1秒后返回结果');
+    //     setTimeout(function () { callback(arg * 2); }, 1000);
+    // }
+    //
+    // function final(value) {
+    //     console.log('完成: ', value);
+    // }
+    //
+    // items.forEach(function(item) {
+    //     async(item, function(result){
+    //         results.push(result);
+    //         if(results.length === items.length) {
+    //             final(results[results.length - 1]);
+    //         }
+    //     })
+    // });
+
+    /**并行与串行的结合**/
+    // let items = [1, 2, 3, 4, 5, 6];
+    // let results = [];
+    // let running = 0;
+    // let limit = 2;
+    //
+    // function async(arg, callback) {
+    //     console.log('参数为 ' + arg + ' , 1秒后返回结果');
+    //     setTimeout(function () {
+    //         callback(arg * 2);
+    //     }, 1000);
+    // }
+    //
+    // function final(value) {
+    //     console.log('完成: ', value);
+    // }
+    //
+    // function launcher() {
+    //     while (running < limit && items.length > 0) {
+    //         console.log("A---->" + running);
+    //         let item = items.shift();
+    //         async(item, function (result) {
+    //             results.push(result);
+    //             running--;
+    //             console.log("B---->" + running);
+    //             if (items.length > 0) {
+    //                 launcher();
+    //             } else if (running == 0) {
+    //                 final(results);
+    //             }
+    //         });
+    //         running++;
+    //         console.log("C---->" + running);
+    //     }
+    // }
+    //
+    // launcher();
+
+    //
+    // let running = 0;
+    // let limit = 2;
+    // let index = 6;
+    //
+    // function testFun() {
+    //     while (running < limit && index > 0) {
+    //         index--;
+    //         setTimeout(function () {
+    //             running--;
+    //             console.log("A----"+running);
+    //             if (index > 0) {
+    //                 testFun();
+    //             }
+    //         }, 1000);
+    //         running++;
+    //         console.log("B----"+running);
+    //     }
+    //
+    // }
+    //    testFun();
+
+    function showLog(mub) {
+        console.log("参数" + mub);
+    }
+
+    var mun = 1;
+
+    function debounce(fn, delay) {
+        let timer = null; // 声明计时器
+        return function (mub) {
+            let context = this;
+            let args = mub;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                fn.apply(context, args);
+            }, delay);
+        };
+    }
+
+    debounce(showLog, 1000)();
+    debounce(showLog, 1)();
+    setTimeout(function () {
+        debounce(showLog, 1000)();
+    }, 3000);
+
+</script>
+</html>

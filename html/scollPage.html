@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scoll</title>
+    <style>
+        .div-one {
+            position: relative;
+            text-align: center;
+            height: 920px;
+            margin-top: 30px;
+            background: #FFFF00;
+        }
+
+        .div-point {
+            position: absolute;
+            height: 60px;
+            width: 60px;
+            background: #c1272d;
+            border-radius: 30px;
+            top: 50%;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="div-one">1111111111111111
+    <div class="div-point" onclick="moveToNext()">1</div>
+</div>
+<div class="div-one">2222222222222222
+    <div class="div-point"  onclick="moveToNext()">2</div>
+</div>
+<div class="div-one">3333333333333333
+    <div class="div-point"></div>
+</div>
+</body>
+<script>
+    let baseScroll = 0;
+
+    function moveToNext() {
+        let index = 0;
+        while (index <= 920) {
+            index += 20;
+            baseScroll += baseScroll + index;
+            setTimeout(function () {
+                window.scrollBy(0, baseScroll);
+                console.log(index);
+            },1000);
+
+        }
+    }
+</script>
+</html>

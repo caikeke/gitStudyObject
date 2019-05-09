@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   let arr = [1, 2, 3];
+      //   let newArr = arr.concat(4);
+      //   let mArr = [...arr, 66, 77, 88];
+      //   console.log(arr);
+      //   console.log(mArr);
+      //   console.log(newArr);
+      // let obj = {
+      //   id: 1001,
+      //   name: "kevin",
+      //   hobby: {
+      //     one: "吃",
+      //     two: "喝"
+      //   }
+      // };
+      // let nArr1 = Object.assign({},obj, { age: 27, address: "上海" });
+      // console.log("nArr1:", nArr1);
+      // console.log("obj:", obj);
+      // console.log("obj==nArr1:", obj === nArr1);
+      // console.log("====================================");
+      // nArr1.hobby.one = "打篮球";
+      // console.log("nArr1:", nArr1);
+      // console.log("obj:", obj);
+      // console.log("====================================");
+
+      // let nArr2 = Object.assign({}, obj, { age: 27, address: "上海" });
+      //console.log("nArr1==nArr2:", nArr1 == nArr2);
+      //console.log("obj==nArr2:", obj == nArr2);
+    </script>
+    <script>
+      let test = (function(a) {
+        var c = a;
+        console.log(this);
+        return function(b) {
+          console.log(this);
+          return c + b;
+        };
+      })(
+        (function(a, b) {
+          return a;
+        })(1, 2)
+      );
+      console.log(test(4));
+    </script>
+  </body>
+</html>

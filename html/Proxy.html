@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script>
+        let obj = new Proxy(
+          {},
+          {
+            get: function(target, key, receiver) {
+              console.log(`getting ${key}!`);
+              return Reflect.get(target, key, receiver);
+            },
+            set: function(target, key, value, receiver) {
+              console.log(`setting ${key}!`);
+              return Reflect.set(target, key, value, receiver);
+            }
+          }
+        );
+        obj.count=1;
+        ++obj.count;
+    </script> -->
+
+    <!-- <script type="text/javascript">
+      var handler = {
+        get: function(target, name) {//拦截对象属性的读取
+          if (name === "prototype") {
+            return Object.prototype;
+          }
+          return "Hello, " + name;
+        },
+        //拦截 Proxy 实例作为函数调用的操作，
+        //比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
+        apply: function(target, thisBinding, args) {
+          return args[0];
+        },
+        //拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。
+        construct: function(target, args) {
+          return { value: args[1] };
+        }
+      };
+
+      var fproxy = new Proxy(function(x, y) {
+        return x + y;
+      }, handler);
+
+      console.log(fproxy(1, 2)); // 1
+      console.log( new fproxy(1, 2)); // {value: 2}
+      console.log(fproxy.prototype === Object.prototype); // true
+      console.log(fproxy.foo === "Hello, foo"); // true
+    </script> -->
+
+    <!-- <script type="text/javascript">
+      var person = {
+        name: "张三"
+      };
+
+      var proxy = new Proxy(person, {
+        get: function(target, property) {
+          if (Reflect.has(target, property)) {
+            return target[property];
+          } else {
+            return 'Property "' + property + '" does not exist.';
+          }
+        }
+      });
+
+      console.log(proxy.name); // "张三"
+      console.log(proxy.age); // 抛出一个错误
+    </script> -->
+
+    <!-- <script>
+      var pipe = (function() {
+        return function(value) {
+          var funcStack = [];
+          var oproxy = new Proxy(
+            {},
+            {
+              get: function(pipeObject, fnName) {
+                if (fnName === "get") {
+                  return funcStack.reduce(function(val, fn) {
+                    return fn(val);
+                  }, value);
+                }
+                funcStack.push(window[fnName]);
+                console.log(funcStack);
+                return oproxy;
+              }
+            }
+          );
+
+          return oproxy;
+        };
+      })();
+
+      var double = n => {
+        return n * 2;
+      };
+      var pow = n => {
+        return n * n;
+      };
+      var reverseInt = n => {
+        return (
+          n
+            .toString()
+            .split("")
+            .reverse()
+            .join("") | 0
+        );
+      };
+      console.log(pipe(3).double.pow.get); // 63
+      //console.log(pipe(3).double.pow.reverseInt.get); // 63
+    </script> -->
+
+    <!-- <script>
+    var double = n => {
+        return n * 2;
+      };
+      var pow = n => {
+        return n * n;
+      };
+      console.log("-------------------------------");
+      let arr = [4, double, pow];
+      let result = arr.reduce(function(a, b) {
+        return b(a);
+      });
+      console.log(result);
+    </script> -->
+
+    <!-- <script>
+        let num = "313";
+        let n = num
+            .toString()
+            .split("")
+            .reverse()
+            .join("") | 0;
+
+            console.log(n);
+    </script> -->
+
+    <!-- <script>
+        let arr = [1, 2, 3, 4, 5, 6];
+        arr.reduce(function (a, b, index, origin) {
+            console.log("a," + a + " b," + b + " index, " + index + " origin," + origin);
+            return a+b;
+        });
+    </script> -->
+
+    <!-- <script>
+        const dom = new Proxy({}, {
+            get(target, property) {
+                return function (attrs = {}, ...children) {
+                    const el = document.createElement(property);
+                    for (let prop of Object.keys(attrs)) {
+                        el.setAttribute(prop, attrs[prop]);
+                    }
+                    for (let child of children) {
+                        if (typeof child === 'string') {
+                            child = document.createTextNode(child);
+                        }
+                        el.appendChild(child);
+                    }
+                    return el;
+                }
+            }
+        });
+
+        const el = dom.div({},
+            'Hello, my name is ',
+            dom.a({
+                href: '//example.com'
+            }, 'Mark'),
+            '. I like:',
+            dom.ul({},
+                dom.li({}, 'The web'),
+                dom.li({}, 'Food'),
+                dom.li({}, '…actually that\'s it')
+            )
+        );
+
+        document.body.appendChild(el);
+    </script> -->
+
+    <script>
+        var handler = {
+            defineProperty(target, key, descriptor) {
+    
+                return target[key]=descriptor.value;
+            }
+        };
+        var target = {};
+        var proxy = new Proxy(target, handler);
+        proxy.foo = 'bar' // 不会生效
+
+        console.log(proxy.foo);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function Student(props) {
+        //     this.name = props.name || 'Unnamed';
+        // }
+
+        // Student.prototype.hello = function () {
+        //     alert('Hello, ' + this.name + '!');
+        // }
+
+        // function PrimaryStudent(props) {
+        //     // 调用Student构造函数，绑定this变量:
+        //     Student.call(this, props);
+        //     this.grade = props.grade || 1;
+        // }
+
+        // console.log(PrimaryStudent.prototype);
+
+        // console.log(PrimaryStudent.prototype.__proto__);
+
+    </script>
+
+    <script>
+
+        // class Earth {
+        //     work(job) {
+        //         console.log(this.name + '的工作是：' + job);
+        //     }
+        // }
+        // class Person extends Earth {
+        //     constructor(name) {
+        //         super();
+        //         this.name = name;
+        //     }
+        //     sleep() {
+        //         console.log(this.name + '正在偷懒~~~！');
+        //     }
+        // }
+
+        // class Chinese extends Person {
+        //     constructor(name, address) {
+        //         super(name); // 记得用super调用父类的构造方法!
+        //         this.address = address;
+        //     }
+
+
+        // }
+        // let mChinese = new Chinese('上海');
+        // mChinese.sleep();//上海正在偷懒~~~！
+        // mChinese.work('IT');//上海的工作是：IT
+
+        // class Animal {
+        //     constructor(name) {
+        //         this.name = name;
+        //     }
+        // }
+        // class Cat extends Animal {
+        //     constructor(name) {
+        //         super(name); // 记得用super调用父类的构造方法!
+        //     }
+        //     say() {
+        //         return 'Hello, Kitty!';
+        //     }
+        // }
+
+        // // 测试:
+        // var kitty = new Cat('Kitty');
+        // var doraemon = new Cat('哆啦A梦');
+        // if ((new Cat('x') instanceof Animal) && kitty && kitty.name === 'Kitty' && kitty.say && typeof kitty.say === 'function' && kitty.say() === 'Hello, Kitty!' && kitty.say === doraemon.say) {
+        //     console.log('测试通过!');
+        // } else {
+        //     console.log('测试失败!');
+        // }
+
+        // function add(x, y, f) {
+        //     return f(x) + f(y);
+        // }
+        // let funcParam = function (param) {
+        //     return param + 1;
+        // };
+        // console.log(add(2, 4, funcParam));//8
+
+        function add(x, y) {
+            return function () {
+                return x * y;
+            };
+        }
+
+        let newFunc = add(2, 4);
+        console.log(newFunc());
+    </script>
+</body>
+
+</html>

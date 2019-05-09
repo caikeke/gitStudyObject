@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigator </title>
+</head>
+<body>
+<script>
+    let ua = navigator.userAgent.toLowerCase();
+    console.log(ua);
+    console.log(navigator.platform);
+    console.log(navigator.geolocation.getCurrentPosition(function (dataCallBack) {
+        console.log(dataCallBack);
+    }));
+    if (/mobi/i.test(ua)) {
+        // 手机浏览器
+        console.log("手机浏览器");
+    } else {
+        // 非手机浏览器
+        console.log("非手机浏览器");
+    }
+    // 浏览器是否打开 Cookie 功能
+    console.log(window.navigator.cookieEnabled);
+    console.log(JSON.stringify(document.cookie));
+    let xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function(){
+        // 通信成功时，状态值为4
+        if (xhr.readyState === 4){
+            if (xhr.status === 200){
+                console.log(xhr.responseText);
+            } else {
+                console.error(xhr.statusText);
+            }
+        }
+    };
+
+    xhr.ontimeout = function () {
+        console.error('The request for ' + url + ' timed out.');
+    };
+ ``
+    xhr.onerror = function (e) {
+        console.error(xhr.statusText);
+    };
+
+    xhr.open('GET', 'https://www.baidu.com/', true);
+    xhr.responseType = 'json';
+    // 指定 10 秒钟超时
+    xhr.timeout = 10 * 1000;
+    xhr.send(null);
+</script>
+</body>
+</html>

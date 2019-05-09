@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+</head>
+<body>
+<button onclick="addHistory()">添加页面</button>
+<input type="file" accept="image/*" multiple onchange="fileinfo(this.files)"/>
+<div>
+    <input type="file" onchange="onChange(event)">
+</div>
+</body>
+<script>
+    function onChange(event) {
+        let file = event.target.files[0];
+        let reader = new FileReader();
+        reader.onload = function (event) {
+            console.log(event.target.result)
+        };
+
+        reader.readAsText(file);
+    }
+
+    function fileinfo(files) {
+        for (var i = 0; i < files.length; i++) {
+            var f = files[i];
+            console.log(
+                f.name, // 文件名，不含路径
+                f.size, // 文件大小，Blob 实例属性
+                f.type, // 文件类型，Blob 实例属性
+                f.lastModifiedDate // 文件的最后修改时间
+            );
+        }
+    }
+    console.log(encodeURIComponent('上海'));
+    //%E4%B8%8A%E6%B5%B7
+    console.log(encodeURIComponent('http://www.example.com/city=上海'));
+    //http%3A%2F%2Fwww.example.com%2Fcity%3D%E4%B8%8A%E6%B5%B7
+    console.log(encodeURI('http://www.example.com/name=张三'));
+    console.log(decodeURI('http://www.example.com/name=%E5%BC%A0%E4%B8%89'));
+    console.log(decodeURIComponent("%E4%B8%8A%E6%B5%B7"));
+   function addHistory(){
+       let stateObj = { foo: 'bar' };
+     //  history.pushState(stateObj, 'page 2', 'test.html');
+    //   location.replace("/KevinHTML5Demo/html/test.html");
+       setTimeout(()=>{
+           //document.location.assign('http://www.baidu.com');
+           // 向服务器重新请求当前网址
+           window.location.reload(true);
+       },200);
+    }
+   window.onpopstate = function (event) {
+       console.log('location: ' + document.location);
+       console.log('state: ' + JSON.stringify(event.state));
+   };
+
+   let number = 1.999;
+   console.log(number.toFixed(2));
+</script>
+</html>

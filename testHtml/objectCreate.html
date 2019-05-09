@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // let o = { a: 1 };
+        // console.log(o)
+        // let obj = Object.create(Object.prototype, {
+        //     a: {
+        //         writable: true,
+        //         configurable: true,
+        //         value: '1'
+        //     }
+        // })
+        // console.log(obj);
+    </script>
+
+    <script>
+
+        //父原型类
+        function ProtoClass(name) {
+            this.name = name ? name : '';
+        }
+        ProtoClass.prototype.show = function () {
+            console.log(this.name + ' proto');
+        }
+        //一种方式
+        var proto = new ProtoClass('张三');
+        let mProto =Object.create(proto);
+        mProto.show();
+        console.log(mProto);
+        
+        //子类
+        function child() {
+        }
+
+        child.prototype = Object.create(proto);
+        console.log(child.prototype);
+        let mChild = new child();
+        mChild.show();
+    </script>
+</body>
+
+</html>

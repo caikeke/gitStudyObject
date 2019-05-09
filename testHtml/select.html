@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <select value="mango" onchange="handleSelectChange(this)">
+        <option value="grapefruit">葡萄柚</option>
+        <option value="lime">柠檬</option>
+        <option  value="coconut">椰子</option>
+        <option value="mango">芒果</option>
+      </select>
+</body>
+<script>
+function handleSelectChange(event){
+    console.log(event.value);
+    
+}
+</script>
+</html>

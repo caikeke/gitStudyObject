@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量提升</title>
+</head>
+<body>
+<script type="text/javascript">
+    // console.log(a);
+    // var a=1;
+
+    // var a;
+    // console.log(a);
+    // a = 1;
+
+    // var x = 1;
+    // var x= 2;
+    // console.log(x);
+
+    // {
+    //     var a = 1;
+    //     let b=2;
+    // }
+    // console.log(a);
+    // console.log(b);
+
+    // var x = 1;
+    // var y = 2;
+    // if (x = 2) {
+    //     console.log(x);
+    // }
+
+    // var x = 1;
+    // switch (x) {
+    //     case true:
+    //         console.log('x 发生类型转换');
+    //         break;
+    //     default:
+    //         console.log('x 没有发生类型转换');
+    // }
+    // x 没有发生类型转换
+
+    // var myVar;
+    // console.log(myVar ? 'myVar has a value' : 'myVar does not have a value');
+
+    // var i = 0;
+    // while(i < 100) {
+    //     console.log('i 当前为：' + i);
+    //     i++;
+    //     if (i === 10) break;
+    // }
+
+    // var i = 0;
+    // while (i < 100){
+    //     i++;
+    //     if (i % 2 === 0) continue;
+    //     console.log('i 当前为：' + i);
+    // }
+
+   /* break命令后面加上了top标签（注意，top不用加引号），满足条件时，直接跳出双层循环。
+   如果break语句后面不使用标签，则只能跳出内层循环，进入下一次的外层循环。*/
+    // top:
+    //     for (var i = 0; i < 3; i++){
+    //         for (var j = 0; j < 3; j++){
+    //             if (i === 1 && j === 1) break top;
+    //             console.log('i=' + i + ', j=' + j);
+    //         }
+    //     }
+    // foo: {
+    //     console.log(1);
+    //     break foo;
+    //     console.log('本行不会输出');
+    // }
+    // console.log(2);
+
+  /*  continue命令后面有一个标签名，满足条件时，会跳过当前循环，直接进入下一轮外层循环。
+    如果continue语句后面不使用标签，则只能进入下一轮的内层循环。*/
+    top:
+        for (var i = 0; i < 3; i++){
+            for (var j = 0; j < 3; j++){
+                if (i === 1 && j === 1) continue top;
+                console.log('i=' + i + ', j=' + j);
+            }
+        }
+</script>
+</body>
+</html>

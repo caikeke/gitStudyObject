@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let it = idMaker();
+
+        // for (let index = 0; index < 10; index++) {
+        //     console.log(it.next().value);          
+        // }
+
+        // function idMaker() {
+        //     var index = 0;
+        //     return {
+        //         next: function () {
+        //             return {
+        //                 value: index++,
+        //                 done: false
+        //             };
+        //         }
+        //     };
+        // }
+    </script>
+
+    <script>
+        // function Obj(value) {
+        //     this.value = value;
+        //     this.next = null;
+        // }
+
+        // Obj.prototype[Symbol.iterator] = function () {
+        //     var iterator = {
+        //         next: next
+        //     };
+
+        //     var current = this;
+
+        //     function next() {
+        //         if (current) {
+        //             var value = current.value;
+        //             current = current.next;
+        //             return {
+        //                 done: false,
+        //                 value: value
+        //             };
+        //         } else {
+        //             return {
+        //                 done: true
+        //             };
+        //         }
+        //     }
+        //     return iterator;
+        // }
+
+        // var one = new Obj(1);
+        // var two = new Obj(2);
+        // var three = new Obj(3);
+
+        // one.next = two;
+        // two.next = three;
+        // console.log(one);
+        // for (var i of one) {
+        //     console.log(i); // 1, 2, 3
+        // }
+
+        var arr = ['a', 'b', 'c', 'd'];
+
+        // for (let a in arr) {
+        //     console.log(a); // 0 1 2 3
+        // }
+
+        // for (let a of arr) {
+        //     console.log(a); // a b c d
+        // }
+
+    for (let [index, elem]  of arr.entries()) {
+        console.log('index'+index+' ,elem:'+elem);
+    }
+    for (let elem of arr.entries()) {
+        console.log(elem);
+    }
+    </script>
+</body>
+
+</html>

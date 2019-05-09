@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="../js/s6-promise.js"></script>
+</head>
+
+<body>
+    <script>
+        // function getFile(param, callBack) {
+        //     let newParam = ['1', '2', ...param];
+        //     callBack(null,newParam);
+        // }
+
+        // getFile(['aaa', 'bbb', 'ccc'], function showResult(err,param) {
+        //     console.log(param);
+        // });
+    </script>
+
+    <script>
+        //     let Thunk = function getFile(param) {
+        //         return function (callBack) {
+        //             let newParam = ['1', '2', ...param];
+        //             return callBack(null, newParam);
+        //         }
+        //     }
+
+        //     function showResult(err, param) {
+        //         console.log(param);
+        //     }
+
+        //  // let readFileThunk =  Thunk(['aaa', 'bbb', 'ccc']);
+        //   //readFileThunk(showResult);
+        //   Thunk(['aaa', 'bbb', 'ccc'])(showResult);
+    </script>
+
+    <script>
+        // const Thunk = function (fn) {
+        //     return function (...args) {
+        //         return function (callback) {
+        //             return fn.call(this, ...args, callback);
+        //         }
+        //     };
+        // };
+
+        // function run(fn) {
+        //     var gen = fn();
+        //     function next(err, data) {
+        //         var result = gen.next(data);
+        //         if (result.done) return;
+        //         result.value(next());
+        //     }
+
+        //     next();
+        // }
+
+        // function* g() {
+        //     var f1 = yield Thunk(readFileThunk('fileA'));
+        //     var f2 = yield Thunk(readFileThunk('fileB'));
+        //     var fn = yield Thunk(readFileThunk('fileN'));
+        // }
+
+        // function readFileThunk(param) {
+        //     setTimeout(function () {
+        //         console.log(param);
+        //     }, 1000);
+        // }
+
+        // run(g);
+    </script>
+
+    <script>
+        // async function getStockPriceByName(name) {
+        //     const symbol = await getStockSymbol(name);
+        //     const stockPrice = await getStockPrice(symbol);
+        //     return stockPrice;
+        // }
+
+        // function getStockSymbol(name) {
+        //     return name;
+
+        // }
+
+        // function getStockPrice(symbol) {
+        //     return ['1', '2', symbol];
+        // }
+
+        // getStockPriceByName('goog').then(function (result) {
+        //     console.log(result);
+        // });
+    </script>
+
+    <script>
+        // function timeout(ms) {
+        //     return new Promise((resolve) => {
+        //         setTimeout(resolve, ms);
+        //     });
+        // }
+
+        // async function asyncPrint(value, ms) {
+        //     let myResult = await timeout(ms);
+        //     console.log(JSON.stringify(myResult));
+        //     return value;
+        // }
+
+        // asyncPrint('hello world', 1000).then((result) => {
+        //     console.log(result);
+        // });
+    </script>
+
+    <script>
+        // async function f() {
+        //     throw new Error('出错了');
+        //     return 'hello world';
+        // }
+        // f().then(result => console.log(result), err => console.log(err));
+    </script>
+    <script>
+        // async function getTitle(){
+        //     let response = await funcA();
+        //     let html = await response.show();
+        //     console.log(html);
+        // }
+
+        // function funcA(){
+        //     console.log('第一个处理');
+        //     let result ={
+        //         tip:'第一个处理',
+        //         show(){
+        //             console.log('第二个开始');
+        //             return '第二个结束';
+        //         }
+        //     };
+        //     console.log('第二个结束');
+        //     return result;
+        // }
+        // getTitle().then(result=>{
+        //     console.log('处理结束');
+        // });
+
+        // async function testThen(){
+        //     return '12344';
+        // }
+
+        // testThen().then(result=>console.log(result));
+    </script>
+
+    <script>
+        // const asyncIterable = createAsyncIterable(['a', 'b']);
+        // const asyncIterator = asyncIterable[Symbol.asyncIterator]();
+
+        // asyncIterator
+        //     .next()
+        //     .then(iterResult1 => {
+        //         console.log(iterResult1); // { value: 'a', done: false }
+        //         return asyncIterator.next();
+        //     })
+        //     .then(iterResult2 => {
+        //         console.log(iterResult2); // { value: 'b', done: false }
+        //         return asyncIterator.next();
+        //     })
+        //     .then(iterResult3 => {
+        //         console.log(iterResult3); // { value: undefined, done: true }
+        //     });
+    </script>
+
+    <script>
+        // async function* gen() {
+        //     yield 'hello';
+        // }
+        // const genObj = gen();
+        // genObj.next().then(x => console.log(x));
+    </script>
+
+    <script>
+        // 同步 Generator 函数
+        function* map(iterable, func) {
+            const iter = iterable[Symbol.iterator]();
+            while (true) {
+                const {
+                    value,
+                    done
+                } = iter.next();
+                if (done) break;
+                yield func(value);
+            }
+        }
+
+      let mapN=map(['a','b','c','d'],function(result){
+            console.log(result);
+        });
+
+        mapN.next();
+        // 异步 Generator 函数
+        async function* map(iterable, func) {
+            const iter = iterable[Symbol.asyncIterator]();
+            while (true) {
+                const {
+                    value,
+                    done
+                } = await iter.next();
+                if (done) break;
+                yield func(value);
+            }
+        }
+    </script>
+</body>
+
+</html>

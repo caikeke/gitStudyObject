@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //归并
+        function merge(leftArr, rightArr) {
+            let result = [];//临时数组，保存排序后的数组
+            while (leftArr.length > 0 && rightArr.length > 0) {
+                if (leftArr[0] < rightArr[0]) {
+                    result.push(leftArr.shift());
+                } else {
+                    result.push(rightArr.shift());
+                }
+            }
+            return result.concat(leftArr).concat(rightArr);
+        }
+        //拆分
+        function mergeSort(arr) {
+            //如果数组小于等于一项，不用在再拆
+            if (arr.length <= 1) return arr;
+            //数据一分为二
+            let mid = Math.floor(arr.length / 2);
+            let leftArr = arr.slice(0, mid);
+            let rightArr = arr.slice(mid);
+
+            return merge(mergeSort(leftArr), mergeSort(rightArr));
+        }
+
+        let arr = [6, 4, 1];
+        console.log(mergeSort(arr));
+        let arr2 = [6, 4, 1,3,12,14,32,9,8];
+        console.log(mergeSort(arr2));//[1, 3, 4, 6, 8, 9, 12, 14, 32]
+    </script>
+</body>
+
+</html>

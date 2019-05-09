@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var objA = {
+            toString: function () {
+                console.log('toString')
+                return '123';
+            },
+        };
+
+        // alert(objA);
+        // alert(+objA);
+        //alert(''+objA);
+        // alert(String(objA));
+        //alert(Number(objA)); 
+        //  alert(objA == {});
+        //alert(objA == 'test');
+        //alert(objA === {});
+        // alert(objA === 'test');
+
+
+
+        // var objB = {
+        //     B:123,
+        //     valueOf: function () {
+        //         console.log('valueOf')
+        //         return this.B;
+        //     }
+        // };
+        // Object.prototype.toString = null; 
+        // alert(objB);
+        //  //alert(+objB);
+        // //alert(''+objB);
+        // // alert(String(objB));
+        // //alert(Number(objB)); 
+        // //  alert(objB == {});
+        // alert(objB == 'test');
+        // //alert(objB === {});
+        // // alert(objB === 'test');
+        // var objC = {
+        //     toString: function () {
+        //         console.log('toString')
+        //         return Object.prototype.toString.call(this)
+        //     },
+        //     valueOf: function () {
+        //         console.log('valueOf')
+        //         return Object.prototype.valueOf.call(this)
+        //     }
+        // }
+    </script>
+    <script>
+
+        // let obj = {};
+        // console.log(obj.toString());//[object Object]
+        // console.log(obj.toString.call(new String));//[object String]
+        // console.log(obj.toString.call(new Date));//[object Date]
+        // console.log(obj.toString.call(new Array));//[object Array]
+        // console.log(obj.toString.call(new Number));//[object Number]
+        // console.log(obj.toString.call(Function));//[object Function]
+        // console.log(obj.toString.call(Math));//[object Math]
+        // console.log(obj.toString.call(undefined));//[object Undefined]
+        // console.log(obj.toString.call(null));//[object Null]
+        // let objArr = [1, 2, 3, 4, 5];
+        // console.log(objArr.toString());//1,2,3,4,5
+        // let objNum = 12345;
+        // console.log(objNum.toString());//12345
+        // let objFunc = function () {
+        //     console.log('param');
+        // }
+        // console.log(objFunc.toString());
+        // // function () {
+        // //     console.log('param');
+        // // }
+        // let obj = {
+        //     toString:function(){
+        //         return '我是toString方法';
+        //     }
+        // };
+        // console.log(obj.toString());//我是toString方法
+        // console.log(obj.toString.call(new String));//我是toString方法
+
+        //let objArr = [1, 2, 3, 4, 5];
+        // let objArr = ['a', 'b', 'c', 'd', 'f'];
+        // console.log(objArr.valueOf());//["a", "b", "c", "d", "f"]
+        // let objBoolean = true;
+        // console.log(objBoolean.valueOf());//true
+        // let objDate = new Date();
+        // console.log(objDate.valueOf());//1555381853497
+        // let objFunc = function () {
+        //     console.log('param');
+        // }
+        // console.log(objFunc.valueOf());
+        // // ƒ () {
+        // //     console.log('param');
+        // // }
+        // let objNum = 12345;
+        // console.log(objNum.valueOf());//12345
+
+        // let obj = {
+        //     id: '1001',
+        //     age: 19
+        // };
+        // console.log(obj.valueOf());//{id: "1001", age: 19}
+
+        // let objStr = new String('abcdfe');
+        // console.log(objStr.valueOf());//abcdfe
+
+
+        // let obj = {
+        //     valueOf:function(){
+        //         return '我是valueOf方法';
+        //     }
+        // };
+        // console.log(obj.valueOf());//我是valueOf方法
+        // console.log(obj.valueOf.call(new String));//我是valueOf方法
+
+    </script>
+
+    <script>
+        // function fn() {
+        //     return 20;
+        // }
+        // console.log(fn + 10);
+        // console.log(fn + 'hello');
+        // fn.toString = function () {
+        //     return 10;
+        // }
+        // console.log(fn + 10);
+        // console.log(fn + 'hello');
+        // fn.valueOf = function () {
+        //     return 5;
+        // }
+        // console.log(fn + 10);
+        // console.log(fn + 'hello');
+    </script>
+
+    <script>
+
+        // let obj = {
+        //     toString: function () {
+        //         console.log('调用了 obj.toString');
+        //         return [];
+        //     },
+        //     valueOf: function () {
+        //         console.log('调用了 obj.valueOf')
+        //         return 123;
+        //     }
+        // }
+
+        // alert(obj===1);
+        // obj.toString = function () {
+        //     console.log('调用了 obj.toString');
+        //     return 'aaa'
+        // }
+        // obj.valueOf = function () {
+        //     console.log('调用了 obj.valueOf');
+        //     return [];
+        // }
+
+        // alert(obj+1);
+        // var obj = {
+        //     toString: function () {
+        //         console.log('调用了 obj.toString');
+        //         return 123;
+        //     },
+        //     valueOf: function () {
+        //         console.log('调用了 obj.valueOf')
+        //         return {};
+        //     }
+        // }
+
+        // alert(obj + 1);
+
+
+
+    //     class Test {
+    //         valueOf() {
+    //             console.log('调用 valueOf 方法');
+    //             return 1;
+    //         }
+    //         toString() {
+    //             console.log('调用 toString 方法');
+    //             return 1;
+    //         }
+    //     }
+    //     var T1 = new Test();
+    //   alert(T1);
+
+       //`${T1}`
+    </script>
+
+    <script>
+        function add(x) {
+            var sum = x;
+            var tmp = function (y) {
+                sum = sum + y;
+                return tmp;
+            };
+
+            tmp.toString = function () {
+                return sum;
+            };
+            return tmp;
+        }
+        console.log(add(2)(3)(4));
+    </script>
+</body>
+
+</html>

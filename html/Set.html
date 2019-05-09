@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <script>
+        // const s = new Set();
+        // [2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
+        // for (let i of s) {
+        //     console.log(i);
+        // }
+        // let array = [1, 2, 33, 33, 4, 5, 6, 7, 1, 1, 1];
+        // let newArray = [...new Set(array)];
+        // console.log(newArray);
+        // let set = new Set(['red', 'green', 'blue']);
+
+        // for (let item of set.entries()) {
+        //     console.log(item);
+        // }
+
+        // let setNum = new Set([1, 2, 4,5,6,7,8]);
+        // for (let item of setNum.entries()) {
+        //     console.log(item);
+        // }
+
+        // let setN = new Set();
+        // setN.add("qqq");
+        // for (let item of setN) {
+        //     console.log(item);
+        // }
+
+        // let a = new Set([1, 2, 3]);
+        // let b = new Set([4, 3, 2]);
+        // // 并集
+        // let union = new Set([...a, ...b]);
+        // console.log(union);
+        // // 交集
+        // let intersect = new Set([...a].filter(x => b.has(x)));
+        // console.log(intersect);
+        // // 差集
+        // let difference = new Set([...a].filter(x => !b.has(x)));
+        // console.log(difference);
+        // let set = new Set([1, 2, 3]);
+        // console.log(Array.from(set));
+        const set = new Set([
+            ['foo', 1],
+            ['bar', 2]
+        ]);
+        console.log(set);
+
+        let str ='32131313';
+        let arr = Array.of(...str);
+        console.log(arr);
+    </script>
+</body>
+
+</html>

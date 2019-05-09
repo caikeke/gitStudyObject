@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .triangle {
+            width: 0;
+            height: 0;
+            border: 50px solid ;
+            border-color: blue yellow red green;
+        }
+        .parent{
+            width: 1000px;
+            height: 200px;
+            padding: 32px 0;
+            background-color: antiquewhite;
+        }
+        .table-div{
+          display: table;
+        }
+        .child{
+            width: 25%;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            background-color: aqua;
+            border: 1px solid yellowgreen;
+        }
+        .child-area{
+            background-color: blueviolet;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="triangle"></div>
+
+    <div class="parent table-div">
+        <div class="child">
+            <div class="child-area">child</div>
+        </div>
+        <div class="child">
+            <div class="child-area">1</div>
+        </div>
+        <div class="child">
+            <div class="child-area">child</div>
+        </div>
+        <div class="child">
+            <div class="child-area">child</div>
+        </div>
+    </div>
+</body>
+
+</html>

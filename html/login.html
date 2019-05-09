@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .placeholder {
+            position: absolute;
+            top: 20px;
+            font-size: 24px;
+        }
+
+        .animAdd{
+            animation: mymove 0.8s forwards;
+            /*Safari 和 Chrome:*/
+            -webkit-animation: mymove 0.8s forwards;
+        }
+        .animRemove{
+            animation: myback 0.8s forwards;
+            /*Safari 和 Chrome:*/
+            -webkit-animation: myback 0.8s forwards;
+        }
+        @keyframes mymove {
+            from {
+                top: 20px;
+                font-size: 24px;
+            }
+            to {
+                top: -30px;
+                font-size: 18px;
+            }
+        }
+
+        /*Safari 和 Chrome:*/
+        @-webkit-keyframes mymove {
+            from {
+                top: 20px;
+                font-size: 24px;
+            }
+            to {
+                top: -30px;
+                font-size: 18px;
+            }
+        }
+
+        @keyframes myback {
+            from {
+                top: -30px;
+                font-size: 18px;
+            }
+            to {
+                top: 20px;
+                font-size: 24px;
+            }
+        }
+
+        /*Safari 和 Chrome:*/
+        @-webkit-keyframes myback {
+            from {
+                top: -30px;
+                font-size: 18px;
+            }
+            to {
+                top: 20px;
+                font-size: 24px;
+            }
+        }
+
+        .box {
+            position: relative;
+            height: 200px;
+            margin-top: 60px;
+        }
+
+        .mu-text-field-input {
+            height: 80px;
+            width: 200px;
+        }
+    </style>
+
+</head>
+<body>
+
+<p>模拟输入框获取简单：<p>
+<div class="box">
+    <div class="placeholder" id="myDIV">密码</div>
+    <div>
+        <input name="password" type="password" class="mu-text-field-input" onfocus="addTras()"  onblur="removeTras()">
+    </div>
+</div>
+<script>
+
+    function removeTras() {
+        document.getElementById("myDIV").classList.remove("animAdd");
+        document.getElementById("myDIV").classList.add("animRemove");
+    }
+    function addTras(){
+        console.log("3123");
+        document.getElementById("myDIV").classList.remove("animRemove");
+       document.getElementById("myDIV").classList.add("animAdd");
+        // let div = document.getElementById('myDIV');
+        // div.setAttribute("class", "animAdd");
+    }
+</script>
+
+</body>
+</html>

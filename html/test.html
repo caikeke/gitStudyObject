@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="pragram" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache,must-revalidate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            background-image: url(../image/bg.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .content_tip {
+            margin-top: 20%;
+            text-align: center;
+            padding-bottom: 10px;
+        }
+
+        .label_tip {
+            font-size: 1.4rem;
+            color: #ffffff;
+            padding-bottom: 4px;
+            border-bottom: 2px solid #ffffff;
+        }
+
+        .content_area {
+            height: 100%;
+            background-image: url(../image/div_bg.png);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            text-align: center;
+            margin: 15% 12%;
+            padding-top: 40px;
+            position: relative;
+        }
+
+        .content_area_tip {
+            color: #C0A26C;
+            font-size: 20px;
+        }
+
+        .div_input {
+            margin-top: 20%;
+            border-radius: 3px;
+            height: 48px;
+            width: 80%;
+            border: 1px solid #C0A26C;
+            font-size: 1.0rem;
+            text-indent: 5%;
+        }
+
+        .sms-box {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .input-captcha {
+            outline: none;
+            height: 48px;
+            line-height: 48px;
+            width: 80%;
+            border: 1px solid #C0A26C;
+            font-size: 1.0rem;
+            text-indent: 5%;
+            /*box-sizing: border-box;*/
+        }
+
+        .captcha-text {
+            position: absolute;
+            top: 5px;
+            right: 36px;
+            font-size: 1.0rem;
+            padding-left: 4px;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            cursor: pointer;
+            color: #C0A26C;
+            border-left: 1px solid #C0A26C;
+        }
+
+        .btn {
+            height: 80px;
+            line-height: 80px;
+            padding: 16px 30%;
+            background: #C0A26C;
+            color: #ffffff;
+            text-decoration: none;
+            border: none;
+            margin-top: 36px;
+        }
+
+        .bottom_tip {
+            position: absolute;
+            width: 80%;
+            left: 50%;
+            transform: translate(-50%, 0);
+            text-align: left;
+        }
+
+        .button_div {
+            margin-top: 56px;
+        }
+    </style>
+    <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="content_tip"><label class="label_tip">新人福利大放送</label></div>
+<div class="content_area">
+    <label class="content_area_tip">注册即送10元立减券</label>
+    <input type="text" class="div_input" placeholder="请输入手机号" id="phoneNum"/>
+    <div class="sms-box">
+        <input id="captchaInput" class="input-captcha" placeholder="请输入验证码" maxlength="6">
+        <a class="captcha-text" id="buttonCaptchaGet">获取验证码</a>
+    </div>
+    <div class="bottom_tip">
+        <div class="bottom_tip_label">同意签署协议</div>
+        <div class="bottom_tip_label">同意签署协议同意签署协议同意签署协议</div>
+    </div>
+    <div class="button_div">
+        <a href="" class="btn" id="btn">立即领取</a>
+    </div>
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+        console.log(window.innerHeight);
+        $("html").height(window.innerHeight);
+    });
+    $("input").focus(function () {
+        console.log("focus" + window.innerHeight);
+        // $("html").height(window.innerHeight);
+        $("html").height(window.screen.availHeight);
+    });
+    $("input").blur(function () {
+        console.log("blur" + window.innerHeight);
+        $("html").height(window.innerHeight);
+    });
+</script>
+</html>

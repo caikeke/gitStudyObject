@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+    <script src="../js/s6-promise.js"></script>
+    <script src="../js/MyPromise.js"></script>
+</head>
+
+<body>
+    <script>
+        // let p1 = new Promise(function (resolve, reject) {
+        //     //resolve('成功');
+        //     reject('失败');
+        // });
+        // p1.then((data) => {
+        //     console.log(data);
+        //     return "参数二";
+        // }, (error) => {
+        //     console.log(error);
+        //     return new Promise(function (resolve, reject) {
+        //         resolve('第二个成功参数');
+        //     });
+        // }).then((data) => {
+        //     console.log("第三个成功-then:" + data);
+        // }, (error) => {
+        //     console.log("第三个失败-then:" + error);
+        // });
+        //  "成功"
+
+        //
+        //    let p2 = new Promise(function (resolve, reject) {
+        //        reject(new Error('失败'));
+        //    });
+        //    p2.then(console.log, console.error);
+        // Error: 失败
+
+
+        // function timeout(ms) {
+        //     return new Promise((resolve, reject) => {
+        //           setTimeout(resolve, ms, 'done');
+        //         //setTimeout(reject, ms, 'done');
+        //     });
+        // }
+        //
+        // timeout(100).then((data) => {
+        //     console.log("data:" + data);
+        // }, (error) => {
+        //     console.log("error:" + error);
+        // });
+
+
+        // function f1() {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             resolve("success");
+        //         }, 1000);
+        //     });
+        // }
+        //
+        // function f2(data) {
+        //     return data;
+        // }
+        //
+        // // 写法一
+        // f1().then(function (data) {
+        //     console.log("成功回调！")
+        //     return f2(data);
+        // }).then((data) => {
+        //     console.log(data);
+        // });
+
+        // 写法二
+        // f1().then(function () {
+        //   console.log(f2());
+        // });
+
+        // 写法三
+        // f1().then(f2()).then((data) => {
+        //     console.log(data);
+        // });
+
+        //写法四
+        // f1().then(f2)
+        //     .then((data) => {
+        //         console.log(data);
+        //     });
+    </script>
+
+    <script>
+        // let mPromise = new Promise(function (resolve, reject) {
+        //     resolve("第一个操作");
+        // }).then(function (data) {
+        //     console.log("data---->" + data);
+        //     return "第一个then完成";
+        // }).then(function (dataT) {
+        //     console.log("dataT---->" + dataT);
+        //     return "第二个then完成完成";
+        // }).then(function (dataS) {
+        //     console.log("dataS---->" + dataS);
+        // });
+    </script>
+    <script>
+        // const someAsyncThing = function () {
+        //     return new Promise(function (resolve, reject) {
+        //         // 下面一行会报错，因为x没有声明
+        //         resolve(2);
+        //         setTimeout(() => {
+        //         console.log(123)
+        //     }, 2000);
+        //     });
+        // };
+
+        // someAsyncThing().then(function () {
+        //     console.log('everything is great');
+
+        // }).then(function (param) {
+        //     console.log('error-then');
+        //     y + 2;
+        // }).catch(function (error) {
+        //     console.log('error-catch--->'+error);
+        // }).finally(function () {
+        //     console.log('finally end-->');
+        // });
+    </script>
+    <script>
+        // const p2 = new Promise((resolve, reject) => {
+        //     resolve("第一个成功了");
+
+        //     })
+        //     .then((result) =>{
+        //         console.log(result);
+        //         throw new Error('报错了');
+        //     },(error)=>{
+        //         console.log(error);
+        //     })
+        //     .catch(e => e).then(function (data) {  
+        //         console.log(data);
+        //     });
+    </script>
+    <script>
+        // new Promise(function (resolve,reject) {
+        //     console.log(1);
+        //     resolve(3);
+        //     Promise.resolve().then(() => console.log(4)).then(() => console.log(5))
+        //   }).then((result) => {    
+        //       console.log(result);
+        //   }).then((result) => {
+        //     console.log(6);
+        //   }).catch((err) => {
+
+        //   });
+        //   console.log(2);
+        //   console.log('====================================');
+        //   console.log(JSON.stringify(process));
+        //   console.log('====================================');
+    </script>
+
+    <script>
+        // // 测试代码
+        // new MyPromise(resolve => {
+        //     console.log(1);
+        //     resolve(3);
+        //     MyPromise.resolve().then(() => console.log(4)).then(() => console.log(5))
+        // }).then(num => {
+        //     console.log(num);
+        // }).then(() => {
+        //     console.log(6);
+        // });
+        // console.log(2);// 依次输出：1 2 4 3 5 6
+    </script>
+
+    <script>
+        // new MyPromise(function (resolve,reject) {
+        //     // resolve(new MyPromise(function(resolve,reject){
+        //     //     console.log('第二个MyPromise');
+        //     //     resolve('第二个成功！');
+        //     // })).then((result)=>{
+        //     //     console.log(result);
+        //     // });
+        //     resolve('第一个成功');
+        //   }).then((result) => {
+        //     console.log("result--->"+result);
+        //     return '第二个成功';
+        //   }).then((result) => {
+        //     console.log("result--->"+result);
+        //     return '第三个成功';
+        //   });
+
+        new MyPromise(function (resolve,reject) { 
+            resolve('第一个成功');
+         }).then((result) => {
+             console.log(result);
+         });
+    </script>
+
+    <script>
+        // function MainFunc(handle) {
+        //     handle(mResolve.bind(this), mReject.bind(this), '3123312323');
+        // }
+
+        // let mResolve = (value) => {
+        //     console.log('mResolve---->' + value);
+        // }
+
+        // let mReject = (value) => {
+        //     console.log('mReject---->' + value);
+        // }
+
+        // function handleF(func1, func2, value){
+        //     // func1(111);
+        //     // func2(2222);
+        //     // console.log('bbbbbbbbbb');
+        // }
+        // MainFunc(handleF);
+
+        // function f1(callback) {
+        //     //计算额度
+        //     let num = 10+12;
+        //     callback(num);
+        // }
+
+        // function f2(value) {
+        //     console.log(value);
+        // }
+
+        // f1(f2);
+    </script>
+</body>
+
+</html>

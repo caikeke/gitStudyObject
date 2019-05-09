@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+正则表达式
+<script>
+    // let str1 = "123ab";//5位，低于6位，不匹配
+    // let str2 = "123abc_-";//8位，只包含数字0-9，小写字母a-z，匹配
+    // let str3 = "123abc_-!";//包含规则外的!字符，不匹配
+    // let str4 = "123Abc_-!";//包含规则外的A字符，不匹配
+    // let str5 = "123abc_-231abc";//14位，超过6~12位，不匹配
+    // let patt1 = /^[a-z0-9-_]{6,12}$/;//只能包含小写字母a-z、0-9、_和-,并且只能6~12位。
+    // console.log(patt1.test(str1));//false
+    // console.log(patt1.test(str2));//true
+    // console.log(patt1.test(str3));//false
+    // console.log(patt1.test(str4));//false
+    // console.log(patt1.test(str5));//false
+    //
+    // let str = "Visit RUnoob";
+    // let patt2 = /runoob/i;
+    // console.log(str.match(patt2));
+    //
+    // let str12="Is this all there is?";
+    // let patt2=/is/g;
+    // console.log(str12.match(patt2));
+    // let patt3=/is/gi;
+    // console.log(str12.match(patt3));
+
+    let patt1=new RegExp("e");
+    console.log(patt1.exec("The best things in life are free"));
+</script>
+</body>
+</html>
