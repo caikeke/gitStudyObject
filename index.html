@@ -1,0 +1,2889 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/prop-types_15.6.0.js"></script>
+    <!-- Don't use this in production: -->
+    <script src="./js/babel.min.js"></script>
+    <style>
+      html,
+      body,
+      #root {
+        width: 100%;
+        height: 100%;
+      }
+      .warn_area {
+        width: 100%;
+        height: 60px;
+        background-color: red;
+      }
+      .SplitPane {
+        width: 100%;
+        height: 100%;
+      }
+
+      .SplitPane-left {
+        float: left;
+        width: 30%;
+        height: 100%;
+      }
+
+      .SplitPane-right {
+        float: left;
+        width: 70%;
+        height: 100%;
+      }
+
+      .Contacts {
+        width: 100%;
+        height: 100%;
+        background: lightblue;
+      }
+
+      .Chat {
+        width: 100%;
+        height: 100%;
+        background: pink;
+      }
+
+      #modal-root {
+        position: relative;
+        z-index: 999;
+      }
+
+      .app {
+        height: 10rem;
+        width: 10rem;
+        background: lightblue;
+        overflow: hidden;
+      }
+
+      .modal {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal_area {
+        margin: 10px;
+        padding: 10px;
+        width: 50%;
+        background-color: bisque;
+      }
+      .btn-div {
+        text-align: center;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <div id="modal-root"></div>
+    <!-- <script type="text/babel">
+      class TodoApp extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { items: [], text: "" };
+        }
+
+        render() {
+          return (
+            <div>
+              <h3>TODO</h3>
+              <TodoList items={this.state.items} />
+              <form onSubmit={this.handleSubmit.bind(this)}>
+                <label htmlFor="new-todo">What needs to be done?</label>
+                <input
+                  id="new-todo"
+                  onChange={this.handleChange.bind(this)}
+                  value={this.state.text}
+                />
+                <div>
+                <button>Add #{this.state.items.length + 1}</button>
+              </div>
+              </form>
+            </div>
+          );
+        }
+
+        handleChange(e) {
+          this.setState({ text: e.target.value });
+        }
+
+        handleSubmit(e) {
+          e.preventDefault();
+          if (!this.state.text.length) {
+            return;
+          }
+          const newItem = {
+            text: this.state.text,
+            id: Date.now()
+          };
+          this.setState(state => ({
+            items: state.items.concat(newItem),
+            text: ""
+          }));
+        }
+      }
+
+      class TodoList extends React.Component {
+        render() {
+          return (
+            <ul>
+              {this.props.items.map(item => (
+                <li key={item.id}>{item.text}</li>
+              ))}
+            </ul>
+          );
+        }
+      }
+
+      ReactDOM.render(<TodoApp />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      function tick() {
+        const element = (
+          <div>
+            <h1>Hello, world!</h1>
+            <h2>It is {new Date().toLocaleTimeString()}.</h2>
+          </div>
+        );
+        ReactDOM.render(element, document.getElementById("root"));
+      }
+
+      setInterval(tick, 1000);
+    </script> -->
+    <!-- <script type="text/babel">
+      class Clock extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { date: new Date(), name: "kevin", counter: 1 };
+        }
+
+        componentDidMount() {
+          console.log("componentDidMount");
+          this.timerID = setInterval(() => this.tick(), 1000);
+        }
+
+        componentWillUnmount() {
+          console.log("componentWillUnmount");
+          clearInterval(this.timerID);
+        }
+
+        tick() {
+          this.setState(
+            (state, props) => ({
+              date: new Date(),
+              counter: state.counter + props.initCount
+            }),
+            function() {
+              //console.log("设置完成");
+            }
+          );
+        }
+
+        render() {
+          return (
+            <div>
+              <h1>Hello, world!</h1>
+              <h2>Create Time: {this.props.date.toLocaleTimeString()}.</h2>
+              <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+              <h2>It is {this.state.counter}.</h2>
+            </div>
+          );
+        }
+      }
+
+      class LoggingButton extends React.Component {
+        handleClick(e) {
+          e.preventDefault();
+          console.log("element:", e.target.innerHTML);
+          console.log("this is:", this);
+        }
+
+        render() {
+          // 此语法确保 `handleClick` 内的 `this` 已被绑定。
+          return <button onClick={e => this.handleClick(e)}>Click me</button>;
+        }
+      }
+
+      let register = React.CreateClass();
+      ReactDOM.render(
+        <div>
+          <LoggingButton />
+          <Clock date={new Date()} initCount={200} />
+        </div>,
+        document.getElementById("root")
+      );
+    </script> -->
+    <!-- <script type="text/babel">
+      function UserGreeting(props) {
+        return <h1>Welcome back!</h1>;
+      }
+
+      function GuestGreeting(props) {
+        return <h1>Please sign up.</h1>;
+      }
+
+      function LoginButton(props) {
+        return <button onClick={props.onClick}>Login</button>;
+      }
+
+      function LogoutButton(props) {
+        return <button onClick={props.onClick}>Logout</button>;
+      }
+
+      function Greeting(props) {
+        const isLoggedIn = props.isLoggedIn;
+        if (isLoggedIn) {
+          return <UserGreeting />;
+        }
+        return <GuestGreeting />;
+      }
+
+      class LoginControl extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleLoginClick = this.handleLoginClick.bind(this);
+          this.handleLogoutClick = this.handleLogoutClick.bind(this);
+          this.state = { isLoggedIn: false };
+        }
+
+        handleLoginClick() {
+          this.setState({ isLoggedIn: true },()=>{
+            console.log('登录');
+          });
+        }
+
+        handleLogoutClick() {
+          this.setState({ isLoggedIn: false },()=>{
+            console.log('退出');
+
+          });
+        }
+
+        render() {
+          const isLoggedIn = this.state.isLoggedIn;
+          let button;
+
+          if (isLoggedIn) {
+            button = <LogoutButton onClick={this.handleLogoutClick} />;
+          } else {
+            button = <LoginButton onClick={this.handleLoginClick} />;
+          }
+
+          return (
+            <div>
+              <Greeting isLoggedIn={isLoggedIn} />
+              {button}
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<LoginControl />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      function Mailbox(props) {
+        const unreadMessages = props.unreadMessages;
+        const readedMessages = props.readedMeaasges;
+        return (
+          <div>
+            <h1>Hello!</h1>
+            {unreadMessages.length > 0 && (
+              <h2>You have {unreadMessages.length} unread messages.</h2>
+            )}
+            {readedMessages.length > 0 && (
+              <h2>You have {readedMessages.length} readed messages.</h2>
+            )}
+            {readedMessages.length < unreadMessages.length ? (
+              <h2>You have more unread messages.</h2>
+            ) : (
+              <h2>You have more readed messages.</h2>
+            )}
+          </div>
+        );
+      }
+
+      const unReadMessages = ["React", "Re: React", "Re:Re: React"];
+      const readedMeaasges = ["JS", "HTML", "CSS", "Less", "ES6"];
+      ReactDOM.render(
+        <Mailbox
+          unreadMessages={unReadMessages}
+          readedMeaasges={readedMeaasges}
+        />,
+        document.getElementById("root")
+      );
+    </script> -->
+    <!-- <script type="text/babel">
+      function WarningBanner(props) {
+        if (!props.warn) {
+          return null;
+        }
+
+        return <div className="warn_area">Waring! Waring! Waring! err~~~</div>;
+      }
+
+      class Page extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            showWarning: true
+          };
+        }
+
+        componentDidUpdate(prevProps, prevState) {
+          console.log('prevState'+JSON.stringify(prevState));
+        }
+        handleToggleClick() {
+          this.setState(
+            (state, props) => ({
+              showWarning: !state.showWarning
+            }),
+            () => {
+              console.log("修改成功！");
+            }
+          );
+        }
+
+        render() {
+          return (
+            <div>
+              <WarningBanner warn={this.state.showWarning} />
+              <button onClick={this.handleToggleClick.bind(this)}>
+                {this.state.showWarning ? "Hide" : "Show"}
+              </button>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Page />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      const numberArr = [1, 2, 3, 4, 5];
+      const listItems = numberArr.map(item => {
+        return <li key={Math.random()*item*1234}>{item}</li>;
+      });
+
+      ReactDOM.render(
+        <div>
+          <ul>{listItems}</ul>
+        </div>,
+        document.getElementById("root")
+      );
+    </script> -->
+    <!-- <script type="text/babel">
+      class NameForm extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            value: "",
+            textareaValue: "请撰写一篇关于你喜欢的 DOM 元素的文章.",
+            selectValue:'lime'
+          };
+
+          this.handleChange = this.handleChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
+        }
+
+        handleChange(event) {
+          this.setState({ value: event.target.value.toUpperCase() });
+        }
+
+        handleSubmit(event) {
+          alert("提交的名字: " + this.state.value);
+          event.preventDefault();
+        }
+
+        handleSelectChange(event) {
+          this.setState({ selectValue: event.target.value });
+        }
+        render() {
+          return (
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                名字:
+                <input
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <input type="submit" value="提交" />
+              <div>
+                <label>
+                  文章:
+                  <textarea
+                    value={this.state.textareaValue}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+              <div>
+                <label>
+                  选择你喜欢的风味:
+                  <select value={this.state.selectValue} onChange={this.handleSelectChange.bind(this)}>
+                    <option value="grapefruit">葡萄柚</option>
+                    <option value="lime">柠檬</option>
+                    <option value="coconut">椰子</option>
+                    <option value="mango">芒果</option>
+                  </select>
+                </label>
+              </div>
+            </form>
+          );
+        }
+      }
+      ReactDOM.render(
+        <div>
+          <NameForm />
+        </div>,
+        document.getElementById("root")
+      );
+    </script> -->
+    <!--  <script type="text/babel">
+      function BoilingVerdict(props) {
+        if (props.celsius >= 100) {
+          return <p>The water would boil.</p>;
+        }
+        return <p>The water would not boil.</p>;
+      }
+
+      const scaleNames = {
+        c: "Celsius",
+        f: "Fahrenheit"
+      };
+
+      class TemperatureInput extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleChange = this.handleChange.bind(this);
+        }
+
+        handleChange(e) {
+          this.props.onTemperatureChange(e.target.value);
+        }
+
+        render() {
+          const temperature = this.props.temperature;
+          const scale = this.props.scale;
+          return (
+            <fieldset>
+              <legend>Enter temperature in {scaleNames[scale]}:</legend>
+              <input value={temperature} onChange={this.handleChange} />
+            </fieldset>
+          );
+        }
+      }
+
+      class Calculator extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleCelsiusChange = this.handleCelsiusChange.bind(this);
+          this.handleFahrenheitChange = this.handleFahrenheitChange.bind(this);
+          this.state = { temperature: "", scale: "c" };
+        }
+
+        //摄氏度输入框变化
+        handleCelsiusChange(temperature) {
+          this.setState({ scale: "c", temperature: temperature });
+        }
+        //华氏度输入框变化
+        handleFahrenheitChange(temperature) {
+          this.setState({ scale: "f", temperature: temperature });
+        }
+
+        //华氏温度转化为摄氏度
+        toCelsius(fahrenheit) {
+          return ((fahrenheit - 32) * 5) / 9;
+        }
+        //摄氏度转化华氏温度
+        toFahrenheit(celsius) {
+          return (celsius * 9) / 5 + 32;
+        }
+
+        //输入格式校验，无效返回空字符串，有效返回保留三位小数四舍五入
+        tryConvert(temperature, convert) {
+          const input = parseFloat(temperature);
+          if (Number.isNaN(input)) {
+            return "";
+          }
+          const output = convert(input);
+          const rounded = Math.round(output * 1000) / 1000;
+          return rounded.toString();
+        }
+
+        render() {
+          const scale = this.state.scale;
+          const temperature = this.state.temperature;
+          const celsius =
+            scale === "f"
+              ? this.tryConvert(temperature, this.toCelsius)
+              : temperature;
+          const fahrenheit =
+            scale === "c"
+              ? this.tryConvert(temperature, this.toFahrenheit)
+              : temperature;
+
+          return (
+            <div>
+              <TemperatureInput
+                scale="c"
+                temperature={celsius}
+                onTemperatureChange={this.handleCelsiusChange}
+              />
+
+              <TemperatureInput
+                scale="f"
+                temperature={fahrenheit}
+                onTemperatureChange={this.handleFahrenheitChange}
+              />
+
+              <BoilingVerdict celsius={parseFloat(celsius)} />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Calculator />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      function Contacts() {
+        return <div className="Contacts" />;
+      }
+
+      function Chat() {
+        return <div className="Chat" />;
+      }
+
+      function SplitPane(props) {
+        return (
+          <div className="SplitPane">
+            <div className="SplitPane-left">{props.left}</div>
+            <div className="SplitPane-right">{props.right}</div>
+          </div>
+        );
+      }
+
+      function App() {
+        return <SplitPane left={<Contacts />} right={<Chat />} />;
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      const PRODUCTS = [
+        {
+          category: "Sporting Goods",
+          price: "$49.99",
+          stocked: true,
+          name: "Football"
+        },
+        {
+          category: "Sporting Goods",
+          price: "$9.99",
+          stocked: true,
+          name: "Baseball"
+        },
+        {
+          category: "Sporting Goods",
+          price: "$29.99",
+          stocked: false,
+          name: "Basketball"
+        },
+        {
+          category: "Electronics",
+          price: "$99.99",
+          stocked: true,
+          name: "iPod Touch"
+        },
+        {
+          category: "Electronics",
+          price: "$399.99",
+          stocked: false,
+          name: "iPhone 5"
+        },
+        {
+          category: "Electronics",
+          price: "$199.99",
+          stocked: true,
+          name: "Nexus 7"
+        }
+      ];
+
+      class SearchBar extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+          this.handleInStockChange = this.handleInStockChange.bind(this);
+        }
+
+        handleFilterTextChange(e) {
+          this.props.onFilterTextChange(e.target.value);
+        }
+
+        handleInStockChange(e) {
+          this.props.onInStockChange(e.target.checked);
+        }
+
+        render() {
+          return (
+            <form>
+              <input
+                type="text"
+                placeholder="Search..."
+                value={this.props.filterText}
+                onChange={this.handleFilterTextChange}
+              />
+              <p>
+                <input
+                  type="checkbox"
+                  checked={this.props.inStockOnly}
+                  onChange={this.handleInStockChange}
+                />{" "}
+                Only show products in stock
+              </p>
+            </form>
+          );
+        }
+      }
+      class ProductCategoryRow extends React.Component {
+        render() {
+          const category = this.props.category;
+          return (
+            <tr>
+              <th colSpan="2">{category}</th>
+            </tr>
+          );
+        }
+      }
+      class ProductRow extends React.Component {
+        render() {
+          const product = this.props.product;
+          const name = product.stocked ? (
+            product.name
+          ) : (
+            <span style={{ color: "red" }}>{product.name}</span>
+          );
+
+          return (
+            <tr>
+              <td>{name}</td>
+              <td>{product.price}</td>
+            </tr>
+          );
+        }
+      }
+
+      class ProductTable extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+
+        render() {
+          const filterText = this.props.filterText;
+          const inStockOnly = this.props.inStockOnly;
+
+          const rows = [];
+          let lastCategory = null;
+
+          this.props.products.forEach(product => {
+            if (product.name.toLowerCase().indexOf(filterText.toLowerCase()) === -1) {
+              return;
+            }
+            if (inStockOnly && !product.stocked) {
+              return;
+            }
+            if (product.category !== lastCategory) {
+              rows.push(
+                <ProductCategoryRow
+                  category={product.category}
+                  key={product.category}
+                />
+              );
+            }
+            rows.push(<ProductRow product={product} key={product.name} />);
+            lastCategory = product.category;
+          });
+          return (
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>{rows}</tbody>
+            </table>
+          );
+        }
+      }
+
+      class FilterableProductTable extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            filterText: "",
+            inStockOnly: false
+          };
+
+          this.handleFilterTextChange = this.handleFilterTextChange.bind(this);
+          this.handleInStockChange = this.handleInStockChange.bind(this);
+        }
+
+        handleFilterTextChange(filterText) {
+          this.setState({
+            filterText: filterText
+          });
+        }
+
+        handleInStockChange(inStockOnly) {
+          this.setState({
+            inStockOnly: inStockOnly
+          });
+        }
+
+        render() {
+          return (
+            <div>
+              <SearchBar
+                filterText={this.state.filterText}
+                inStockOnly={this.state.inStockOnly}
+                onFilterTextChange={this.handleFilterTextChange}
+                onInStockChange={this.handleInStockChange}
+              />
+              <ProductTable
+                products={this.props.products}
+                filterText={this.state.filterText}
+                inStockOnly={this.state.inStockOnly}
+              />
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <FilterableProductTable products={PRODUCTS} />,
+        document.getElementById("root")
+      );
+    </script> -->
+    <!-- <script type="text/babel">
+      const arrList = [
+        {
+          id: "10001",
+          term: "China",
+          description: "亚洲中国"
+        },
+        {
+          id: "10002",
+          term: "Japan",
+          description: "亚洲日本"
+        },
+        {
+          id: "10003",
+          term: "Korea",
+          description: "亚洲韩国"
+        }
+      ];
+      function Glossary(props) {
+        return (
+          <dl>
+            {props.items.map(item => (
+              // Fragments should also have a `key` prop when mapping collections
+              <div key={item.id}>
+                <dt>{item.term}</dt>
+                <dd>{item.description}</dd>
+              </div>
+            ))}
+          </dl>
+        );
+      }
+      ReactDOM.render(
+        <Glossary items={arrList} />,
+        document.getElementById("root")
+      );
+    </script> -->
+    <!-- <script type="text/babel">
+      // Context 可以让我们无须明确地传遍每一个组件，就能将值深入传递进组件树。
+      // 为当前的 DATA 创建一个 context（{id:00000,name:XX,address:'China'}为默认值）。
+      const DataContext = React.createContext({id:'00000',name:'XX',address:'China'});
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.id = 1000;
+          this.state = {
+            obj: {
+              id: this.id,
+              name: "CaiKe",
+              address: "上海徐汇区"
+            }
+          };
+        }
+        render() {
+          setTimeout(() => {
+            this.setState({
+              obj: {
+                id: ++this.id,
+                name: "Kevin",
+                address: "上海浦东新区"
+              }
+            });
+          }, 1500);
+          // 使用一个 Provider 来将当前的 DataContext 传递给以下的组件树。
+          // 无论多深，任何组件都能读取这个值。
+          // 在这个例子中，我们将this.state.obj作为当前的值传递下去。
+          return (
+            <DataContext.Provider value={JSON.stringify(this.state.obj)}>
+              <MiddleCom />
+            </DataContext.Provider>
+          );
+        }
+      }
+
+      // 中间的组件再也不必指明往下传递 DataContext 了。
+      function MiddleCom(props) {
+        return (
+          <div>
+            <ChildCom />
+          </div>
+        );
+      }
+
+      class ChildCom extends React.Component {
+        // 指定 contextType 读取当前的 DataContext。
+        // React 会往上找到最近的 Provider，然后使用它的值。
+        // 在这个例子中，当前的 DataContext 值为 App 组件中的state的obj的值。
+       static contextType = DataContext;
+        constructor(props) {
+          super(props);
+          this.value = null;
+        }
+        componentDidMount() {
+          this.value = this.context;
+        }
+        componentDidUpdate(prevProps, prevState) {
+          this.value = this.context;
+        }
+        render() {
+          return <div>{this.value}</div>;
+        }
+      }
+      // ThemedButton.contextType = ThemeContext;
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      const themes = {
+        light: {
+          foreground: "#000000",
+          background: "#eeeeee"
+        },
+        dark: {
+          foreground: "#ffffff",
+          background: "#222222"
+        }
+      };
+      const ThemeContext = React.createContext(
+        themes.dark // 默认值
+      );
+
+      class ThemedButton extends React.Component {
+        render() {
+          let props = this.props;
+          let theme = this.context;
+          return (
+            <button {...props} style={{ backgroundColor: theme.background }} />
+          );
+        }
+      }
+      ThemedButton.contextType = ThemeContext;
+
+      // 一个使用 ThemedButton 的中间组件
+      function Toolbar(props) {
+        return (
+          <ThemedButton onClick={props.changeTheme}>Change Theme</ThemedButton>
+        );
+      }
+
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            theme: themes.light
+          };
+
+          this.toggleTheme = () => {
+            this.setState(state => ({
+              theme: state.theme === themes.dark ? themes.light : themes.dark
+            }));
+          };
+        }
+
+        render() {
+          // 在 ThemeProvider 内部的 ThemedButton 按钮组件使用 state 中的 theme 值，
+          // 而外部的组件使用默认的 theme 值
+          return (
+            <div>
+              <ThemeContext.Provider value={this.state.theme}>
+                <Toolbar changeTheme={this.toggleTheme} />
+                <section>
+                  <ThemedButton>in context</ThemedButton>
+                </section>
+              </ThemeContext.Provider>
+              <section>
+                <ThemedButton>out context</ThemedButton>
+              </section>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      class ErrorBoundary extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { hasError: false };
+        }
+
+        static getDerivedStateFromError(error) {
+          // Update state so the next render will show the fallback UI.
+          console.log("componentDidCatch");
+          return { hasError: true };
+        }
+
+        componentDidCatch(error, info) {
+          // You can also log the error to an error reporting service
+         // logErrorToMyService(error, info);
+         console.log("componentDidCatch");
+         
+        }
+
+        render() {
+          if (this.state.hasError) {
+            // You can render any custom fallback UI
+            return <h1>Something went wrong.</h1>;
+          }
+
+          return this.props.children;
+        }
+      }
+      class MyList extends React.Component {
+        render() {
+          // No need to wrap list items in an extra element!
+          return (
+            <ul>
+              <li>First item</li>
+              <li>Second item</li>
+              <li>Third item</li>
+            </ul>
+          );
+        }
+      }
+
+      ReactDOM.render(
+        <div>
+          <ErrorBoundary>
+            <MyList />
+          </ErrorBoundary>
+        </div>,
+        document.getElementById("root")
+      );
+    </script> -->
+    <!-- <script type="text/babel">
+      //过时的Refs
+      class APIComponent extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+        componentDidMount() {
+          this.refs.myRef.innerHTML = "我是过时的String 类型的Refs";
+          console.log(this.refs.myRef);
+        }
+        render() {
+          return <div ref="myRef" />;
+        }
+      }
+
+      //回调Refs
+      class MyComponent extends React.Component {
+        constructor(props) {
+          super(props);
+          this.myRef = null;
+        }
+        componentDidMount() {
+          this.myRef.innerHTML = "我是回调Refs";
+          console.log(this.myRef);
+        }
+        render() {
+          return (
+            <div
+              ref={element => {
+                this.myRef = element;
+              }}
+            />
+          );
+        }
+      }
+
+      //使用React.createRef()创建refs
+      class CustomTextInput extends React.Component {
+        constructor(props) {
+          super(props);
+          // 创建一个 ref 来存储 textInput 的 DOM 元素
+          this.textInput = React.createRef();
+          this.focusTextInput = this.focusTextInput.bind(this);
+        }
+
+        focusTextInput() {
+          // 直接使用原生 API 使 text 输入框获得焦点
+          // 注意：我们通过 "current" 来访问 DOM 节点
+          this.textInput.current.value = "";
+          this.textInput.current.focus();
+        }
+
+        render() {
+          // 告诉 React 我们想把 <input> ref 关联到
+          // 构造器里创建的 `textInput` 上
+          return (
+            <div>
+              <input type="text" ref={this.textInput} />
+              <input
+                type="button"
+                value="Focus the text input"
+                onClick={this.focusTextInput}
+              />
+            </div>
+          );
+        }
+      }
+
+      //为 class 组件添加 Ref
+      class AutoFocusTextInput extends React.Component {
+        constructor(props) {
+          super(props);
+          this.textInput = React.createRef();
+        }
+
+        componentDidMount() {
+          this.textInput.current.focusTextInput();
+        }
+
+        render() {
+          return <CustomTextInput ref={this.textInput} />;
+        }
+      }
+
+      function CustomTextInputNew(props) {
+        let defaultValue = "33334444";
+        return (
+          <div>
+            <input
+              ref={props.inputRef}
+              defaultValue={defaultValue}
+              onChange={null}
+            />
+          </div>
+        );
+      }
+
+      class Parent extends React.Component {
+        constructor(props) {
+          super(props);
+          this.inputElement = React.createRef();
+        }
+        componentDidMount() {
+          console.log(this.inputElement);
+        }
+        render() {
+          return (
+            <CustomTextInputNew inputRef={el => (this.inputElement = el)} />
+          );
+        }
+      }
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+        }
+
+        render() {
+          return (
+            <div>
+              <APIComponent />
+              <MyComponent />
+              <CustomTextInput />
+              <AutoFocusTextInput />
+              <Parent />
+            </div>
+          );
+        }
+      }
+    
+    </script> -->
+    <!-- <script type="text/babel">
+      const MyButton = React.forwardRef((props, ref) => (
+        <button ref={ref} className="FancyButton">
+          {props.children}
+        </button>
+      ));
+
+      class TextInput extends React.Component {
+        constructor(props) {
+          super(props);
+          this.textInput = React.createRef();
+        }
+        setInputValue(value){
+          this.textInput.current.value=value;
+        }
+        render() {
+          return (<div><input ref={this.textInput} /></div>);
+        }
+      }
+
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          // 你可以直接获取 DOM button 的 ref：
+          this.ref = React.createRef();
+          this.HOCref = React.createRef();
+        }
+
+        componentDidMount() {
+          setTimeout(() => {
+            this.ref.current.innerText = "Refs 转发";
+          }, 2000);
+          console.log(this.ref.current);
+          console.log(this.HOCref.current);
+          this.HOCref.current.setInputValue('我是父组件设置的值');
+        }
+        render() {
+          return (
+            <div>
+              <MyButton ref={this.ref}>Click me!</MyButton>
+              <NewFancyButton ref={this.HOCref}>高阶函数</NewFancyButton>
+            </div>
+          );
+        }
+      }
+      const NewFancyButton = HOCFunc(TextInput);
+      function HOCFunc(Component) {
+        class HOCComponent extends React.Component {
+          componentDidUpdate(prevProps) {
+            console.log("old props:", prevProps);
+            console.log("new props:", this.props);
+          }
+
+          render() {
+            const { forwardedRef, ...rest } = this.props;
+
+            // 将自定义的 prop 属性 “forwardedRef” 定义为 ref
+            return <Component ref={forwardedRef} {...rest} />;
+          }
+        }
+
+        // 注意 React.forwardRef 回调的第二个参数 “ref”。
+        // 我们可以将其作为常规 prop 属性传递给 HOCComponent，例如 “forwardedRef”
+        // 然后它就可以被挂载到被 HOCComponent 包裹的子组件上。
+        return React.forwardRef((props, ref) => {
+          return <HOCComponent {...props} forwardedRef={ref} />;
+        });
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      class commonCom extends React.Component {
+        render() {
+          console.log("props:"+JSON.stringify(this.props));
+          return <div>commonCom</div>;
+        }
+      }
+
+      const simpleHoc = WrappedComponent => {
+        console.log("simpleHoc");
+        return class extends React.Component {
+          render() {
+            return <WrappedComponent {...this.props} />;
+          }
+        };
+      };
+      const NewCom = simpleHoc(commonCom);
+      let params = {
+        id: 123,
+        name: "kevin"
+      };
+      ReactDOM.render(
+        <NewCom params={params} />,
+        document.getElementById("root")
+      );
+    </script> -->
+    <!-- <script type="text/babel">
+      class commonCom extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            comName: "commonCom"
+          };
+        }
+
+        componentDidMount() {
+          console.log("didMount");
+        }
+
+        render() {
+         // console.log("props:" + JSON.stringify(this.props));
+          return <div>commonCom</div>;
+        }
+      }
+      // const simpleHoc = WrappedComponent => {
+      //   return class extends React.Component {
+      //     render() {
+      //       let mParams={"title":'new params'};
+  
+      //       return <WrappedComponent  { ...this.props}  mNewParams={mParams}/>;
+      //     }
+      //   };
+      // };
+      const simpleHoc = WrappedComponent =>
+        class extends WrappedComponent {
+          render() {
+            console.log("state:",this.state);//state: {comName: "commonCom"}
+            return super.render();
+          }
+        };
+      const NewCom = simpleHoc(commonCom);
+      let params = {
+        id: 123,
+        name: "kevin"
+      };
+      ReactDOM.render(
+        <NewCom params={params} />,
+        document.getElementById("root")
+      );
+    </script> -->
+    <!-- <script type="text/babel">
+      class Table extends React.Component {
+        render() {
+          return (
+            <table>
+              <tbody>
+                <tr>
+                  <Columns />
+                </tr>
+                <tr>
+                  <Columns />
+                </tr>
+              </tbody>
+            </table>
+          );
+        }
+      }
+      class Columns extends React.Component {
+        render() {
+          return (
+            <React.Fragment>
+              <th>Hello</th>
+              <th>World</th>
+              <td>China</td>
+              <td>Shanghai</td>
+            </React.Fragment>
+          );
+        }
+      }
+      ReactDOM.render(<Table />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      class Chosen extends React.Component {
+        componentDidMount() {
+          console.log($(this.el));
+          this.$el = $(this.el);
+       //   this.$el.chosen();
+    
+          
+        }
+
+        componentWillUnmount() {
+          //this.$el.chosen("destroy");
+        }
+
+        render() {
+          return (
+            <div>
+              <select className="Chosen-select" ref={el => (this.el = el)}>
+                {this.props.children}
+              </select>
+            </div>
+          );
+        }
+      }
+
+      function Example() {
+        return (
+          <Chosen>
+            <option>vanilla</option>
+            <option>chocolate</option>
+            <option>strawberry</option>
+          </Chosen>
+        );
+      }
+
+      ReactDOM.render(<Example />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      class ListOfWords extends React.PureComponent {
+        render() {
+          return <div>{this.props.words.join(",")}</div>;
+        }
+      }
+
+      class WordAdder extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            words: ["marklar"]
+          };
+          this.handleClick = this.handleClick.bind(this);
+        }
+
+        handleClick() {
+          // 这部分代码很糟，而且还有 bug
+          // const words = this.state.words;
+          // words.push("marklar");
+          // this.setState({ words: words });
+          //修改为一下实现方式
+          this.setState(state => ({
+            words: [...state.words, "marklar"] //state.words.concat(["marklar"])
+          }));
+        }
+
+        render() {
+          return (
+            <div>
+              <button onClick={this.handleClick}>添加一个word</button>
+              <ListOfWords words={this.state.words} />
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<WordAdder />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      // These two containers are siblings in the DOM
+      const appRoot = document.getElementById("root");
+      const modalRoot = document.getElementById("modal-root");
+
+      // Let's create a Modal component that is an abstraction around
+      // the portal API.
+      class Modal extends React.Component {
+        constructor(props) {
+          super(props);
+          // Create a div that we'll render the modal into. Because each
+          // Modal component has its own element, we can render multiple
+          // modal components into the modal container.
+          this.el = document.createElement("div");
+        }
+
+        componentDidMount() {
+          // 在 Modal 的所有子元素被挂载后，
+          // 这个 portal 元素会被嵌入到 DOM 树中，
+          // 这意味着子元素将被挂载到一个分离的 DOM 节点中。
+          // 如果要求子组件在挂载时可以立刻接入 DOM 树，
+          // 例如衡量一个 DOM 节点，
+          // 或者在后代节点中使用 ‘autoFocus’，
+          // 则需添加 state 到 Modal 中，
+          // 仅当 Modal 被插入 DOM 树中才能渲染子元素。
+          // Append the element into the DOM on mount. We'll render
+          // into the modal container element (see the HTML tab).
+          modalRoot.appendChild(this.el);
+        }
+
+        componentWillUnmount() {
+          // Remove the element from the DOM when we unmount
+          modalRoot.removeChild(this.el);
+        }
+
+        render() {
+          // Use a portal to render the children into the element
+          return ReactDOM.createPortal(
+            // Any valid React child: JSX, strings, arrays, etc.
+            this.props.children,
+            // A DOM element
+            this.el
+          );
+        }
+      }
+
+      // The Modal component is a normal React component, so we can
+      // render it wherever we like without needing to know that it's
+      // implemented with portals.
+      class App extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { showModal: false, clicks: 0 };
+
+          this.handleShow = this.handleShow.bind(this);
+          this.handleClick = this.handleClick.bind(this);
+        }
+componentDidMount(){
+ 
+  
+}
+        handleClick() {
+          // This will fire when the button in Child is clicked,
+          // updating Parent's state, even though button
+          // is not direct descendant in the DOM.
+          this.setState(prevState => ({
+            clicks: prevState.clicks + 1,
+            showModal: false
+          }));
+        }
+        handleShow() {
+          this.setState({ showModal: true });
+        }
+
+        render() {
+          // Show a Modal on click.
+          // (In a real app, don't forget to use ARIA attributes
+          // for accessibility!)
+          const modal = this.state.showModal ? (
+            <Modal>
+              <Child />
+            </Modal>
+          ) : null;
+
+          return (
+            <div className="app">
+              This div has overflow: hidden.
+              <p>Number of clicks: {this.state.clicks}</p>
+              <button onClick={this.handleShow}>Show modal</button>
+              <div onClick={this.handleClick}>{modal}</div>
+            </div>
+          );
+        }
+      }
+
+      function Child() {
+        // The click event on this button will bubble up to parent,
+        // because there is no 'onClick' attribute defined
+        return (
+          <div className="modal">
+            <div className="modal_area">
+              With a portal, we can render content into a different part of the
+              DOM, as if it were any other React child.
+              <div>
+                This is being rendered inside the #modal-container div.
+                <div className="btn-div">
+                  <button>Hide modal,Click+1</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+      ReactDOM.render(<App />, appRoot);
+    </script> -->
+    <!-- <script type="text/babel">
+      // <Mouse> 组件封装了我们需要的行为...
+      class Mouse extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleMouseMove = this.handleMouseMove.bind(this);
+          this.state = { x: 0, y: 0 };
+        }
+
+        handleMouseMove(event) {
+          this.setState({
+            x: event.clientX,
+            y: event.clientY
+          });
+        }
+
+        render() {
+          return (
+            <div style={{ height: "100%" }} onMouseMove={this.handleMouseMove}>
+              {/* ...但我们如何渲染 <p> 以外的东西? */}
+              <p>
+                The current mouse position is ({this.state.x}, {this.state.y})
+              </p>
+            </div>
+          );
+        }
+      }
+
+      class MouseTracker extends React.Component {
+        render() {
+          return (
+            <div style={{ height: "100%" }}>
+              <h1>移动鼠标!</h1>
+              <Mouse />
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<MouseTracker />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      class Cat extends React.Component {
+        render() {
+          const mouse = this.props.mouse;
+          return (
+            <img
+              src="./image/duigou.png"
+              style={{
+                position: "absolute",
+                left: mouse.x,
+                top: mouse.y,
+                width: 32,
+                height: 32
+              }}
+            />
+          );
+        }
+      }
+
+      class Mouse extends React.PureComponent {
+        constructor(props) {
+          super(props);
+          this.handleMouseMove = this.handleMouseMove.bind(this);
+          this.state = { x: 0, y: 0 };
+        }
+        componentDidMount(){
+          console.log('componentDidMount');     
+        }
+        handleMouseMove(event) {
+          this.setState({
+            x: event.clientX,
+            y: event.clientY
+          });
+        }
+
+        render() {
+          console.log("render");
+
+          return (
+            <div style={{ height: "100%" }} onMouseMove={this.handleMouseMove}>
+              <p>
+                The current mouse position is ({this.state.x}, {this.state.y})
+              </p>
+              {/*
+          Instead of providing a static representation of what <Mouse> renders,
+          use the `render` prop to dynamically determine what to render.
+        */}
+              {1 && this.props.renderFunc(this.state)}
+            </div>
+          );
+        }
+      }
+
+      // 如果你出于某种原因真的想要 HOC，那么你可以轻松实现
+      // 使用具有 render prop 的普通组件创建一个！
+      // function withMouse(Component) {
+      //   return class extends React.Component {
+      //     render() {
+      //       return (
+      //         <div style={{ height: "100%" }}>
+      //           <h1>移动鼠标!</h1>
+      //           <Mouse
+      //             render={mouse => <Component {...this.props} mouse={mouse} />}
+      //           />
+      //         </div>
+      //       );
+      //     }
+      //   };
+      // }
+      // let MouseTracker = withMouse(Cat);
+      class MouseTracker extends React.Component {
+
+        
+        // 定义为实例方法，`this.renderTheCat`始终
+        // 当我们在渲染中使用它时，它指的是相同的函数
+        renderTheCat(mouse) {
+          return <Cat mouse={mouse} />;
+        }
+
+        render() {
+         
+          return (
+            <div style={{ height: "100%" }}>
+              <h1>移动鼠标!</h1>
+              <Mouse renderFunc={this.renderTheCat} />
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<MouseTracker />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      class Greeting extends React.Component {
+        render() {
+          return <h1>Hello, {this.props.name}</h1>;
+        }
+      }
+
+      // // 指定 props 的默认值：
+      // Greeting.defaultProps = {
+      //   name: "Stranger"
+      // };
+      // Greeting.propTypes = {
+      //   name: PropTypes.string
+      // };
+      ReactDOM.render(<Greeting name={123} />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      class NameForm extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleSubmit = this.handleSubmit.bind(this);
+          this.input = React.createRef();
+          this.fileInput = React.createRef();
+        }
+
+        handleSubmit(event) {
+         // alert("A name was submitted: " + this.input.current.value);
+          alert(`Selected file - ${this.fileInput.current.files[0].name}`);
+          event.preventDefault();
+        }
+
+        render() {
+          return (
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                Name:
+                <input type="text" defaultValue="Bob" ref={this.input} />
+              </label>
+              <br />
+              <label>
+                Upload file:
+                <input type="file" ref={this.fileInput} />
+              </label>
+              <br />
+              <input type="submit" value="Submit" />
+            </form>
+          );
+        }
+      }
+      ReactDOM.render(<NameForm />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      class XSearch extends HTMLElement {
+        connectedCallback() {
+          const mountPoint = document.createElement("span");
+          this.attachShadow({ mode: "open" }).appendChild(mountPoint);
+
+          const name = this.getAttribute("name");
+          const url =
+            "https://www.google.com/search?q=" + encodeURIComponent(name);
+          ReactDOM.render(<a href={url}>{name}</a>, mountPoint);
+        }
+      }
+
+      customElements.define("x-search", XSearch);
+
+      class App extends React.Component{
+
+        render(){
+          return(
+            <XSearch />
+          );
+        };
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script> -->
+    <!-- <script type="text/babel">
+      var n = null;
+      console.log(n * 32); // 在控制台中会显示 0
+
+      if (true) {
+        var x = 5;
+        let y = 54;
+      }
+      console.log(x); // 5
+      console.log(y); // y is not defined
+      console.log(x === undefined); // true
+      var x = 3;
+
+      // baz(); // 类型错误：baz 不是一个函数
+
+      var baz = function() {
+        console.log("bar2");
+      };
+      baz();
+      try {
+
+        console.log("try"); //This may throw a error
+        //return '11';
+      } catch (e) {
+        console.log("catch"); // If we got a error we handle it
+
+      } finally {
+        console.log("finally"); // always close the resource
+      }
+
+      function f() {
+        try {
+          console.log(0);
+          throw "bogus";
+        } catch (e) {
+          console.log(1);
+          return true; // this return statement is suspended
+          // until finally block has completed
+          console.log(2); // not reachable
+        } finally {
+          console.log(3);
+          return false; // overwrites the previous "return"
+          console.log(4); // not reachable
+        }
+        // "return false" is executed now
+        console.log(5); // not reachable
+      }
+     console.log('====================================');
+     console.log( f());// console 0, 1, 3; returns false
+     console.log('===================================='); 
+
+    </script> -->
+
+    <script>
+      // var o = {};
+      // console.log(o.constructor === Object); // true
+      // var o = new Object();
+      // console.log(o.constructor === Object); // true
+      // var a = [];
+      // console.log(a.constructor === Array); // true
+      // var a = new Array();
+      // console.log(a.constructor === Array); // true
+      // var n = new Number(3);
+      // console.log(n.constructor === Number); // true
+
+      // function Parent() {}
+      // function CreatedConstructor() {}
+
+      // CreatedConstructor.prototype = Object.create(Parent.prototype);
+      // CreatedConstructor.prototype.constructor = CreatedConstructor; // set right constructor for further using
+
+      // CreatedConstructor.prototype.create = function() {
+      //   console.log('function create');
+      //   return new this.constructor();
+      // };
+      // console.log(CreatedConstructor.prototype.constructor); //ƒ Parent() {}
+      // new CreatedConstructor().create().create(); // error undefined is not a function since constructor === Parent
+      // var obj = {
+      //   prop: function() {},
+      //   foo: "bar"
+      // };
+
+      // // 新的属性会被添加, 已存在的属性可能
+      // // 会被修改或移除
+      // obj.foo = "baz";
+      // obj.lumpy = "woof";
+      // delete obj.prop;
+
+      // // 作为参数传递的对象与返回的对象都被冻结
+      // // 所以不必保存返回的对象（因为两个对象全等）
+      // var o = Object.freeze(obj);
+
+      // o === obj; // true
+      // Object.isFrozen(obj); // === true
+
+      // // 现在任何改变都会失效
+      // obj.foo = "quux"; // 静默地不做任何事
+      // // 静默地不添加此属性
+      // obj.quaxxor = "the friendly duck";
+
+      // // 在严格模式，如此行为将抛出 TypeErrors
+      // function fail() {
+      //   "use strict";
+      //   obj.foo = "sparky"; // throws a TypeError
+      //   delete obj.quaxxor; // 返回true，因为quaxxor属性从来未被添加
+      //   obj.sparky = "arf"; // throws a TypeError
+      // }
+
+      // fail();
+
+      // // 试图通过 Object.defineProperty 更改属性
+      // // 下面两个语句都会抛出 TypeError.
+      // Object.defineProperty(obj, "ohai", { value: 17 });
+      // Object.defineProperty(obj, "foo", { value: "eit" });
+
+      // // 也不能更改原型
+      // // 下面两个语句都会抛出 TypeError.
+      // Object.setPrototypeOf(obj, { x: 20 });
+      // obj.__proto__ = { x: 20 };
+
+      // var o, d;
+      // o = {
+      //   get foo() {
+      //     return 17;
+      //   }
+      // };
+      // d = Object.getOwnPropertyDescriptor(o, "foo");
+      // console.log(d);
+
+      // let Ob1 = {};
+      // let obj2 = new Object();
+      // let obj3 = Object.create(Object.prototype);
+      // console.log(Ob1);
+      // console.log(obj2);
+      // console.log(obj3);
+      // console.log('-----------------------------------');
+      // console.log(String.prototype);
+      // console.log(Number.prototype);
+      // console.log(Array.prototype);
+      // console.log(Object.prototype);
+    </script>
+    <script>
+      // //一般对象
+      // var obj = {
+      //   prop: function() {},
+      //   foo: "bar"
+      // };
+
+      // // 新的属性会被添加, 已存在的属性可能会被修改或移除
+      // obj.foo = "baz"; //修改
+      // obj.lumpy = "woof"; //添加
+      // console.log(obj); //{prop: ƒ, foo: "baz", lumpy: "woof"}
+      // delete obj.prop; //删除
+      // console.log(obj); //{foo: "baz", lumpy: "woof"}
+
+      // //冻结对象，作为参数传递的对象与返回的对象都被冻结,所以不必保存返回的对象（因为两个对象全等）
+      // var o = Object.freeze(obj);
+      // console.log(o === obj); // true
+
+      // // 现在任何改变都会失效
+      // obj.foo = "myFoo"; //修改属性
+      // obj.bar = "the add property"; //添加属性
+      // //无法修改
+      // console.log(obj); //{foo: "baz", lumpy: "woof"}
+
+      // // 在严格模式，如此行为将抛出 TypeErrors
+      // function fail() {
+      //   "use strict";
+      //   console.log(delete obj.bar); // 返回true，因为bar属性从来未被添加
+      //   obj.foo = "myFoo"; // throws a TypeError
+      //   obj.bar = "the add property"; // throws a TypeError
+      // }
+      // // fail();
+
+      // // 试图通过 Object.defineProperty 更改属性,下面两个语句都会抛出 TypeError.
+      // // Object.defineProperty(obj, "foo", { value: 'myFoo' });
+      // //  Object.defineProperty(obj, "bar", { value: "the add property" });
+
+      // // 也不能更改原型,下面两个语句都会抛出 TypeError.
+      // //Object.setPrototypeOf(obj, { myName: 20 });
+      // //obj.__proto__ = { myName: 20 };
+
+      console.log("--------------------------------------------------");
+      // let a = [0];
+      // Object.freeze(a); // 现在数组不能被修改了.
+      // a[0] = 1; // fails silently
+      // a.push(2); // fails silently
+      // // In strict mode such attempts will throw TypeErrors
+      // function fail() {
+      //   "use strict";
+      //   a[0] = 1;
+      //   a.push(2);
+      // }
+
+      // fail();
+
+      // const map = new Map();
+      // map.set("foo", "bar");
+      // map.set("baz", "1122");
+      // const obj = Object.fromEntries(map);
+      // console.log(obj); // { foo: "bar", baz: 1122 }
+
+      // const arr = [["0", "a"], ["1", "b"], ["2", "c"]];
+      // const obj = Object.fromEntries(arr);
+      // console.log(obj); // { 0: "a", 1: "b", 2: "c" }
+
+      // let Func = function() {};
+      // let mFunc = new Func();
+      // console.log(Object.getPrototypeOf(mFunc) === Func.prototype); // true
+      // console.log(Object.getPrototypeOf(mFunc) === mFunc.__proto__); // true
+      // // 空对象的原型是 Object.prototype
+      // console.log(Object.getPrototypeOf({}) === Object.prototype); // true
+      // // Object.prototype 的原型是 null
+      // console.log(Object.getPrototypeOf(Object.prototype) === null); // true
+      // // 函数的原型是 Function.prototype
+      // function f() {}
+      // console.log(Object.getPrototypeOf(f) === Function.prototype); // true
+      // console.log(f.prototype); // true
+      // console.log(Object.getPrototypeOf(mFunc.__proto__)); // true
+
+      // let proto = {};
+      // let obj = Object.create(proto);
+      // console.log(Object.getPrototypeOf(obj) === proto);// true
+      // let reg = /a/;
+      // console.log(Object.getPrototypeOf(reg) === RegExp.prototype); // true
+
+      // //一般用法是：
+      // var obj = new Object();
+      // // 所以：
+      // console.log(Object.getPrototypeOf(Object)); // ƒ () { [native code] }
+      // console.log(Object.getPrototypeOf(Function)); // ƒ () { [native code] }
+
+      // console.log(Object.getPrototypeOf(Object) === Function.prototype); // true
+
+      // console.log(Object.prototype === Object.getPrototypeOf(obj)); // true
+      // console.log(Object.prototype === Object.getPrototypeOf({})); // true
+
+      // console.log(Object.is("foo", "foo")); // true
+      // console.log(Object.is(window, window)); // true
+
+      // console.log(Object.is("foo", "bar")); // false
+      // console.log(Object.is([], [])); // false
+
+      // var foo = { a: 1 };
+      // var bar = { a: 1 };
+      // console.log(Object.is(foo, foo)); // true
+      // console.log(Object.is(foo, bar)); // false
+
+      // console.log(Object.is(null, null)); // true
+
+      // // 特例
+      // console.log(Object.is(0, -0)); // false
+      // console.log(Object.is(0, +0)); // true
+      // console.log(Object.is(-0, -0)); // true
+      // console.log(Object.is(NaN, 0 / 0)); // true
+
+      // if (!Object.is) {
+      //   Object.is = function(x, y) {
+      //     // SameValue algorithm
+      //     if (x === y) {
+      //       // Steps 1-5, 7-10
+      //       // Steps 6.b-6.e: +0 != -0
+      //       console.log("-------------1");
+      //       return x !== 0 || 1 / x === 1 / y;
+      //     } else {
+      //       console.log("-------------2");
+      //       // Step 6.a: NaN == NaN
+      //       return x !== x && y !== y;
+      //     }
+      //   };
+      // }
+      //console.log(-0 !== 0);
+      //console.log(Object.is( -0 ,0));
+      // console.log(Number.NaN === Number.NaN);
+      // console.log(Object.is(Number.NaN, NaN));
+
+      // // 新对象默认是可扩展的.
+      // let empty = {};
+      // console.log(Object.isExtensible(empty)); //true
+
+      // //让一个对象变的不可扩展.
+      // Object.preventExtensions(empty);
+      // console.log(Object.isExtensible(empty)); //false
+
+      // // 密封对象是不可扩展的.
+      // let sealed = Object.seal({});
+      // console.log( Object.isExtensible(sealed)); //false
+
+      // // 冻结对象也是不可扩展.
+      // let frozen = Object.freeze({});
+      // console.log(Object.isExtensible(frozen)); //false
+
+      // var o = {};
+      // Object.defineProperty(o, "a", {
+      //   value: 37,
+      //   writable: false
+      // });
+      // console.log(o.a); //37
+      // o.a = 25; // 设置无效，不报错
+      // console.log(o.a); //37
+
+      // var o = {};
+      // Object.defineProperty(o, "a", { value: 1, enumerable: true });
+      // Object.defineProperty(o, "b", { value: 2, enumerable: false });
+      // Object.defineProperty(o, "c", { value: 3 }); // enumerable 默认为 false
+      // // 如果使用直接赋值的方式创建对象的属性，则这个属性的enumerable为true
+      // o.d = 4;
+      // for (var i in o) {
+      //   console.log("可枚举的属性："+i);
+      // }
+      // console.log(Object.keys(o)); // ["a", "d"]
+
+      //   let o = {};
+      //   Object.defineProperty(o, "a", {
+      //     configurable: false,
+      //     writable: true
+      //   });
+
+      //   // throws a TypeError
+      //   Object.defineProperty(o, "a", { configurable: true });
+      //   // throws a TypeError
+      //   Object.defineProperty(o, "a", { enumerable: true });
+      //   // throws a TypeError (set was undefined previously)
+      //   Object.defineProperty(o, "a", { set: function() {} });
+      //   // throws a TypeError (even though the new get does exactly the same thing)
+      //   Object.defineProperty(o, "a", {
+      //     get: function() {
+      //       return 1;
+      //     }
+      //   });
+      // //writable为true,可以设置value
+      //   Object.defineProperty(o, "a", { value: 1 });
+      //   console.log(o.a); //1
+      //   //configurable为false,无法删除
+      //   delete o.a; // 无效，不报错
+      //   console.log(o.a); //1
+      //   Object.defineProperty(o, "a", { writable: false });
+      //   //writable为false,无法设置value
+      //   o.a=2;
+      //   console.log(o.a); //1
+
+      // function Archiver() {
+      //   var temperature = null;
+      //   var archive = [];
+
+      //   Object.defineProperty(this, "temperature", {
+      //     get: function() {
+      //       console.log("get!");
+      //       return temperature;
+      //     },
+      //     set: function(value) {
+      //       temperature = value;
+      //       archive.push({ val: temperature });
+      //     }
+      //   });
+
+      //   this.getArchive = function() {
+      //     return archive;
+      //   };
+      // }
+
+      // var arc = new Archiver();
+      // arc.temperature; // 'get!'
+      // arc.temperature = 11;
+      // arc.temperature = 13;
+      // console.log(arc.getArchive());
+
+      // function myclass() {}
+
+      // Object.defineProperty(myclass.prototype, "x", {
+      //   get() {
+      //     return this.stored_x?this.stored_x:"我是默认值";
+      //   },
+      //   set(x) {
+      //     this.stored_x = x;
+      //   }
+      // });
+
+      // var a = new myclass();
+      // var b = new myclass();
+      // a.x = 1;
+      // console.log(b.x); // 我是默认值
+
+      // function myclass() {}
+
+      // myclass.prototype.x = 1;
+      // Object.defineProperty(myclass.prototype, "y", {
+      //   writable: false,
+      //   value: 1
+      // });
+
+      // var a = new myclass();
+      // a.x = 2;
+      // console.log(a.x); // 2
+      // console.log(myclass.prototype.x); // 1
+      // a.y = 2; // Ignored, throws in strict mode
+      // console.log(a.y); // 1
+      // console.log(myclass.prototype.y); // 1
+
+      //   // 1.一个对象默认是可扩展的,所以它也是非冻结的
+      //   let emptyObj = {};
+      //   console.log(Object.isFrozen(emptyObj)); //false
+      //   // 2.一个不可扩展的空对象同时也是一个冻结对象
+      //   let objFrozen = Object.preventExtensions(emptyObj);
+      //   console.log(Object.isFrozen(objFrozen)); //true
+
+      //   // 3.一个非空对象默认也是非冻结的
+      //   let oneProp = { p: 42 };
+      //   console.log(Object.isFrozen(oneProp)); //false
+      //   // 让这个对象变的不可扩展,并不意味着这个对象变成了冻结对象,
+      //   // 因为p属性仍然是可以配置的(而且可写的).
+      //   let onePropFrozen = Object.preventExtensions(oneProp);
+      //   console.log(Object.isFrozen(onePropFrozen)); //false
+      //   //如果删除了这个属性,则它会成为一个冻结对象.
+      //   delete oneProp.p;
+      //   console.log(Object.isFrozen(oneProp)); // true
+
+      //   // 4.一个不可扩展的对象,拥有一个不可写但可配置的属性,则它仍然是非冻结的
+      //   let nonWritable = { a: "123" };
+      //   Object.preventExtensions(nonWritable);
+      //   Object.defineProperty(nonWritable, "a", { writable: false }); // 变得不可写
+      //   console.log(Object.isFrozen(nonWritable)); // false
+      //   // 再把这个属性改为不可配置,会让这个对象成为冻结对象.
+      //   Object.defineProperty(nonWritable, "a", { configurable: false }); // 变得不可配置
+      //   console.log(Object.isFrozen(nonWritable)); //true
+
+      //   // 5.一个不可扩展的对象,拥有一个不可配置但可写的属性,则它仍然是非冻结的.
+      //   let nonConfigurable = { b: 456 };
+      //   Object.preventExtensions(nonConfigurable);
+      //   Object.defineProperty(nonConfigurable, "b", {
+      //     configurable: false
+      //   });
+      //   console.log(Object.isFrozen(nonConfigurable)); //false
+      //   // 再把这个属性改为不可写,会让这个对象成为冻结对象.
+      //   Object.defineProperty(nonConfigurable, "b", { writable: false });
+      //   console.log(Object.isFrozen(nonConfigurable)); //true
+
+      //   // 6.一个不可扩展的对象,值拥有一个访问器属性,则它仍然是非冻结的.
+      //   var accessor = {
+      //     get food() {
+      //       return "abc";
+      //     }
+      //   };
+      //   Object.preventExtensions(accessor);
+      //   console.log(Object.isFrozen(accessor)); //false
+      //   //但把这个属性改为不可配置,会让这个对象成为冻结对象.
+      //   Object.defineProperty(accessor, "food", { configurable: false });
+      //   console.log(Object.isFrozen(accessor)); //true
+
+      //   //使用Object.freeze是冻结一个对象最方便的方法
+      //   var frozen = { c: 789 };
+      //   console.log(Object.isFrozen(frozen)); //false
+      //   Object.freeze(frozen);
+      //   console.log(Object.isFrozen(frozen)); //true
+      //   // 一个冻结对象也是一个密封对象.
+      //   console.log(Object.isSealed(frozen)); //true
+      //   //更是一个不可扩展的对象.
+      //   console.log(Object.isExtensible(frozen)); //false
+      //
+    </script>
+    //
+    <script>
+      //   console.log("====================================");
+      //   // Object.preventExtensions将原对象变的不可扩展,并且返回原对象.
+      //   let obj = {};
+      //   let obj2 = Object.preventExtensions(obj);
+      //   console.log(obj === obj2); // true
+
+      //   // 字面量方式定义的对象默认是可扩展的.
+      //   let empty = {};
+      //   console.log(Object.isExtensible(empty)); //true
+
+      //   //变的不可扩展
+      //   Object.preventExtensions(empty);
+      //   Object.isExtensible(empty); //false
+
+      //   // 使用Object.defineProperty方法为一个不可扩展的对象添加新属性会抛出异常.
+      //   let nonExtensible = { removable: true };
+      //   Object.preventExtensions(nonExtensible);
+      //   nonExtensible.addNew = 2134; //不报错，但是无法添加
+      //   console.log(nonExtensible); //{removable: true}
+      //   Object.defineProperty(nonExtensible, "new", { value: 123456 }); // 抛出TypeError异常
+      //   // 一个不可扩展对象的原型是不可更改的,__proto__是个非标准属性,可以更改一个对象的原型.
+      //   let fixed = Object.preventExtensions({});
+      //   fixed.__proto__ = { oh: "hai" }; // 抛出TypeError异常
+      //   console.log("====================================");
+
+      // let obj = {
+      //   id: 103
+      // };
+      // console.log(Object.isSealed(obj)); //false
+      // let empty = {};
+      // Object.preventExtensions(empty);
+      // console.log(Object.isSealed(empty)); //true
+
+      // let hasProp = { a: "abcd!" };
+      // Object.preventExtensions(hasProp);
+      // console.log(Object.isSealed(hasProp)); //false
+      // Object.defineProperty(hasProp, "a", { configurable: false });
+      // console.log(Object.isSealed(hasProp)); //true
+      // let sealed = {};
+      // Object.seal(sealed);
+      // console.log(Object.isSealed(sealed)); //true
+      // //密封对象同时也是不可扩展的
+      // console.log(Object.isExtensible(sealed)); //false
+      // //密封对象也可以是一个冻结对象,但不是必须的
+      // console.log(Object.isFrozen(sealed)); //true
+      // //密封对象也可以不是一个冻结对象，属性"p"可写
+      // let s2 = Object.seal({ p: 3 });
+      // console.log(Object.getOwnPropertyDescriptors(s2));
+      // console.log(Object.isFrozen(s2)); //false
+      // //访问器属性不考虑可写不可写,只考虑是否可配置
+      // let s3 = Object.seal({
+      //   get p() {
+      //     return 0;
+      //   }
+      // });
+      // console.log(Object.isFrozen(s3)); //true
+
+      // let obj = {};
+      // //定义属性不可配置
+      // Object.defineProperty(obj, "key", {
+      //   enumerable: true,
+      //   configurable: false,
+      //   writable: true,
+      //   value: "112233"
+      // });
+      // //定义对象不可扩展
+      // Object.preventExtensions(obj);
+      // console.log(Object.isSealed(obj));//true
+
+      // // simple array
+      // let arr = ["a", "b", "c"];
+      // console.log(Object.keys(arr)); //['0', '1', '2']
+      // // array like object
+      // let obj = { 0: "a", 1: "b", 2: "c" };
+      // console.log(Object.keys(obj)); //['0', '1', '2']
+
+      // // array like object with random key ordering
+      // let anObj = { 100: "a", 2: "b", 7: "c" };
+      // console.log(Object.keys(anObj)); //['2', '7', '100']
+
+      // // getFoo的enumerable为false,getBar的enumerable为true
+      // let myObj = Object.create(
+      //   {},
+      //   {
+      //     getFoo: {
+      //       enumerable: false,
+      //       value: function() {
+      //         return this.foo;
+      //       }
+      //     },
+      //     getBar: {
+      //       enumerable: true,
+      //       value: function() {
+      //         return this.bar;
+      //       }
+      //     }
+      //   }
+      // );
+      // myObj.foo = 1;//enumerable为true
+      // myObj.bar = 2;//enumerable为true
+      // console.log(Object.keys(myObj)); //["getBar", "foo", "bar"]
+
+      // let obj1 = { foo: "bar", baz: 42 };
+      // console.log(Object.values(obj1)); // ['bar', 42]
+
+      // // array like object
+      // let obj2 = { 0: "a", 1: "b", 2: "c" };
+      // console.log(Object.values(obj2)); // ['a', 'b', 'c']
+
+      // // array like object with random key ordering
+      // //当我们使用数字键时，返回值的顺序根据键以数字顺序来排序
+      // let an_obj = { 100: "a", 2: "b", 7: "c" };
+      // console.log(Object.values(an_obj)); // ['b', 'c', 'a']
+
+      // // getFoo is property which isn't enumerable
+      // let my_obj = Object.create(
+      //   {},
+      //   {
+      //     getFoo: {
+      //       enumerable:false,//默认为false
+      //       value: function() {
+      //         return this.foo;
+      //       }
+      //     }
+      //   }
+      // );
+      // my_obj.foo = "bar";
+      // console.log(Object.values(my_obj)); // ['bar']
+
+      // // 非对象参数将被强制转为为对象
+      // console.log(Object.values("foo")); // ['f', 'o', 'o']
+
+      // let parent = {
+      //   id: 1001,
+      //   Foo: function() {
+      //     return this.id + "hello";
+      //   }
+      // };
+      // let child = {};
+      // console.log(child.__proto__ == Object.prototype); //true
+      // var dict = Object.setPrototypeOf({}, parent);
+      // console.log(dict.__proto__ == parent); //true
+
+      // function Foo() {}
+      // function Bar() {}
+      // function Baz() {}
+
+      // Bar.prototype = Object.create(Foo.prototype);
+      // Baz.prototype = Object.create(Bar.prototype);
+
+      // var baz = new Baz();
+
+      // console.log(Baz.prototype.isPrototypeOf(baz)); // true
+      // console.log(Bar.prototype.isPrototypeOf(baz)); // true
+      // console.log(Foo.prototype.isPrototypeOf(baz)); // true
+      // console.log(Object.prototype.isPrototypeOf(baz)); // true
+
+      // let obj = new Object();
+      // obj.prop = "exists";
+
+      // function changeObj() {
+      //   obj.newProp = obj.prop;
+      //   delete obj.prop;
+      // }
+      // console.log(obj.hasOwnProperty("prop")); // 返回 true
+      // changeObj();
+      // console.log(obj.hasOwnProperty("prop")); // 返回 false
+      // console.log(obj.hasOwnProperty("newProp")); // 返回 true
+      // console.log(obj.hasOwnProperty("toString")); // 返回 false
+      // console.log(obj.hasOwnProperty("hasOwnProperty")); // 返回 false
+
+      // let arr = [];
+      // arr[0] = 'is enumerable';
+      // console.log(arr.propertyIsEnumerable(0));//true
+      // console.log(arr.propertyIsEnumerable('length'));//false
+
+      //   // 创建了一个能返回两个参数和的函数
+      //   const adder = new Function("a", "b", "return a + b");
+      //   // 调用函数
+      //  console.log(adder(2, 6));//8
+
+      // // 1、f()函数返回的function e()是闭包.
+      // var n = 1;
+      // function f() {
+      //   var n = 2;
+      //   function e() {
+      //     return n;
+      //   }
+      //   return e;
+      // }
+      // console.log(f()()); //2
+
+      // // 2、f()函数返回的function e()是全局作用域函数
+      // var n = 1;
+      // function f() {
+      //   var n = 2;
+      //   var e = new Function("return n;");
+      //   return e;
+      // }
+      // console.log(f()()); //1
+
+      // let array = ["a", "b"];
+      // let elements = [0, 1, 2];
+      // array.push.apply(array, elements);
+      // console.log(array); // ["a", "b", 0, 1, 2]
+
+      // /* 找出数组中最大/小的数字 */
+      // let numbers = [5, 6, 2, 3, 7];
+      // /* 应用(apply) Math.min/Math.max 内置函数完成 */
+      // let max = Math.max.apply(null, numbers);
+      // console.log(max);
+      // /* 基本等同于 Math.max(numbers[0], ...) 或 Math.max(5, 6, ..) */
+      // let min = Math.min.apply(null, numbers);
+      // console.log(min);
+      // function minOfArray(arr) {
+      //   let min = Infinity;
+      //   let QUANTUM = 2;
+
+      //   for (let i = 0, len = arr.length; i < len; i += QUANTUM) {
+      //     let subMin = Math.min.apply(
+      //       null,
+      //       arr.slice(i, Math.min(i + QUANTUM, len))
+      //     );
+
+      //     min = Math.min(subMin, min);
+      //   }
+
+      //   return min;
+      // }
+
+      // var min = minOfArray([5, 6, 2, 3, 7]);
+      // console.log("min:"+min); //min:2
+
+      // var x = 9; // 在浏览器中，this指向全局的 "window" 对象
+      // var module = {
+      //   x: 81,
+      //   getX: function() {
+      //     return this.x;
+      //   }
+      // };
+      // console.log(module.getX()); // 81
+
+      // var retrieveX = module.getX;
+      //  // 返回9 - 因为函数是在全局作用域中调用的
+      // console.log(retrieveX());//9
+
+      // // 创建一个新函数，把 'this' 绑定到 module 对象
+      // // 新手可能会将全局变量 x 与 module 的属性 x 混淆
+      // var boundGetX = retrieveX.bind(module);
+      // console.log(boundGetX()); // 81
+
+      // function list() {
+      //   return Array.prototype.slice.call(arguments);
+      // }
+
+      // function addArguments(arg1, arg2) {
+      //   return arg1 + arg2;
+      // }
+
+      // let list1 = list(1, 2, 3); // [1, 2, 3]
+      // console.log(list1);
+
+      // let result1 = addArguments(1, 2); // 3
+      // console.log(result1);
+
+      // // 创建一个函数，它拥有预设的第一个参数
+      // let leadingThirtySevenList = list.bind(null, 37);
+      // let list2 = leadingThirtySevenList();
+      // console.log(list2); // [37]
+
+      // // 创建一个函数，它拥有预设的第一个参数
+      // let addThirtySeven = addArguments.bind(null, 37);
+      // let list3 = leadingThirtySevenList(1, 2, 3);
+      // console.log(list3); // [37, 1, 2, 3]
+
+      // //let 37 + 5 = 42
+      // var result2 = addThirtySeven(5);
+      // console.log(result2); // 37 + 5 = 42
+
+      // //已经有一个参数37，所以第二个10会忽略掉
+      // var result3 = addThirtySeven(5, 10);
+      // console.log(result3); // 37 + 5 = 42
+      // function LateBloomer() {
+      //   this.petalCount = Math.ceil(Math.random() * 30) + 1;
+      // }
+
+      // // 在 1 秒钟后声明 bloom
+      // LateBloomer.prototype.bloom = function() {
+      //   window.setTimeout(this.declare.bind(this), 1000);
+      // };
+
+      // LateBloomer.prototype.declare = function() {
+      //   console.log(
+      //     "I am a IT, " + this.petalCount  + " olds!"
+      //   );
+      // };
+
+      // var flower = new LateBloomer();
+      // flower.bloom(); // 一秒钟后, 调用'declare'方法
+
+      // function Point(x, y) {
+      //   this.x = x;
+      //   this.y = y;
+      // }
+
+      // Point.prototype.toString = function() {
+      //   return this.x + "," + this.y;
+      // };
+      // let YAxisPoint = Point.bind(null, 0);
+
+      // let axisPoint = new YAxisPoint(5);
+      // console.log(axisPoint.x); // 0
+      // console.log(axisPoint.y); // 5
+      // console.log(axisPoint.toString()); // '0,5'
+
+      // var emptyObj = {};
+      // var mYAxisPoint = Point.bind(emptyObj, 0);
+      // // 仍然能作为一个普通函数来调用
+      // mYAxisPoint(13);
+      // console.log(emptyObj.x + ',' + emptyObj.y);//0,13
+      //   let arguments = 'abcde';
+      //  // let slice = Array.prototype.slice;
+      //  // console.log(slice.apply(arguments));
+
+      //   let unboundSlice = Array.prototype.slice;
+      //   let slice = Function.prototype.apply.bind(unboundSlice);
+      //   console.log(slice(arguments));["a", "b", "c", "d", "e"]
+    </script>
+
+    <script>
+      // console.log("====================================");
+      // (function() {
+      //   let foo = { x: 888 };
+      //   let bar = function() {
+      //     console.log(this.x);
+      //   }.bind(foo); // 绑定
+      //   //  bar();
+
+      //   Function.prototype.testBind = function(scope) {
+      //     let _that = this; // this 指向的是调用 testBind 方法的一个函数，
+      //     return function() {
+      //       return _that.apply(scope);
+      //     };
+      //   };
+      //   var testBindBar = bar.testBind(foo); // 绑定 foo，延迟执行
+      //   console.log(testBindBar); // Function (可见，bind之后返回的是一个延迟执行的新函数)
+      //   testBindBar(); // 888
+      // })();
+      // console.log("====================================");
+
+      // (function() {
+      //   function foo() {
+      //     this.b = 100;
+      //     return this.a;
+      //   }
+      //   let func = foo.bind({ a: 1 });
+      //   console.log(func()); // 1
+      //   let nFunc = new func();
+      //   console.log(nFunc); //foo {b: 100}
+      // })();
+
+      // console.log("====================================");
+      // if (!Function.prototype.bind) {
+      //   //这里 oThis和作为bind函数后的第一个参数传入，上例中是{a:1}
+      //   Function.prototype.bind = function(oThis) {
+      //     //这里的this是调用bind方法的对象，上例中是foo。
+      //     if (typeof this !== "function") {
+      //       // closest thing possible to the ECMAScript 5
+      //       // internal IsCallable function
+      //       throw new TypeError("What is trying to be bound is not callable");
+      //     }
+      //     //通过arguments获取多余的参数，即第二个参数及以后的参数。bind函数将多余的参数当作方法的形参
+      //     var aArgs = Array.prototype.slice.call(arguments, 1),
+      //       fToBind = this,
+      //       fNOP = function() {},
+      //       //fBound作为整个bind函数返回对象，上例中就是func对象
+      //       fBound = function() {
+      //         //这里的this是bind返回的对象实例指向的this，上例中就是func调用时指向的this。
+      //         return fToBind.apply(
+      //           this instanceof fNOP ? this : oThis,
+      //           aArgs.concat(Array.prototype.slice.call(arguments))
+      //         );
+      //       };
+      //     /*下两句代码实现了object.create的作用。*/
+      //     //新建一个function 它的原型指向this的原型
+      //     fNOP.prototype = this.prototype;
+      //     //
+      //     fBound.prototype = new fNOP();
+      //     return fBound;
+      //   };
+      // }
+      // console.log("====================================");
+      //   //  let result= Math.max.call(null, '1','a','b','s1');
+      //   let result = ["name", "id"];
+      // //  result.push.apply(result, ["1", "a", "b", "s1"]);
+      //  let nArr= result.concat.apply(result, ["1", "a", "b", "s1"]);
+      //   console.log(nArr);
+
+      // let array = ["a", "b"];
+      // let elements = [0, 1, 2];
+      // let newArr = array.concat.apply(array, elements);
+      // console.log(newArr); // ["a", "b", 0, 1, 2]
+      // array.push.apply(array, elements);
+      // console.log(array); // ["a", "b", 0, 1, 2]
+      // let myName="window-name";
+      // this.myName;
+      // function MyFunc(){
+      //   console.log(this);
+      //   console.log(this.myName);
+      // }
+      // MyFunc.apply(this,{myName:"bind-name"});
+
+      // function Product(name, price) {
+      //   this.name = name;
+      //   this.price = price;
+      // }
+
+      // function Food(name, price) {
+      //   Product.call(this, name, price);
+      //   this.category = "food";
+      // }
+
+      // function Toy(name, price) {
+      //   Product.call(this, name, price);
+      //   this.category = "toy";
+      // }
+
+      // var cheese = new Food("feta", 5);
+      // console.log(cheese.name + "的价格为" + cheese.price + "属于" + cheese.category);//feta的价格为5属于food
+
+      // var fun = new Toy("robot", 40);
+      // console.log(fun.name + "的价格为" + fun.price + "属于" + fun.category);//robot的价格为40属于toy
+
+      // let animals = [
+      //   { species: "Lion", name: "King" },
+      //   { species: "Whale", name: "Fail" }
+      // ];
+
+      // for (let i = 0; i < animals.length; i++) {
+      //   (function(i) {
+      //     this.print = function() {
+      //       console.log(i + "项：" + this.species + "_" + this.name);
+      //     };
+      //     this.print();
+      //   }.call(animals[i], i));
+      // }
+      // for (var i = 0; i < animals.length; i++) {
+      //   (function(item,i) {
+      //     this.print = function() {
+      //       console.log(i + "项：" + item.species + "_" + item.name);
+      //     };
+      //     this.print();
+      //   }(animals[i], i));
+      //   //0项：Lion_King
+      //   //1项：Whale_Fail
+      // }
+
+      // function greet() {
+      //   let reply = [
+      //     this.animal,
+      //     "typically sleep between",
+      //     this.sleepDuration
+      //   ].join(" ");
+      //   console.log(reply);
+      // }
+
+      // let obj = {
+      //   animal: "cats",
+      //   sleepDuration: "12 and 16 hours"
+      // };
+
+      // greet.call(obj); // cats typically sleep between 12 and 16 hours
+
+      // var sData = "white";
+      // function display() {
+      //   console.log("sData value is %s ", this.sData);
+      // }
+
+      // display.call({sData:'yellow'}); // sData value is yellow
+      // display.call(); // sData value is white
+
+      // var module = {
+      //   x: 42,
+      //   getX: function() {
+      //     console.log(this);
+      //     return this.x;
+      //   }
+      // };
+      // var x = 123;
+      // var unboundGetX = module.getX;
+      // console.log(unboundGetX()); // The function gets invoked at the global scope
+      // // expected output: undefined
+
+      // var boundGetX = unboundGetX.bind(module);
+      // console.log(boundGetX());
+      // // expected output: 42
+
+      //   this.x = 9; // 在浏览器中，this指向全局的 "window" 对象
+      //   var module = {
+      //     x: 81,
+      //     getX: function() {
+      //       return this.x;
+      //     }
+      //   };
+
+      //  console.log(module.getX()); // 81
+
+      //   var retrieveX = module.getX;
+      //   retrieveX();
+      //   // 返回9 - 因为函数是在全局作用域中调用的
+
+      //   // 创建一个新函数，把 'this' 绑定到 module 对象
+      //   // 新手可能会将全局变量 x 与 module 的属性 x 混淆
+      //   var boundGetX = retrieveX.bind(module);
+      //   console.log(boundGetX()); // 81
+      //   console.log(retrieveX.call(module));81
+    </script>
+    <script>
+      // let nArr = Array.from("footer");
+      // console.log(nArr);
+      // function combine() {
+      //   let arr = [].concat.apply([], arguments); //没有去重复的新数组
+      //   console.log(arr);
+      //   return Array.from(new Set(arr));
+      // }
+
+      // var m = [1, 2, 2],
+      //   n = [2, 3, 3];
+      // console.log(combine(m, n));
+
+      //Array.from()
+      //let arr = Array.from({ length: 10 }, (value, key) => key);
+      //console.log(arr);
+      console.log("====================================");
+      // let originArr = new Array(3);
+      // console.log(originArr[0]);//undefined
+      // let temArr = originArr.join(',');
+      // console.log(temArr);// , ,
+
+      // originArr[1] = undefined;
+      // originArr[2] = null;
+      // console.log(originArr);
+      // let temArr = originArr.map(function(value, index) {
+      //   return index;
+      // });
+      // console.log(temArr);
+      // console.log("====================================");
+      // //join()+split()
+      // let arr = new Array(10);
+      // console.log(arr); //[empty × 10]
+      // let mArr = arr.join(",").split(",");
+      // //let mArr = arr.toString().split(",");
+      // console.log(mArr);//["", "", "", "", "", "", "", "", "", ""]
+      // mArr = mArr.map(function(value, index) {
+      //   return index;
+      // });
+      // console.log(mArr);//[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+      //递归
+      // const arrWithoutLoop = n => {
+      //   if (n === 0) {
+      //     return [];
+      //   }
+      //   let result = [];
+      //   result.unshift(--n); //将元素添加到数组开头
+      //   if (n === 0) {
+      //     return result;
+      //   } else {
+      //     return arrWithoutLoop(n).concat(result);
+      //   }
+      // };
+      // console.log(arrWithoutLoop(10)); //[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+      //rest参数
+      // let mArr =[1,2,3,4];
+      // let newMArr=[...mArr];
+      // console.log(newMArr);//[1, 2, 3, 4]
+
+      // let arr = new Array(10);
+      // console.log(arr.keys());
+      // let arr = [];
+      // let index = 0;
+      // let pushArray = setInterval(function() {
+      //   arr[index] = index++;
+      //   if (index >= 10) {
+      //     clearInterval(pushArray);
+      //     console.log(arr);//[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      //   }
+      // }, 0);
+
+      //  const mArrWithoutLoop = (n) => [...new Array(n).keys()];
+      // console.log(mArrWithoutLoop(10));//[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      // console.log( Array instanceof Function);//true
+      // console.log( Array.apply([], { length: 3 }));//[undefined, undefined, undefined]
+      // console.log( Array(3));//[empty × 3]
+
+      // let createArray = Object.keys(Array.apply([], { length: 10 }));
+      // createArray=createArray.map(function(value,index){
+      //   return +value;
+      // });
+      //  console.log(createArray);[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      //  console.log('=====================================');
+
+      console.log(Function instanceof Object); //true
+      console.log(Object instanceof Function); //true
+      console.log("=================构造函数===============");
+      console.log(Function.prototype); //Function的原型对象
+      console.log(Function.prototype === Function.__proto__);
+      console.log(Function.prototype.__proto__); //Function的原型对象的原型对象
+      console.log(Object.prototype); //Object的原型对象
+      console.log(Object.prototype.__proto__); //Object的原型对象
+      console.log(Object.prototype === Function.prototype.__proto__);
+      console.log("=================实例对象===============");
+      console.log(Function.__proto__);
+      console.log(Function.constructor);
+      console.log(Object.__proto__);
+      console.log(Object.constructor);
+      console.log(Object.__proto__ === Function.__proto__);
+      console.log("=====================================");
+      console.log(Function.prototype == Function.__proto__);
+      console.log("=====================================");
+      // var creatArray = Object.keys(
+      //   Array.call(null, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+      // ).map(function(item) {
+      //   return +item;
+      // });
+      // console.log(creatArray);
+
+      // var creatArray = Object.keys(Array.apply(null, { length: 10 })).map(
+      //   function(item) {
+      //     return +item;
+      //   }
+      // );
+      // console.log(creatArray);
+
+      // var arr = ["a", "b", "c"];
+      // console.log(Object.keys(arr)); // console: ['0', '1', '2']
+
+      //console.log(new Array(10).toString().split(','));
+
+      console.log("====================================");
+      /**
+       * 重写toFixed方法,解决四舍五入不准确的问题
+       * @param n 原始数据
+       * @param d 小数位数
+       */
+      function toFixed(n, d) {
+        if (d <= 0) {
+          return n;
+        } else {
+          let radix = 10 * d;
+          let temp = Math.round(n * radix) / radix;
+          return temp;
+        }
+      }
+      console.log(toFixed(2.065 + 1, 2));
+
+      console.log("====================================");
+      Number.prototype.yhToFixed = function(fractionDigits) {
+        //对fractionDigits做任何处理，假设它是合法输入
+        if (!(fractionDigits instanceof Number)) {
+          throw new Error("The decimal place must be a number");
+        }
+        //判断小数位数
+        let numStr = this.toString().split(".");
+        if (numStr.length <= 1) {
+          //没有小数，直接添加保留的位数
+          let decimalsArr = Array.apply(null, { length: fractionDigits });
+          decimalsArr = decimalsArr.map(function(value, index) {
+            return 0;
+          });
+          return this.toString() + "." + decimalsArr.join("");
+        } else {
+          //自定义四舍五入
+          let num = parseInt(
+            this * Math.pow(10, fractionDigits + 1)
+          ).toString();
+
+          let lastNum = num.slice(-1);
+          if (lastNum >= 5) {
+            num = Number(num) + 10;
+          }
+          num = parseInt(num / Math.pow(10, 1)) / Math.pow(10, fractionDigits);
+          let decimals = num.toString().split(".")[1];
+          if (decimals.length < fractionDigits) {
+            //小数位数不够，添加0
+            let decimalsArr = Array.apply(null, {
+              length: fractionDigits - decimals.length
+            });
+            decimalsArr = decimalsArr.map(function(value, index) {
+              return 0;
+            });
+            return num + decimalsArr.join("");
+          } else {
+            return num;
+          }
+        }
+      };
+      //console.log((0).yhToFixed(5));
+      // console.log((12).yhToFixed(2));
+      // console.log((12.1).yhToFixed(2));
+      // console.log((12.1).yhToFixed(2));
+      // console.log((12.095).yhToFixed(2));
+      // console.log((12.085).yhToFixed(2));
+      // console.log((12.075).yhToFixed(2));
+      // console.log((12.065).yhToFixed(2));
+      // console.log((12.055).yhToFixed(2));
+      // console.log((12.045).yhToFixed(2));
+      console.log((12.030995).yhToFixed('a'));
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this section for a production-ready setup with JSX:
+      https://reactjs.org/docs/add-react-to-a-website.html#add-jsx-to-a-project
+
+      In a larger project, you can use an integrated toolchain that includes JSX instead:
+      https://reactjs.org/docs/create-a-new-react-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      https://reactjs.org/docs/react-without-jsx.html
+    -->
+  </body>
+</html>
