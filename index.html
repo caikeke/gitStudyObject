@@ -2765,24 +2765,28 @@ componentDidMount(){
       //  console.log(createArray);[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
       //  console.log('=====================================');
 
-      console.log(Function instanceof Object); //true
-      console.log(Object instanceof Function); //true
-      console.log("=================构造函数===============");
-      console.log(Function.prototype); //Function的原型对象
-      console.log(Function.prototype === Function.__proto__);
-      console.log(Function.prototype.__proto__); //Function的原型对象的原型对象
-      console.log(Object.prototype); //Object的原型对象
-      console.log(Object.prototype.__proto__); //Object的原型对象
-      console.log(Object.prototype === Function.prototype.__proto__);
-      console.log("=================实例对象===============");
-      console.log(Function.__proto__);
-      console.log(Function.constructor);
-      console.log(Object.__proto__);
-      console.log(Object.constructor);
-      console.log(Object.__proto__ === Function.__proto__);
-      console.log("=====================================");
-      console.log(Function.prototype == Function.__proto__);
-      console.log("=====================================");
+      // console.log(Function instanceof Object); //true
+      // console.log(Object instanceof Function); //true
+      // console.log("=================构造函数===============");
+      // //Function的原型对象
+      // console.log(1, Function.prototype);
+      // //Object的原型对象
+      // console.log(2, Object.prototype);
+      // //Function的原型对象的原型对象
+      // console.log(3, Function.prototype.__proto__);
+      // console.log(4, Object.prototype === Function.prototype.__proto__);
+      // console.log("=================实例对象===============");
+      // console.log(Function.constructor);
+      // console.log(Function.constructor == Function); //true
+      // console.log(Object.constructor);
+      // console.log(Object.constructor == Function); //true
+      // console.log("=====================================");
+      // console.log(Function.__proto__); //ƒ () { [native code] }
+      // console.log(Object.__proto__); //ƒ () { [native code] }
+      // console.log(Function.prototype == Function.__proto__); //true
+      // console.log(Object.__proto__ == Function.__proto__); //true
+      // console.log(Object.__proto__ == Function.prototype); //true
+
       // var creatArray = Object.keys(
       //   Array.call(null, 1, 2, 3, 4, 5, 6, 7, 8, 9)
       // ).map(function(item) {
@@ -2802,64 +2806,51 @@ componentDidMount(){
 
       //console.log(new Array(10).toString().split(','));
 
-      console.log("====================================");
-      /**
-       * 重写toFixed方法,解决四舍五入不准确的问题
-       * @param n 原始数据
-       * @param d 小数位数
-       */
-      function toFixed(n, d) {
-        if (d <= 0) {
-          return n;
-        } else {
-          let radix = 10 * d;
-          let temp = Math.round(n * radix) / radix;
-          return temp;
-        }
-      }
-      console.log(toFixed(2.065 + 1, 2));
+      // console.log("====================================");
+      // /**
+      //  * 重写toFixed方法,解决四舍五入不准确的问题
+      //  * @param fractionDigits 小数位数
+      //  */
+      // Number.prototype.yhToFixed = function(fractionDigits) {
+      //   //对fractionDigits做任何处理，假设它是合法输入
+      //   if (!(fractionDigits instanceof Number)) {
+      //     throw new Error("The decimal place must be a number");
+      //   }
+      //   //判断小数位数
+      //   let numStr = this.toString().split(".");
+      //   if (numStr.length <= 1) {
+      //     //没有小数，直接添加保留的位数
+      //     let decimalsArr = Array.apply(null, { length: fractionDigits });
+      //     decimalsArr = decimalsArr.map(function(value, index) {
+      //       return 0;
+      //     });
+      //     return this.toString() + "." + decimalsArr.join("");
+      //   } else {
+      //     //自定义四舍五入
+      //     let num = parseInt(
+      //       this * Math.pow(10, fractionDigits + 1)
+      //     ).toString();
 
-      console.log("====================================");
-      Number.prototype.yhToFixed = function(fractionDigits) {
-        //对fractionDigits做任何处理，假设它是合法输入
-        if (!(fractionDigits instanceof Number)) {
-          throw new Error("The decimal place must be a number");
-        }
-        //判断小数位数
-        let numStr = this.toString().split(".");
-        if (numStr.length <= 1) {
-          //没有小数，直接添加保留的位数
-          let decimalsArr = Array.apply(null, { length: fractionDigits });
-          decimalsArr = decimalsArr.map(function(value, index) {
-            return 0;
-          });
-          return this.toString() + "." + decimalsArr.join("");
-        } else {
-          //自定义四舍五入
-          let num = parseInt(
-            this * Math.pow(10, fractionDigits + 1)
-          ).toString();
-
-          let lastNum = num.slice(-1);
-          if (lastNum >= 5) {
-            num = Number(num) + 10;
-          }
-          num = parseInt(num / Math.pow(10, 1)) / Math.pow(10, fractionDigits);
-          let decimals = num.toString().split(".")[1];
-          if (decimals.length < fractionDigits) {
-            //小数位数不够，添加0
-            let decimalsArr = Array.apply(null, {
-              length: fractionDigits - decimals.length
-            });
-            decimalsArr = decimalsArr.map(function(value, index) {
-              return 0;
-            });
-            return num + decimalsArr.join("");
-          } else {
-            return num;
-          }
-        }
-      };
+      //     let lastNum = num.slice(-1);
+      //     if (lastNum >= 5) {
+      //       num = Number(num) + 10;
+      //     }
+      //     num = parseInt(num / Math.pow(10, 1)) / Math.pow(10, fractionDigits);
+      //     let decimals = num.toString().split(".")[1];
+      //     if (decimals.length < fractionDigits) {
+      //       //小数位数不够，添加0
+      //       let decimalsArr = Array.apply(null, {
+      //         length: fractionDigits - decimals.length
+      //       });
+      //       decimalsArr = decimalsArr.map(function(value, index) {
+      //         return 0;
+      //       });
+      //       return num + decimalsArr.join("");
+      //     } else {
+      //       return num;
+      //     }
+      //   }
+      // };
       //console.log((0).yhToFixed(5));
       // console.log((12).yhToFixed(2));
       // console.log((12.1).yhToFixed(2));
@@ -2870,7 +2861,17 @@ componentDidMount(){
       // console.log((12.065).yhToFixed(2));
       // console.log((12.055).yhToFixed(2));
       // console.log((12.045).yhToFixed(2));
-      console.log((12.030995).yhToFixed('a'));
+      //console.log((12.030995).yhToFixed('a'));
+
+      function fc(name) {
+        this.name = name;
+      }
+
+      var fc1 = new fc("zxd");
+
+      console.log(fc.prototype == fc1.__proto__); //true
+      console.log((Function.prototype).toString()); //true
+      console.table(Function.prototype); //true
     </script>
     <!--
       Note: this page is a great way to try React but it's not suitable for production.
